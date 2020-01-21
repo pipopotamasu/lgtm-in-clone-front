@@ -1,9 +1,10 @@
 import React from 'react';
+import GlobalHeader from './components/organisms/GlobalHeader';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">header</header>
+      <GlobalHeader />
       <div>content</div>
     </div>
   );
