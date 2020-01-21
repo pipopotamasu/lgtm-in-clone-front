@@ -9,9 +9,10 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:react/recommended",
-    "prettier"
+    "prettier",
+    "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["prettier", "@typescript-eslint", "jest", "react"],
+  "plugins": ["prettier", "@typescript-eslint", "jest", "react", "jsx-a11y"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "sourceType": "module",
