@@ -8,13 +8,22 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
+    "plugin:react/recommended",
     "prettier"
   ],
-  "plugins": ["prettier", "@typescript-eslint", "jest"],
+  "plugins": ["prettier", "@typescript-eslint", "jest", "react"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "sourceType": "module",
-    "warnOnUnsupportedTypeScriptVersion": true
+    "warnOnUnsupportedTypeScriptVersion": true,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   },
   "rules": {
     "indent": ["error", 2],
