@@ -1,0 +1,17 @@
+name: Lint
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: node:12-14-alpine3.9
+    steps:
+    - uses: actions/checkout@v1
+    - name: yarn setup
+      run: |
+        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+        apt install -y yarn
+    - name: Build and setup
+      run: |
+        yarn eslint
