@@ -6,28 +6,28 @@ const Header = styled.header`
   width: 100%;
   background-color: ${color.bg.gray};
   border-bottom: 1px solid ${color.border.gray};
-`
+`;
 
 const Nav = styled.nav`
   width: ${width.base};
   margin: 0 auto;
-`
+`;
 
 const List = styled.ul`
   display: flex;
   list-style: none;
-`
+`;
 
-const Item = styled.li<{right?: boolean}>`
+const Item = styled.li<{ right?: boolean }>`
   color: ${color.text.gray};
   padding: 0.8rem 1rem;
   cursor: pointer;
-  ${({ right }) => right ? 'margin-left: auto;' : ''}
+  ${({ right }) => (right ? 'margin-left: auto;' : '')}
 
   &:hover {
     color: ${color.text.black};
   }
-`
+`;
 
 const GlobalHeader: React.FC = () => {
   return (
