@@ -8,5 +8,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
+    - name: install dependencies
+      run: yarn
     - name: Build and setup
-      run: yarn run eslint
+      run: yarn eslint
