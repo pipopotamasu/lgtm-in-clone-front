@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color, width } from '../../constants/cssVariables';
+import { Link } from 'react-router-dom';
 
 const Header = styled.header`
   width: 100%;
@@ -34,10 +35,18 @@ const GlobalHeader: React.FC = () => {
     <Header>
       <Nav>
         <List>
-          <Item>Home</Item>
-          <Item>Random</Item>
-          <Item>Submit</Item>
-          <Item>Browse</Item>
+          <Item>
+            <Link to="/">Home</Link>
+          </Item>
+          <Item>
+            <Link to="/random">Random</Link>
+          </Item>
+          <Item>
+            <Link to="/submit">Submit</Link>
+          </Item>
+          <Item>
+            <Link to="/browse">Browse</Link>
+          </Item>
           <Item right>Login</Item>
         </List>
       </Nav>
