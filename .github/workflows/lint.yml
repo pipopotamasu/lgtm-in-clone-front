@@ -2,11 +2,11 @@ name: Lint
 on: [push]
 jobs:
   build_and_lint:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
     - name: Build and setup
-      run: |
-        npm run eslint
+      run: npm run eslint
