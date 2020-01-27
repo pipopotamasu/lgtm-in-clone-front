@@ -4,6 +4,8 @@ import { width } from './constants/cssVariables';
 import GlobalHeader from './components/organisms/GlobalHeader';
 import Home from './pages/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './reducers/store';
 
 const Container = styled.div`
   width: ${width.base};
@@ -14,19 +16,21 @@ const Container = styled.div`
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Router>
-        <GlobalHeader />
-        <Container>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/random">About</Route>
-            <Route path="/submit">Submit</Route>
-            <Route path="/browse">Browse</Route>
-          </Switch>
-        </Container>
-      </Router>
+      <Provider store={store} >
+        <Router>
+          <GlobalHeader />
+          <Container>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/random">About</Route>
+              <Route path="/submit">Submit</Route>
+              <Route path="/browse">Browse</Route>
+            </Switch>
+          </Container>
+        </Router>
+      </Provider>
     </div>
   );
 };

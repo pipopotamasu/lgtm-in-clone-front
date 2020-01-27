@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FiThumbsUp, FiThumbsDown, FiHeart } from 'react-icons/fi';
 import { color, fontSize } from '../../constants/cssVariables';
+import { Post } from '../../reducers/posts';
 
 const Card = styled.div`
   width: 16.6667%;
@@ -17,6 +18,7 @@ const Card = styled.div`
 
 const Img = styled.img`
   max-width: 100%;
+  cursor: pointer;
 `;
 
 const ActionList = styled.ul`
@@ -29,11 +31,11 @@ const ActionItem = styled.li<{ right?: boolean }>`
   ${({ right }) => (right ? 'margin-left: auto;' : '')}
 `;
 
-const LgtmCard: React.FC = () => {
+const LgtmCard: React.FC<{ post: Post, onClick: (post: Post) => void }> = ({ post, onClick }) => {
   return (
     <>
       <Card>
-        <Img src="https://i.imgur.com/8V3Mhu3.gif" />
+        <Img src={post.src} onClick={() => onClick(post)} />
         <ActionList>
           <ActionItem>
             <FiThumbsUp color={color.icon.blue} size={fontSize.icon.base} />
