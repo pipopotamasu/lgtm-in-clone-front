@@ -9,7 +9,7 @@ const Container = styled.div`
   width: ${width.base};
   margin: 0 auto;
   padding: 1rem;
-`
+`;
 
 const App: React.FC = () => {
   return (

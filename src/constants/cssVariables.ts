@@ -6,7 +6,7 @@ export const fontSize = {
   icon: {
     base: '1.6rem'
   }
-}
+};
 
 export const color = {
   bg: {
@@ -20,6 +20,6 @@ export const color = {
     black: 'black'
   },
   icon: {
-    blue: '#428BCA',
+    blue: '#428BCA'
   }
 };

@@ -13,21 +13,21 @@ const Card = styled.div`
   &:nth-child(5n) {
     margin-right: 0;
   }
-`
+`;
 
 const Img = styled.img`
   max-width: 100%;
-`
+`;
 
 const ActionList = styled.ul`
   display: flex;
-`
+`;
 
 const ActionItem = styled.li<{ right?: boolean }>`
   list-style: none;
   padding: 0.4rem;
   ${({ right }) => (right ? 'margin-left: auto;' : '')}
-`
+`;
 
 const LgtmCard: React.FC = () => {
   return (
@@ -35,9 +35,15 @@ const LgtmCard: React.FC = () => {
       <Card>
         <Img src="https://i.imgur.com/8V3Mhu3.gif" />
         <ActionList>
-          <ActionItem><FiThumbsUp color={color.icon.blue} size={fontSize.icon.base} /></ActionItem>
-          <ActionItem><FiHeart color={color.icon.blue} size={fontSize.icon.base} /></ActionItem>
-          <ActionItem right><FiThumbsDown color={color.icon.blue} size={fontSize.icon.base} /></ActionItem>
+          <ActionItem>
+            <FiThumbsUp color={color.icon.blue} size={fontSize.icon.base} />
+          </ActionItem>
+          <ActionItem>
+            <FiHeart color={color.icon.blue} size={fontSize.icon.base} />
+          </ActionItem>
+          <ActionItem right>
+            <FiThumbsDown color={color.icon.blue} size={fontSize.icon.base} />
+          </ActionItem>
         </ActionList>
       </Card>
     </>
