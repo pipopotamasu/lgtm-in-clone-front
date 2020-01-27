@@ -1,6 +1,12 @@
 export const width = {
-  base: '1080px'
+  base: '1200px'
 };
+
+export const fontSize = {
+  icon: {
+    base: '1.6rem'
+  }
+}
 
 export const color = {
   bg: {
@@ -12,5 +18,8 @@ export const color = {
   text: {
     gray: '#777',
     black: 'black'
+  },
+  icon: {
+    blue: '#428BCA',
   }
 };
