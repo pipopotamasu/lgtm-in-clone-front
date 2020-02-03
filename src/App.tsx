@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { width } from './constants/cssVariables';
 import GlobalHeader from './components/organisms/GlobalHeader';
+import GlobalMessages from './components/organisms/GlobalMessages';
 import Home from './pages/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -18,6 +19,7 @@ const App: React.FC = () => {
     <div className="App">
       <Provider store={store}>
         <Router>
+          <GlobalMessages />
           <GlobalHeader />
           <Container>
             <Switch>

@@ -8,6 +8,9 @@ import {
   selectPost as selectPostCreator,
   fetchPosts as fetchPostsCreator
 } from '../../actions/posts';
+import {
+  handleErrorMessage as handleErrorMessageCreator,
+} from '../../actions/globalMessages';
 import postsService from '../../services/PostsService';
 import usePlaceholderCards from '../../hooks/usePlaceholderCards';
 

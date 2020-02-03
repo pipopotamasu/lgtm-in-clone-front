@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 
 export type AppState = {
   posts: ReturnType<typeof postsReducer>;
+  globalMessages: ReturnType<typeof globalMessagesReducer>;
 };
 
 const reducers = combineReducers({
