@@ -10,7 +10,7 @@ export const fontSize = {
 
 export const color = {
   bg: {
-    gray: '#f8f8f8'
+    gray: '#F5F5F5'
   },
   border: {
     gray: '#e7e7e7'
@@ -21,5 +21,8 @@ export const color = {
   },
   icon: {
     blue: '#428BCA'
+  },
+  placeholder: {
+    img: 'gray'
   }
 };
