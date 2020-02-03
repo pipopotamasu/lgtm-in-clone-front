@@ -5,9 +5,10 @@ export enum PostActions {
   SELECT_POST
 }
 
-export const fetchPosts = () => {
+export const fetchPosts = (posts: Post[]) => {
   return {
     type: PostActions.FETCH_POSTS,
+    payload: posts
   }
 }
 

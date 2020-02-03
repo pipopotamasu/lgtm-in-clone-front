@@ -4,7 +4,8 @@ import LgtmCard from '../molecules/LgtmCard';
 import { AppState } from '../../reducers/store';
 import { Post } from '../../reducers/posts';
 import { useSelector, useDispatch } from "react-redux";
-import { selectPost as selectPostCreator } from '../../actions/posts';
+import { selectPost as selectPostCreator, fetchPosts as fetchPostsCreator } from '../../actions/posts';
+import postsService from '../../services/PostsService';
 
 const postsListSelector = (state: AppState) => state.posts.list;
 
@@ -18,6 +19,9 @@ const LgtmCards: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    postsService.getPosts().then((res) => {
+      dispatch(fetchPostsCreator(res.data))
+    })
   }, [])
 
   const onSelectPost = useCallback(

@@ -3,6 +3,7 @@ import { PostActions, SelectPostAction } from '../actions/posts'
 export type Post = {
   id: number,
   src: string,
+  userId: number,
   upvote: boolean,
   report: boolean,
   bookmarked: boolean
@@ -14,9 +15,7 @@ type PostState = {
 }
 
 const initialState: PostState = {
-  list: [
-    { id: 1, src: 'https://i.imgur.com/8V3Mhu3.gif', upvote: false, report: false, bookmarked: false }
-  ],
+  list: [],
   selected: null
 };
 
@@ -28,7 +27,10 @@ export default (state: PostState = initialState, action: SelectPostAction): Post
         ...{ selected: action.payload }
       }
     case PostActions.FETCH_POSTS:
-      return state;
+      return {
+        ...state,
+        ...{ list: action.payload }
+      };
     default:
       return state;
   }
