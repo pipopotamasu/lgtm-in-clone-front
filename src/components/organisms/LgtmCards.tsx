@@ -6,13 +6,9 @@ import { Post } from '../../reducers/posts';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectPost as selectPostCreator,
-  fetchPosts as fetchPostsCreator
 } from '../../actions/posts';
-import {
-  handleErrorMessage as handleErrorMessageCreator,
-} from '../../actions/globalMessages';
-import postsService from '../../services/PostsService';
 import usePlaceholderCards from '../../hooks/usePlaceholderCards';
+import useFetchPosts from '../../hooks/useFetchPosts';
 
 const postsListSelector = (state: AppState) => state.posts.list;
 
@@ -24,14 +20,10 @@ const Container = styled.div`
 const LgtmCards: React.FC = () => {
   const postList = useSelector(postsListSelector);
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
+  const [fetchPosts, loading] = useFetchPosts();
 
   useEffect(() => {
-    setLoading(true);
-    postsService.getPosts().then((res) => {
-      dispatch(fetchPostsCreator(res.data));
-      setLoading(false);
-    });
+    fetchPosts();
   }, []);
 
   const onSelectPost = useCallback(
