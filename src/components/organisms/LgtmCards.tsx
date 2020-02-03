@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useEffect } from 'react';
 import styled from 'styled-components';
 import LgtmCard from '../molecules/LgtmCard';
 import { AppState } from '../../reducers/store';
@@ -16,6 +16,10 @@ const Container = styled.div`
 const LgtmCards: React.FC = () => {
   const postList = useSelector(postsListSelector);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // api call
+  }, [])
 
   const onSelectPost = useCallback(
     (post: Post): void => { dispatch(selectPost(post)) },

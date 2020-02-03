@@ -11,6 +11,7 @@ export const fetchPosts = () => {
   }
 }
 
+// for Discriminated Unions
 interface fetchPostsAction extends ReturnType<typeof fetchPosts> {
   type: PostActions.FETCH_POSTS
 }

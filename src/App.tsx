@@ -24,7 +24,7 @@ const App: React.FC = () => {
               <Route exact path="/">
                 <Home />
               </Route>
-              <Route path="/random">About</Route>
+              <Route path="/random">random</Route>
               <Route path="/submit">Submit</Route>
               <Route path="/browse">Browse</Route>
             </Switch>
