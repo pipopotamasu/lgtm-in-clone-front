@@ -1,31 +1,34 @@
-import { PostActions, SelectPostAction } from '../actions/posts'
+import { PostActions, PostsActions } from '../actions/posts';
 
 export type Post = {
-  id: number,
-  src: string,
-  userId: number,
-  upvote: boolean,
-  report: boolean,
-  bookmarked: boolean
-}
+  id: number;
+  src: string;
+  userId: number;
+  upvote: boolean;
+  report: boolean;
+  bookmarked: boolean;
+};
 
 type PostState = {
-  list: Post[],
-  selected: Post | null
-}
+  list: Post[];
+  selected: Post | null;
+};
 
 const initialState: PostState = {
   list: [],
   selected: null
 };
 
-export default (state: PostState = initialState, action: SelectPostAction): PostState => {
+export default (
+  state: PostState = initialState,
+  action: PostsActions
+): PostState => {
   switch (action.type) {
     case PostActions.SELECT_POST:
       return {
         ...state,
         ...{ selected: action.payload }
-      }
+      };
     case PostActions.FETCH_POSTS:
       return {
         ...state,
@@ -34,4 +37,4 @@ export default (state: PostState = initialState, action: SelectPostAction): Post
     default:
       return state;
   }
-}
+};

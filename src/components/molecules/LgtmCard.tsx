@@ -31,7 +31,10 @@ const ActionItem = styled.li<{ right?: boolean }>`
   ${({ right }) => (right ? 'margin-left: auto;' : '')}
 `;
 
-const LgtmCard: React.FC<{ post: Post, onClick: (post: Post) => void }> = ({ post, onClick }) => {
+const LgtmCard: React.FC<{ post: Post; onClick: (post: Post) => void }> = ({
+  post,
+  onClick
+}) => {
   return (
     <>
       <Card>

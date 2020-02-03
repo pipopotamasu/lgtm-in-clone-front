@@ -16,7 +16,7 @@ const Container = styled.div`
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Provider store={store} >
+      <Provider store={store}>
         <Router>
           <GlobalHeader />
           <Container>
