@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { color } from '../../constants/cssVariables';
 
 const ModalContainer = styled.div<{ display: boolean }>`
   display: ${props => props.display ? 'block' : 'none'};
@@ -11,10 +12,10 @@ const ModalContainer = styled.div<{ display: boolean }>`
   width: 40%;
   margin: 0 auto;
   padding: 5px 20px;
-  background-color: #ea352d;
-  color: white;
+  background-color: ${color.bg.error};
+  color: ${color.text.white};
   border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  box-shadow: 0 2px 8px ${color.shadow.gray};
   animation: fadeIn 0.5s ease 0s;
   text-align: center;
   cursor: pointer;
