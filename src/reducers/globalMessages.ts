@@ -1,13 +1,13 @@
-import { GlobalMessagesActionEnum, GlobalMessagesActions } from '../actions/globalMessages';
+import {
+  GlobalMessagesActionEnum,
+  GlobalMessagesActions
+} from '../actions/globalMessages';
 
 const initialState = {
-  errorMessage: '',
+  errorMessage: ''
 };
 
-export default (
-  state = initialState,
-  action: GlobalMessagesActions
-) => {
+export default (state = initialState, action: GlobalMessagesActions) => {
   switch (action.type) {
     case GlobalMessagesActionEnum.ERROR_MESSAGE:
       return {

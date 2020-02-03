@@ -13,5 +13,4 @@ interface ErrorMessageAction extends ReturnType<typeof handleErrorMessage> {
   type: GlobalMessagesActionEnum.ERROR_MESSAGE;
 }
 
-
 export type GlobalMessagesActions = ErrorMessageAction;

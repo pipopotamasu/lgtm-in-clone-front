@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { color } from '../../constants/cssVariables';
 
 const ModalContainer = styled.div<{ display: boolean }>`
-  display: ${props => props.display ? 'block' : 'none'};
+  display: ${(props) => (props.display ? 'block' : 'none')};
   position: absolute;
   z-index: 9998;
   top: 0;
@@ -22,26 +22,27 @@ const ModalContainer = styled.div<{ display: boolean }>`
 
   @keyframes fadeIn {
     from {
-        opacity: 0;
+      opacity: 0;
     }
     to {
-        opacity: 1;
+      opacity: 1;
     }
   }
-`
+`;
 
 const ModalBody = styled.div`
   margin: 10px 0;
-`
+`;
 
-const ErrorModal: React.FC<{ message: string, onClick: () => void }> = ({ message, onClick }) => {
+const ErrorModal: React.FC<{ message: string; onClick: () => void }> = ({
+  message,
+  onClick
+}) => {
   return (
-      <ModalContainer display={!!message} onClick={() => onClick()}>
-        <ModalBody>
-          { message }
-        </ModalBody>
-      </ModalContainer>
-  )
-}
+    <ModalContainer display={!!message} onClick={() => onClick()}>
+      <ModalBody>{message}</ModalBody>
+    </ModalContainer>
+  );
+};
 
 export default ErrorModal;
