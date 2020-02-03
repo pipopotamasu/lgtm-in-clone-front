@@ -1,4 +1,4 @@
-import { PostActions, PostsActions } from '../actions/posts';
+import { PostsActionEnum, PostsActions } from '../actions/posts';
 
 export type Post = {
   id: number;
@@ -24,12 +24,12 @@ export default (
   action: PostsActions
 ): PostState => {
   switch (action.type) {
-    case PostActions.SELECT_POST:
+    case PostsActionEnum.SELECT_POST:
       return {
         ...state,
         ...{ selected: action.payload }
       };
-    case PostActions.FETCH_POSTS:
+    case PostsActionEnum.FETCH_POSTS:
       return {
         ...state,
         ...{ list: action.payload }
