@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useEffect } from 'react';
+import React, { useCallback, useMemo, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LgtmCard from '../molecules/LgtmCard';
 import { AppState } from '../../reducers/store';
@@ -9,6 +9,7 @@ import {
   fetchPosts as fetchPostsCreator
 } from '../../actions/posts';
 import postsService from '../../services/PostsService';
+import usePlaceholderCards from '../../hooks/usePlaceholderCards';
 
 const postsListSelector = (state: AppState) => state.posts.list;
 
@@ -20,10 +21,13 @@ const Container = styled.div`
 const LgtmCards: React.FC = () => {
   const postList = useSelector(postsListSelector);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     postsService.getPosts().then((res) => {
       dispatch(fetchPostsCreator(res.data));
+      setLoading(false);
     });
   }, []);
 
@@ -39,6 +43,12 @@ const LgtmCards: React.FC = () => {
       return <LgtmCard post={post} onClick={onSelectPost} key={i} />;
     });
   }, [postList, onSelectPost]);
+
+  const PlaceholderCards = usePlaceholderCards(10);
+
+  if (loading) {
+    return <Container>{PlaceholderCards}</Container>;
+  }
 
   return <Container>{Cards}</Container>;
 };

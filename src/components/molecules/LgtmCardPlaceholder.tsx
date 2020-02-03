@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { FiThumbsUp, FiThumbsDown, FiHeart } from 'react-icons/fi';
 import { color, fontSize } from '../../constants/cssVariables';
-import { Post } from '../../reducers/posts';
 
 const Card = styled.div`
   width: 16.6667%;
@@ -17,15 +16,28 @@ const Card = styled.div`
   }
 `;
 
-const ImgWrapper = styled.div`
+const ImgDummyWrapper = styled.div`
   height: 80%;
-  background-color: ${color.bg.gray};
+  background-color: ${color.placeholder.img};
+  animation: fading 1.5s infinite;
+
+  @keyframes fading {
+    0% {
+      opacity: 0.1;
+    }
+
+    50% {
+      opacity: 0.2;
+    }
+
+    100% {
+      opacity: 0.1;
+    }
+  }
 `;
 
-const Img = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-  cursor: pointer;
+const ImgDummy = styled.p`
+  height: 180px;
 `;
 
 const ActionList = styled.ul`
@@ -38,16 +50,13 @@ const ActionItem = styled.li<{ right?: boolean }>`
   ${({ right }) => (right ? 'margin-left: auto;' : '')}
 `;
 
-const LgtmCard: React.FC<{ post: Post; onClick: (post: Post) => void }> = ({
-  post,
-  onClick
-}) => {
+const LgtmCard: React.FC = () => {
   return (
     <>
       <Card>
-        <ImgWrapper>
-          <Img src={post.src} onClick={() => onClick(post)} />
-        </ImgWrapper>
+        <ImgDummyWrapper>
+          <ImgDummy />
+        </ImgDummyWrapper>
         <ActionList>
           <ActionItem>
             <FiThumbsUp color={color.icon.blue} size={fontSize.icon.base} />
