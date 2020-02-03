@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import postsReducer from './posts';
+import globalMessagesReducer from './globalMessages';
 import { createStore } from 'redux';
 
 export type AppState = {
@@ -7,7 +8,8 @@ export type AppState = {
 };
 
 const reducers = combineReducers({
-  posts: postsReducer
+  posts: postsReducer,
+  globalMessages: globalMessagesReducer
 });
 
 export default createStore(reducers);
