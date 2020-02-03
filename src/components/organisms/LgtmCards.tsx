@@ -4,7 +4,7 @@ import LgtmCard from '../molecules/LgtmCard';
 import { AppState } from '../../reducers/store';
 import { Post } from '../../reducers/posts';
 import { useSelector, useDispatch } from "react-redux";
-import { selectPost } from '../../actions/posts';
+import { selectPost as selectPostCreator } from '../../actions/posts';
 
 const postsListSelector = (state: AppState) => state.posts.list;
 
@@ -18,11 +18,10 @@ const LgtmCards: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // api call
   }, [])
 
   const onSelectPost = useCallback(
-    (post: Post): void => { dispatch(selectPost(post)) },
+    (post: Post): void => { dispatch(selectPostCreator(post)) },
     [dispatch]
   )
 
