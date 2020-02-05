@@ -14,7 +14,8 @@ export const color = {
     error: '#ea352d'
   },
   border: {
-    gray: '#e7e7e7'
+    gray: '#e7e7e7',
+    darkGray: '#ccc'
   },
   shadow: {
     gray: 'rgba(0, 0, 0, 0.33)'
@@ -23,6 +24,9 @@ export const color = {
     gray: '#777',
     black: 'black',
     white: 'white'
+  },
+  input: {
+    gray: '#555'
   },
   icon: {
     blue: '#428BCA'
