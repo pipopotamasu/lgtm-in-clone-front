@@ -18,6 +18,6 @@ export default function useFetchPosts(): [() => Promise<void>, boolean] {
       setLoading(false);
       dispatch(handleErrorMessageCreator(e.message));
     }
-  }, []);
+  }, [dispatch]);
   return [fetchPosts, loading];
 }

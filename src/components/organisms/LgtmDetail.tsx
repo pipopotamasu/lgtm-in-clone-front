@@ -57,7 +57,7 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
 
   useEffect(() => {
     fetchPost(id);
-  }, []);
+  }, [fetchPost, id]);
 
   if (loading) {
     return <span>Loading...</span>
