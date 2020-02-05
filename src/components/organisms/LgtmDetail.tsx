@@ -1,11 +1,13 @@
 import React, { useEffect, useMemo } from 'react';
-import { color } from '../../constants/cssVariables';
+import { color, fontSize } from '../../constants/cssVariables';
 import styled from 'styled-components';
 import useFetchPost from '../../hooks/useFetchPost';
 import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 import { InputTypeEnum } from '../../enums/elements';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../reducers/store';
+import { IoIosStar } from "react-icons/io";
 
 const postSelectedSelector = (state: AppState) => state.posts.selected;
 
@@ -55,13 +57,19 @@ const Textarea = styled.textarea`
   height: 6rem;
 `
 
+const ButtonText = styled.span`
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.1rem;
+`
+
 const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
   const postSelected = useSelector(postSelectedSelector);
   const [fetchPost, loading] = useFetchPost();
 
   useEffect(() => {
-    fetchPost(id);
-  }, [fetchPost, id]);
+    if (!postSelected) fetchPost(id);
+  }, [fetchPost, id, postSelected]);
 
   const markdownVal = useMemo(() => {
     if (!postSelected) return '';
@@ -106,6 +114,10 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
             name="markdown"
           />
         </FormGroup>
+        <Button>
+          <IoIosStar size={fontSize.icon.base} />
+          <ButtonText>My List</ButtonText>
+        </Button>
       </RightSection>
     </LgtmDetailLayout>
   );

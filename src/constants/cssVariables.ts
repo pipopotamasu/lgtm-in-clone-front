@@ -11,7 +11,8 @@ export const fontSize = {
 export const color = {
   bg: {
     gray: '#F5F5F5',
-    error: '#ea352d'
+    error: '#ea352d',
+    white: 'white'
   },
   border: {
     gray: '#e7e7e7',
