@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { color } from '../../constants/cssVariables';
 import styled from 'styled-components';
 import useFetchPost from '../../hooks/useFetchPost';
 import Input from '../atoms/Input';
 import { InputTypeEnum } from '../../enums/elements';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../reducers/store';
 
+const postSelectedSelector = (state: AppState) => state.posts.selected;
 
 const LgtmDetailLayout = styled.div`
   display: flex;
@@ -53,35 +56,55 @@ const Textarea = styled.textarea`
 `
 
 const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
+  const postSelected = useSelector(postSelectedSelector);
   const [fetchPost, loading] = useFetchPost();
 
   useEffect(() => {
     fetchPost(id);
   }, [fetchPost, id]);
 
-  if (loading) {
-    return <span>Loading...</span>
+  const markdownVal = useMemo(() => {
+    if (!postSelected) return '';
+    return `[![LGTM](${postSelected.src})](${window.location.href})`
+  }, [postSelected])
+
+  if (loading || !postSelected) {
+    return <p>Loading...</p>
   }
 
   return (
     <LgtmDetailLayout>
       <LeftSection>
         <ImgWrapper>
-          <Img src="https://i.imgur.com/8V3Mhu3.gif" alt="" />
+          <Img src={postSelected.src} alt="" />
         </ImgWrapper>
       </LeftSection>
       <RightSection>
         <FormGroup>
           <Label htmlFor="image-url">Image Url</Label>
-          <Input type={InputTypeEnum.text} value="hoge" id="image-url" name="image-url" />
+          <Input
+            type={InputTypeEnum.text}
+            value={ postSelected.src }
+            id="image-url"
+            name="image-url"
+          />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="data-url">Data Url</Label>
-          <Input type={InputTypeEnum.text}  value="hoge" id="data-url" name="data-url" />
+          <Input
+            type={InputTypeEnum.text}
+            value={window.location.href}
+            id="data-url"
+            name="data-url"
+          />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="markdown">Markdown</Label>
-          <Textarea value={InputTypeEnum.text}  id="markdown" name="markdown" />
+          <Textarea
+            value={markdownVal}
+            id="markdown"
+            name="markdown"
+          />
         </FormGroup>
       </RightSection>
     </LgtmDetailLayout>
