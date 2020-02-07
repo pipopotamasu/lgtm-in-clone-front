@@ -41,4 +41,7 @@ interface SelectPostAction extends ReturnType<typeof selectPost> {
   type: PostsActionEnum.SELECT_POST;
 }
 
-export type PostsActions = FetchPostsAction | FetchPostAction | SelectPostAction;
+export type PostsActions =
+  | FetchPostsAction
+  | FetchPostAction
+  | SelectPostAction;

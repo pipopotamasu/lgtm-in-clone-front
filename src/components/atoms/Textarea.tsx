@@ -7,6 +7,6 @@ const Textarea = styled.textarea`
   border-radius: 4px;
   color: ${color.input.gray};
   height: 6rem;
-`
+`;
 
 export default Textarea;

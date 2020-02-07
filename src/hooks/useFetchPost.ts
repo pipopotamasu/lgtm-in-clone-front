@@ -4,20 +4,25 @@ import { handleErrorMessage as handleErrorMessageCreator } from '../actions/glob
 import { fetchPost as fetchPostCreator } from '../actions/posts';
 import postsService from '../services/PostsService';
 
-export default function useFetchPost(): [(id: number) => Promise<void>, boolean] {
+type RT = [(id: number) => Promise<void>, boolean];
+
+export default function useFetchPost(): RT {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  const fetchPost = useCallback(async (id: number) => {
-    setLoading(true);
-    try {
-      const res = await postsService.getPost(id);
-      setLoading(false);
-      dispatch(fetchPostCreator(res.data));
-    } catch (e) {
-      setLoading(false);
-      dispatch(handleErrorMessageCreator(e.message));
-    }
-  }, [dispatch]);
+  const fetchPost = useCallback(
+    async (id: number) => {
+      setLoading(true);
+      try {
+        const res = await postsService.getPost(id);
+        setLoading(false);
+        dispatch(fetchPostCreator(res.data));
+      } catch (e) {
+        setLoading(false);
+        dispatch(handleErrorMessageCreator(e.message));
+      }
+    },
+    [dispatch]
+  );
   return [fetchPost, loading];
 }

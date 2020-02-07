@@ -8,19 +8,17 @@ const InputStyle = styled.input`
   border: 1px solid ${color.border.darkGray};
   border-radius: 4px;
   color: ${color.input.gray};
-`
+`;
 
 type InputProps = {
-  type: InputTypeEnum,
-  value: string,
-  id: string,
-  name: string
-}
+  type: InputTypeEnum;
+  value: string;
+  id: string;
+  name: string;
+};
 
 const Input: React.FC<InputProps> = ({ type, value, id, name }) => {
-  return (
-    <InputStyle type={type} value={value} id={id} name={name} />
-  )
-}
+  return <InputStyle type={type} value={value} id={id} name={name} />;
+};
 
 export default Input;

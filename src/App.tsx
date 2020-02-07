@@ -30,7 +30,9 @@ const App: React.FC = () => {
               <Route path="/random">random</Route>
               <Route path="/submit">Submit</Route>
               <Route path="/browse">Browse</Route>
-              <Route path="/posts/:id"><Detail /></Route>
+              <Route path="/posts/:id">
+                <Detail />
+              </Route>
             </Switch>
           </Container>
         </Router>

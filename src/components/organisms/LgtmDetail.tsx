@@ -9,7 +9,7 @@ import FormGroup from '../atoms/FormGroup';
 import { InputTypeEnum } from '../../enums/elements';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../reducers/store';
-import { IoIosStar } from "react-icons/io";
+import { IoIosStar } from 'react-icons/io';
 
 const postSelectedSelector = (state: AppState) => state.posts.selected;
 
@@ -20,12 +20,12 @@ const LgtmDetailLayout = styled.div`
 const LeftSection = styled.div`
   width: 33%;
   padding: 0 1rem;
-`
+`;
 
 const RightSection = styled.div`
   width: 67%;
   padding: 0 1rem;
-`
+`;
 
 const ImgWrapper = styled.div`
   display: flex;
@@ -43,13 +43,13 @@ const Img = styled.img`
 const Label = styled.label`
   margin-bottom: 0.2rem;
   cursor: pointer;
-`
+`;
 
 const ButtonText = styled.span`
   font-size: 1.2rem;
   margin-left: 0.5rem;
   margin-bottom: 0.1rem;
-`
+`;
 
 const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
   const postSelected = useSelector(postSelectedSelector);
@@ -61,11 +61,11 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
 
   const markdownVal = useMemo(() => {
     if (!postSelected) return '';
-    return `[![LGTM](${postSelected.src})](${window.location.href})`
-  }, [postSelected])
+    return `[![LGTM](${postSelected.src})](${window.location.href})`;
+  }, [postSelected]);
 
   if (loading || !postSelected) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
 
   return (
@@ -80,7 +80,7 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
           <Label htmlFor="image-url">Image Url</Label>
           <Input
             type={InputTypeEnum.text}
-            value={ postSelected.src }
+            value={postSelected.src}
             id="image-url"
             name="image-url"
           />
@@ -96,11 +96,7 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
         </FormGroup>
         <FormGroup>
           <Label htmlFor="markdown">Markdown</Label>
-          <Textarea
-            value={markdownVal}
-            id="markdown"
-            name="markdown"
-          />
+          <Textarea value={markdownVal} id="markdown" name="markdown" />
         </FormGroup>
         <Button>
           <IoIosStar size={fontSize.icon.base} />
