@@ -11,8 +11,8 @@ const PostDetail: React.FC = () => {
   const [fetchPostRandom, loading] = useFetchPostRandom();
 
   useEffect(() => {
-    if (!postSelected) fetchPostRandom();
-  }, [fetchPostRandom, postSelected]);
+    fetchPostRandom();
+  }, [fetchPostRandom]);
 
   if (loading || !postSelected) {
     return <p>Loading...</p>;
@@ -20,7 +20,7 @@ const PostDetail: React.FC = () => {
 
   return (
     <div>
-      <LgtmDetail id={postSelected.id} />
+      <LgtmDetail post={postSelected} />
     </div>
   );
 };

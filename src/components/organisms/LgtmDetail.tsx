@@ -1,16 +1,13 @@
 import React, { useEffect, useMemo } from 'react';
 import { color, fontSize } from '../../constants/cssVariables';
 import styled from 'styled-components';
-import useFetchPost from '../../hooks/useFetchPost';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 import Textarea from '../atoms/Textarea';
 import FormGroup from '../atoms/FormGroup';
-import { useSelector } from 'react-redux';
-import { AppState } from '../../reducers/store';
 import { IoIosStar } from 'react-icons/io';
+import { Post } from '../../reducers/posts';
 
-const postSelectedSelector = (state: AppState) => state.posts.selected;
 
 const LgtmDetailLayout = styled.div`
   display: flex;
@@ -50,28 +47,17 @@ const ButtonText = styled.span`
   margin-bottom: 0.1rem;
 `;
 
-const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
-  const postSelected = useSelector(postSelectedSelector);
-  const [fetchPost, loading] = useFetchPost();
-
-  useEffect(() => {
-    if (!postSelected) fetchPost(id);
-  }, [fetchPost, id, postSelected]);
-
+const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
   const markdownVal = useMemo(() => {
-    if (!postSelected) return '';
-    return `[![LGTM](${postSelected.src})](${window.location.href})`;
-  }, [postSelected]);
-
-  if (loading || !postSelected) {
-    return <p>Loading...</p>;
-  }
+    if (!post) return '';
+    return `[![LGTM](${post.src})](${window.location.origin}/posts/${post.id})`;
+  }, [post]);
 
   return (
     <LgtmDetailLayout>
       <LeftSection>
         <ImgWrapper>
-          <Img src={postSelected.src} alt="" />
+          <Img src={post.src} alt="" />
         </ImgWrapper>
       </LeftSection>
       <RightSection>
@@ -79,7 +65,7 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
           <Label htmlFor="image-url">Image Url</Label>
           <Input
             type="text"
-            defaultValue={postSelected.src}
+            defaultValue={post.src}
             id="image-url"
             name="image-url"
           />
@@ -88,7 +74,7 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
           <Label htmlFor="data-url">Data Url</Label>
           <Input
             type="text"
-            defaultValue={window.location.href}
+            defaultValue={`${window.location.origin}/posts/${post.id}`}
             id="data-url"
             name="data-url"
           />
