@@ -79,7 +79,7 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
           <Label htmlFor="image-url">Image Url</Label>
           <Input
             type="text"
-            value={postSelected.src}
+            defaultValue={postSelected.src}
             id="image-url"
             name="image-url"
           />
@@ -88,14 +88,14 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
           <Label htmlFor="data-url">Data Url</Label>
           <Input
             type="text"
-            value={window.location.href}
+            defaultValue={window.location.href}
             id="data-url"
             name="data-url"
           />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="markdown">Markdown</Label>
-          <Textarea value={markdownVal} id="markdown" name="markdown" />
+          <Textarea defaultValue={markdownVal} id="markdown" name="markdown" />
         </FormGroup>
         <Button>
           <IoIosStar size={fontSize.icon.base} />

@@ -11,13 +11,13 @@ const InputStyle = styled.input`
 
 type InputProps = {
   type: Dom.InputType;
-  value: string;
+  defaultValue: string;
   id: string;
   name: string;
 };
 
-const Input: React.FC<InputProps> = ({ type, value, id, name }) => {
-  return <InputStyle type={type} value={value} id={id} name={name} />;
+const Input: React.FC<InputProps> = ({ type, defaultValue, id, name }) => {
+  return <InputStyle type={type} defaultValue={defaultValue} id={id} name={name} />;
 };
 
 export default Input;
