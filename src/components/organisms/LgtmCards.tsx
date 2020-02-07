@@ -22,7 +22,7 @@ const LgtmCards: React.FC = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [fetchPosts]);
 
   const onSelectPost = useCallback(
     (post: Post): void => {

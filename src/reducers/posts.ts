@@ -29,6 +29,11 @@ export default (
         ...state,
         ...{ selected: action.payload }
       };
+    case PostsActionEnum.FETCH_POST:
+      return {
+        ...state,
+        ...{ selected: action.payload }
+      };
     case PostsActionEnum.FETCH_POSTS:
       return {
         ...state,

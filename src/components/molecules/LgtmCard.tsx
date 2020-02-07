@@ -4,6 +4,7 @@ import { color } from '../../constants/cssVariables';
 import { Post } from '../../reducers/posts';
 import Card from '../atoms/BaseCard';
 import ActionList from './ActionList';
+import { Link } from 'react-router-dom';
 
 const ImgWrapper = styled.div`
   height: 80%;
@@ -14,7 +15,6 @@ const ImgWrapper = styled.div`
 const Img = styled.img`
   max-width: 100%;
   max-height: 100%;
-  cursor: pointer;
 `;
 
 const LgtmCard: React.FC<{ post: Post; onClick: (post: Post) => void }> = ({
@@ -23,9 +23,11 @@ const LgtmCard: React.FC<{ post: Post; onClick: (post: Post) => void }> = ({
 }) => {
   return (
     <Card>
-      <ImgWrapper>
-        <Img src={post.src} onClick={() => onClick(post)} />
-      </ImgWrapper>
+      <Link to={`/posts/${post.id}`}>
+        <ImgWrapper>
+          <Img src={post.src} onClick={() => onClick(post)} />
+        </ImgWrapper>
+      </Link>
       <ActionList />
     </Card>
   );
