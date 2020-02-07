@@ -1,24 +1,18 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import LgtmDetail from '../components/organisms/LgtmDetail';
-import useFetchPost from '../hooks/useFetchPost';
 import { useSelector } from 'react-redux';
+import LgtmDetail from '../components/organisms/LgtmDetail';
+import useFetchPostRandom from '../hooks/useFetchPostRandom';
 import { AppState } from '../reducers/store';
 
 const postSelectedSelector = (state: AppState) => state.posts.selected;
 
 const PostDetail: React.FC = () => {
-  const { id } = useParams();
-  if (!id) {
-    throw new Error('Passed invalid id.');
-  }
-
   const postSelected = useSelector(postSelectedSelector);
-  const [fetchPost, loading] = useFetchPost();
+  const [fetchPostRandom, loading] = useFetchPostRandom();
 
   useEffect(() => {
-    fetchPost(parseInt(id));
-  }, [fetchPost, id]);
+    fetchPostRandom();
+  }, [fetchPostRandom]);
 
   if (loading || !postSelected) {
     return <p>Loading...</p>;

@@ -1,17 +1,12 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { color, fontSize } from '../../constants/cssVariables';
 import styled from 'styled-components';
-import useFetchPost from '../../hooks/useFetchPost';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 import Textarea from '../atoms/Textarea';
 import FormGroup from '../atoms/FormGroup';
-import { InputTypeEnum } from '../../enums/elements';
-import { useSelector } from 'react-redux';
-import { AppState } from '../../reducers/store';
 import { IoIosStar } from 'react-icons/io';
-
-const postSelectedSelector = (state: AppState) => state.posts.selected;
+import { Post } from '../../reducers/posts';
 
 const LgtmDetailLayout = styled.div`
   display: flex;
@@ -51,36 +46,25 @@ const ButtonText = styled.span`
   margin-bottom: 0.1rem;
 `;
 
-const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
-  const postSelected = useSelector(postSelectedSelector);
-  const [fetchPost, loading] = useFetchPost();
-
-  useEffect(() => {
-    if (!postSelected) fetchPost(id);
-  }, [fetchPost, id, postSelected]);
-
+const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
   const markdownVal = useMemo(() => {
-    if (!postSelected) return '';
-    return `[![LGTM](${postSelected.src})](${window.location.href})`;
-  }, [postSelected]);
-
-  if (loading || !postSelected) {
-    return <p>Loading...</p>;
-  }
+    if (!post) return '';
+    return `[![LGTM](${post.src})](${window.location.origin}/posts/${post.id})`;
+  }, [post]);
 
   return (
     <LgtmDetailLayout>
       <LeftSection>
         <ImgWrapper>
-          <Img src={postSelected.src} alt="" />
+          <Img src={post.src} alt="" />
         </ImgWrapper>
       </LeftSection>
       <RightSection>
         <FormGroup>
           <Label htmlFor="image-url">Image Url</Label>
           <Input
-            type={InputTypeEnum.text}
-            value={postSelected.src}
+            type="text"
+            defaultValue={post.src}
             id="image-url"
             name="image-url"
           />
@@ -88,15 +72,15 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
         <FormGroup>
           <Label htmlFor="data-url">Data Url</Label>
           <Input
-            type={InputTypeEnum.text}
-            value={window.location.href}
+            type="text"
+            defaultValue={`${window.location.origin}/posts/${post.id}`}
             id="data-url"
             name="data-url"
           />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="markdown">Markdown</Label>
-          <Textarea value={markdownVal} id="markdown" name="markdown" />
+          <Textarea defaultValue={markdownVal} id="markdown" name="markdown" />
         </FormGroup>
         <Button>
           <IoIosStar size={fontSize.icon.base} />
