@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import useFetchPost from '../../hooks/useFetchPost';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
+import Textarea from '../atoms/Textarea';
+import FormGroup from '../atoms/FormGroup';
 import { InputTypeEnum } from '../../enums/elements';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../reducers/store';
@@ -38,23 +40,9 @@ const Img = styled.img`
   max-height: 100%;
 `;
 
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-`
-
 const Label = styled.label`
   margin-bottom: 0.2rem;
   cursor: pointer;
-`
-
-const Textarea = styled.textarea`
-  padding: 0.5rem;
-  border: 1px solid ${color.border.darkGray};
-  border-radius: 4px;
-  color: ${color.input.gray};
-  height: 6rem;
 `
 
 const ButtonText = styled.span`
