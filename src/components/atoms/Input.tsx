@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color } from '../../constants/cssVariables';
-import { InputTypeEnum } from '../../enums/elements';
 
 const InputStyle = styled.input`
   padding: 0.5rem;
@@ -11,7 +10,7 @@ const InputStyle = styled.input`
 `;
 
 type InputProps = {
-  type: InputTypeEnum;
+  type: Dom.InputType;
   value: string;
   id: string;
   name: string;

@@ -6,7 +6,6 @@ import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 import Textarea from '../atoms/Textarea';
 import FormGroup from '../atoms/FormGroup';
-import { InputTypeEnum } from '../../enums/elements';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../reducers/store';
 import { IoIosStar } from 'react-icons/io';
@@ -79,7 +78,7 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
         <FormGroup>
           <Label htmlFor="image-url">Image Url</Label>
           <Input
-            type={InputTypeEnum.text}
+            type="text"
             value={postSelected.src}
             id="image-url"
             name="image-url"
@@ -88,7 +87,7 @@ const LgtmDetail: React.FC<{ id: number }> = ({ id }) => {
         <FormGroup>
           <Label htmlFor="data-url">Data Url</Label>
           <Input
-            type={InputTypeEnum.text}
+            type="text"
             value={window.location.href}
             id="data-url"
             name="data-url"
