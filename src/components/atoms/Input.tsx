@@ -17,7 +17,9 @@ type InputProps = {
 };
 
 const Input: React.FC<InputProps> = ({ type, defaultValue, id, name }) => {
-  return <InputStyle type={type} defaultValue={defaultValue} id={id} name={name} />;
+  return (
+    <InputStyle type={type} defaultValue={defaultValue} id={id} name={name} />
+  );
 };
 
 export default Input;

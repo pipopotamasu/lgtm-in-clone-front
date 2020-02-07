@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { color, fontSize } from '../../constants/cssVariables';
 import styled from 'styled-components';
 import Input from '../atoms/Input';
@@ -7,7 +7,6 @@ import Textarea from '../atoms/Textarea';
 import FormGroup from '../atoms/FormGroup';
 import { IoIosStar } from 'react-icons/io';
 import { Post } from '../../reducers/posts';
-
 
 const LgtmDetailLayout = styled.div`
   display: flex;

@@ -10,19 +10,16 @@ export default function useFetchPost(): RT {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  const fetchPostRandom = useCallback(
-    async () => {
-      setLoading(true);
-      try {
-        const res = await postsService.getPostRandom();
-        setLoading(false);
-        dispatch(fetchPostCreator(res.data));
-      } catch (e) {
-        setLoading(false);
-        dispatch(handleErrorMessageCreator(e.message));
-      }
-    },
-    [dispatch]
-  );
+  const fetchPostRandom = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await postsService.getPostRandom();
+      setLoading(false);
+      dispatch(fetchPostCreator(res.data));
+    } catch (e) {
+      setLoading(false);
+      dispatch(handleErrorMessageCreator(e.message));
+    }
+  }, [dispatch]);
   return [fetchPostRandom, loading];
 }

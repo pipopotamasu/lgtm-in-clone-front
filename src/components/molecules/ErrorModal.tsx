@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { color } from '../../constants/cssVariables';
 
 const ModalContainer = styled.div<{ display: CSS.Display }>`
-  display: ${(props) => (props.display)};
+  display: ${(props) => props.display};
   position: absolute;
   z-index: 9998;
   top: 0;
@@ -39,7 +39,10 @@ const ErrorModal: React.FC<{ message: string; onClick: () => void }> = ({
   onClick
 }) => {
   return (
-    <ModalContainer display={!!message ? 'block' : 'none'} onClick={() => onClick()}>
+    <ModalContainer
+      display={message ? 'block' : 'none'}
+      onClick={() => onClick()}
+    >
       <ModalBody>{message}</ModalBody>
     </ModalContainer>
   );

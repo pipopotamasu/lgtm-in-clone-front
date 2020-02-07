@@ -8,6 +8,6 @@ export default {
     return axios.get(`posts/${id}`);
   },
   getPostRandom() {
-    return axios.get(`posts/1`); // FIXME
+    return axios.get('posts/1'); // FIXME
   }
 };
