@@ -22,6 +22,17 @@ export default function useAuth() {
       if (auth0Client) return;
       const auth0 = await createAuth0Client(authOptions);
       dispatch(createAuth0ClientAction(auth0));
+
+
+      if (
+        window.location.search.includes("code=") &&
+        window.location.search.includes("state=")
+      ) {
+        await auth0.handleRedirectCallback();
+        // refresh login query
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+
       const isAuthenticated = await auth0.isAuthenticated();
 
       if (isAuthenticated) {

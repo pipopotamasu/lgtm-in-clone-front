@@ -31,6 +31,7 @@ const Item = styled.li<{ right?: boolean }>`
   }
 `;
 
+
 const GlobalHeader: React.FC = () => {
   const { initAuth0, login, logout, currentUser } = useAuth();
 
