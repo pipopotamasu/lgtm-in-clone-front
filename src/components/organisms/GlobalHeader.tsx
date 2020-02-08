@@ -31,21 +31,29 @@ const Item = styled.li<{ right?: boolean }>`
   }
 `;
 
-
 const GlobalHeader: React.FC = () => {
   const { initAuth0, login, logout, currentUser } = useAuth();
 
   useEffect(() => {
     initAuth0();
-  }, [initAuth0])
+  }, [initAuth0]);
 
   const AuthItem = useMemo(() => {
+    console.log(currentUser);
     if (currentUser) {
-      return <Item onClick={() => logout({})} right>Logout</Item>
+      return (
+        <Item onClick={() => logout({})} right>
+          Logout
+        </Item>
+      );
     }
 
-    return <Item onClick={() => login({})} right>Login</Item>
-  }, [login, logout, currentUser])
+    return (
+      <Item onClick={() => login({})} right>
+        Login
+      </Item>
+    );
+  }, [login, logout, currentUser]);
 
   return (
     <Header>
@@ -63,7 +71,7 @@ const GlobalHeader: React.FC = () => {
           <Item>
             <Link to="/browse">Browse</Link>
           </Item>
-          { AuthItem }
+          {AuthItem}
         </List>
       </Nav>
     </Header>

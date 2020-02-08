@@ -1,4 +1,5 @@
-import Auth0Client from "@auth0/auth0-spa-js/dist/typings/Auth0Client";
+import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
+import { CurrentUser } from '../reducers/auth';
 
 export enum AuthActionEnum {
   CREATE_CLIENT = 'auth/CREATE_CLIENT',
@@ -16,7 +17,7 @@ interface CreateAuth0ClientAction extends ReturnType<typeof createAuth0Client> {
   type: AuthActionEnum.CREATE_CLIENT;
 }
 
-export const fetchCurrentUser = (user: any) => {
+export const fetchCurrentUser = (user: CurrentUser | null) => {
   return {
     type: AuthActionEnum.FETCH_CURRENT_USER,
     payload: user
