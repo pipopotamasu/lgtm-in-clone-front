@@ -39,7 +39,6 @@ const GlobalHeader: React.FC = () => {
   }, [initAuth0]);
 
   const AuthItem = useMemo(() => {
-    console.log(currentUser);
     if (currentUser) {
       return (
         <Item onClick={() => logout({})} right>
