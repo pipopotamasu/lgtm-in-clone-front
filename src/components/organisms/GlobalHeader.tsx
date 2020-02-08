@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import { color, width } from '../../constants/cssVariables';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Header = styled.header`
   width: 100%;
@@ -31,6 +32,28 @@ const Item = styled.li<{ right?: boolean }>`
 `;
 
 const GlobalHeader: React.FC = () => {
+  const { initAuth0, login, logout, currentUser } = useAuth();
+
+  useEffect(() => {
+    initAuth0();
+  }, [initAuth0]);
+
+  const AuthItem = useMemo(() => {
+    if (currentUser) {
+      return (
+        <Item onClick={() => logout({})} right>
+          Logout
+        </Item>
+      );
+    }
+
+    return (
+      <Item onClick={() => login({})} right>
+        Login
+      </Item>
+    );
+  }, [login, logout, currentUser]);
+
   return (
     <Header>
       <Nav>
@@ -47,7 +70,7 @@ const GlobalHeader: React.FC = () => {
           <Item>
             <Link to="/browse">Browse</Link>
           </Item>
-          <Item right>Login</Item>
+          {AuthItem}
         </List>
       </Nav>
     </Header>
