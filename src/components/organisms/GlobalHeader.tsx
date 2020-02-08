@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { color, width } from '../../constants/cssVariables';
 import { Link } from 'react-router-dom';
+import createAuth0Client from "@auth0/auth0-spa-js";
+import authOptions from '../../auth_config.json';
 
 const Header = styled.header`
   width: 100%;
@@ -31,6 +33,12 @@ const Item = styled.li<{ right?: boolean }>`
 `;
 
 const GlobalHeader: React.FC = () => {
+  useEffect(() => {
+    createAuth0Client(authOptions).then((auth0) => {
+      console.log(auth0)
+    })
+  }, []);
+
   return (
     <Header>
       <Nav>
