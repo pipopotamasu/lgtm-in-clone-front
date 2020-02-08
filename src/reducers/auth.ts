@@ -2,10 +2,10 @@ import {
   AuthActionEnum,
   AuthActions
 } from '../actions/auth';
-import Auth0Client from "@auth0/auth0-spa-js/dist/typings/Auth0Client";
 
 const initialState = {
-  auth0Client: Auth0Client
+  auth0Client: null,
+  currentUser: null
 };
 
 export default (state = initialState, action: AuthActions) => {
@@ -15,6 +15,11 @@ export default (state = initialState, action: AuthActions) => {
         ...state,
         ...{ auth0Client: action.payload }
       };
+      case AuthActionEnum.FETCH_CURRENT_USER:
+        return {
+          ...state,
+          ...{ currentUser: action.payload }
+        };
     default:
       return state;
   }
