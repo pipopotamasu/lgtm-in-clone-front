@@ -11,20 +11,16 @@ const Ul = styled.ul`
   list-style: none;
   padding: 1rem;
   border-radius: 4px;
-`
+`;
 
 const ErrorList: React.FC<{ errors: string[] }> = ({ errors }) => {
   const ErrorItems = useMemo(() => {
-    return errors.map((error, i) => <li key={i} >{ error }</li>)
-  }, [errors])
+    return errors.map((error, i) => <li key={i}>{error}</li>);
+  }, [errors]);
 
   if (errors.length === 0) return <></>;
 
-  return (
-    <Ul>
-      { ErrorItems }
-    </Ul>
-  );
+  return <Ul>{ErrorItems}</Ul>;
 };
 
 export default ErrorList;

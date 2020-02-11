@@ -7,21 +7,18 @@ const Figure = styled.figure`
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
-`
+`;
 
 const Img = styled.img`
   width: 300px;
   height: 300px;
-`
+`;
 
 const PreviewImage: React.FC<{ src: string | null }> = ({ src }) => {
   return (
     <Figure>
-      <Img
-        src={src || 'no_image.svg'}
-        alt=""
-      />
-  </Figure>
+      <Img src={src || 'no_image.svg'} alt="" />
+    </Figure>
   );
 };
 

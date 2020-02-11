@@ -17,13 +17,16 @@ const Label = styled.label`
     position: relative;
     top: -0.05rem;
   }
-`
+`;
 
-const FileInput: React.FC<{ onChange: (e: ChangeEvent) => void, name: string }> = ({ onChange, name }) => {
+const FileInput: React.FC<{
+  onChange: (e: ChangeEvent) => void;
+  name: string;
+}> = ({ onChange, name }) => {
   return (
     <Label>
       Select File
-      <input onChange={(e) => onChange(e) } name={name} type="file" />
+      <input onChange={(e) => onChange(e)} name={name} type="file" />
     </Label>
   );
 };
