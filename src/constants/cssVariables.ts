@@ -34,5 +34,10 @@ export const color = {
   },
   placeholder: {
     img: 'gray'
+  },
+  list: {
+    errorBg: '#f8d7da',
+    errorText: '#721c24',
+    errorBorder: '#f5c6cb'
   }
 };

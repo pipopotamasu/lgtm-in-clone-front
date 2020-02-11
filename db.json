@@ -2,18 +2,16 @@
   "posts": [
     {
       "id": 1,
-      "src":
-      "https://medpeer.co.jp/images/top/main_vis01.jpg",
-      "userId": 1,
+      "src": "https://medpeer.co.jp/images/top/main_vis01.jpg",
+      "userId": "foo",
       "upvote": false,
       "report": false,
       "bookmarked": false
     },
     {
       "id": 2,
-      "src":
-      "https://i.imgur.com/8V3Mhu3.gif",
-      "userId": 1,
+      "src": "https://i.imgur.com/8V3Mhu3.gif",
+      "userId": "bar",
       "upvote": false,
       "report": false,
       "bookmarked": false
