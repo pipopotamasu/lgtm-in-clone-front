@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Random from './pages/Random';
 import Browse from './pages/Browse';
+import Submit from './pages/Submit';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './reducers/store';
@@ -32,7 +33,9 @@ const App: React.FC = () => {
               <Route path="/random">
                 <Random />
               </Route>
-              <Route path="/submit">Submit</Route>
+              <Route path="/submit">
+                <Submit />
+              </Route>
               <Route path="/browse">
                 <Browse />
               </Route>
