@@ -18,7 +18,7 @@ const PreviewImage: React.FC<{ src: string | null }> = ({ src }) => {
   return (
     <Figure>
       <Img
-        src={src || 'http://design-ec.com/d/e_others_50/l_e_others_501.png'}
+        src={src || 'no_image.svg'}
         alt=""
       />
   </Figure>
