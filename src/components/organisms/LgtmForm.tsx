@@ -1,11 +1,17 @@
-import React, { useState, useCallback, useMemo, ChangeEvent } from 'react';
+import React, { useState, useCallback, ChangeEvent, FormEvent } from 'react';
 import Button from '../atoms/Button';
 import FileInput from '../atoms/FileInput';
 import PreviewImage from '../atoms/PreviewImage';
 import ErrorList from '../molecules/ErrorList';
 import styled from 'styled-components';
+import useCreatePost from '../../hooks/useCreatePost';
+import { CurrentUser } from '../../reducers/auth';
+import { AppState } from '../../reducers/store';
+import { useSelector } from 'react-redux';
 
-const Form = styled.div`
+const currentUserSelector = (state: AppState) => state.auth.currentUser;
+
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,9 +30,11 @@ const FileSelectContainer = styled.div`
 `
 
 const LgtmForm: React.FC = () => {
-  const [file, setFile] = useState<File | null>(null);
-  const [previewFile, setPreviewFile] = useState<string | null>(null);
+  const currentUser = useSelector(currentUserSelector);
+
+  const [encodedFile, setEncodedFile] = useState<string | null>(null);
   const [errors, setErrors] = useState<string[]>([]);
+  const [createPost, loading] = useCreatePost();
 
   const onChangeFile = useCallback((e: ChangeEvent) => {
     e.preventDefault();
@@ -38,29 +46,45 @@ const LgtmForm: React.FC = () => {
       setErrors(['Upload image file.'])
       return;
     }
-
-    setFile(file);
     setErrors([])
 
     const reader = new FileReader();
     reader.onload = e => {
       if (!e.target?.result) return;
-      setPreviewFile(e.target.result as string);
+      setEncodedFile(e.target.result as string);
     };
     reader.readAsDataURL(file);
-  }, [])
+  }, []);
+
+  const onSubmit = useCallback(async (e: FormEvent) => {
+    e.preventDefault();
+    if (loading) return;
+    setErrors([])
+
+    if (!encodedFile) {
+      setErrors(['Upload image file.']);
+      return;
+    }
+
+    if (!currentUser) {
+      setErrors(['Login before uploading image.']);
+      return;
+    }
+
+   await createPost(encodedFile, currentUser.sub);
+  }, [encodedFile, currentUser, loading]);
 
   return (
-    <Form>
+    <Form id="lgtm-post-form" onSubmit={onSubmit}>
       <ErrorListWrapper>
         <ErrorList errors={errors} />
       </ErrorListWrapper>
       <FileSelectContainer>
-        <PreviewImage src={previewFile} />
+        <PreviewImage src={encodedFile} />
         <FileInput onChange={onChangeFile} name="lgtm-image" />
       </FileSelectContainer>
       <div>
-        <Button>Submit</Button>
+        <Button type="submit" form="lgtm-post-form">Submit</Button>
       </div>
     </Form>
   );

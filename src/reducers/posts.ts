@@ -3,7 +3,7 @@ import { PostsActionEnum, PostsActions } from '../actions/posts';
 export type Post = {
   id: number;
   src: string;
-  userId: number;
+  userId: string;
   upvote: boolean;
   report: boolean;
   bookmarked: boolean;

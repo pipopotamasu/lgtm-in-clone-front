@@ -1,4 +1,5 @@
 import axios from './BaseService';
+import { Post } from '../reducers/posts';
 
 export default {
   getPosts() {
@@ -9,5 +10,11 @@ export default {
   },
   getPostRandom() {
     return axios.get('posts/1'); // FIXME
+  },
+  createPost(file: string, userId: string) {
+    return axios.post('posts', {
+      file,
+      userId
+    });
   }
 };

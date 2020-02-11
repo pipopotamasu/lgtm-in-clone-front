@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { color } from '../../constants/cssVariables';
 
@@ -23,19 +23,29 @@ const ButtonStyle = styled.button<{
 `;
 
 type ButtonProps = {
+  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
   width?: string;
   height?: string;
   bgColor?: string;
+  form?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
   children,
+  type = 'button',
   width = '10rem',
   height = '3rem',
+  form = '',
   bgColor = color.bg.white
 }) => {
   return (
-    <ButtonStyle width={width} height={height} bgColor={bgColor}>
+    <ButtonStyle
+      type={type}
+      width={width}
+      height={height}
+      bgColor={bgColor}
+      form={form}
+    >
       {children}
     </ButtonStyle>
   );
