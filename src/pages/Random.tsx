@@ -8,7 +8,7 @@ const postSelectedSelector = (state: AppState) => state.posts.selected;
 
 const PostDetail: React.FC = () => {
   const postSelected = useSelector(postSelectedSelector);
-  const [fetchPostRandom, loading] = useFetchPostRandom();
+  const { fetchPostRandom, loading } = useFetchPostRandom();
 
   useEffect(() => {
     fetchPostRandom();

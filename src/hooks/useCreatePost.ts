@@ -5,9 +5,7 @@ import { fetchPost as fetchPostCreator } from '../actions/posts';
 import postsService from '../services/PostsService';
 import { useHistory } from 'react-router-dom';
 
-type RT = [(file: string, userId: string) => Promise<void>, boolean];
-
-export default function useCreatePost(): RT {
+export default function useCreatePost() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -27,5 +25,5 @@ export default function useCreatePost(): RT {
     },
     [dispatch]
   );
-  return [createPost, loading];
+  return { createPost, loading };
 }
