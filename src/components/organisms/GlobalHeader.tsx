@@ -58,18 +58,26 @@ const GlobalHeader: React.FC = () => {
     <Header>
       <Nav>
         <List>
-          <Item>
-            <Link to="/">Home</Link>
-          </Item>
-          <Item>
-            <Link to="/random">Random</Link>
-          </Item>
-          <Item>
-            <Link to="/submit">Submit</Link>
-          </Item>
-          <Item>
-            <Link to="/browse">Browse</Link>
-          </Item>
+          <Link to="/">
+            <Item>
+              Home
+            </Item>
+          </Link>
+          <Link to="/random">
+            <Item>
+              Random
+            </Item>
+          </Link>
+          <Link to="/submit">
+            <Item>
+              Submit
+            </Item>
+          </Link>
+          <Link to="/browse">
+            <Item>
+              Browse
+            </Item>
+          </Link>
           {AuthItem}
         </List>
       </Nav>
