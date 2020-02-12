@@ -4,9 +4,7 @@ import { handleErrorMessage as handleErrorMessageCreator } from '../actions/glob
 import { fetchPost as fetchPostCreator } from '../actions/posts';
 import postsService from '../services/PostsService';
 
-type RT = [() => Promise<void>, boolean];
-
-export default function useFetchPost(): RT {
+export default function useFetchPost() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -21,5 +19,5 @@ export default function useFetchPost(): RT {
       dispatch(handleErrorMessageCreator(e.message));
     }
   }, [dispatch]);
-  return [fetchPostRandom, loading];
+  return { fetchPostRandom, loading };
 }

@@ -18,7 +18,7 @@ const Container = styled.div`
 const LgtmCards: React.FC = () => {
   const postList = useSelector(postsListSelector);
   const dispatch = useDispatch();
-  const [fetchPosts, loading] = useFetchPosts();
+  const { fetchPosts, loading } = useFetchPosts();
 
   useEffect(() => {
     fetchPosts();

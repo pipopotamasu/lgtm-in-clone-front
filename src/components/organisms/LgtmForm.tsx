@@ -33,7 +33,7 @@ const LgtmForm: React.FC = () => {
 
   const [encodedFile, setEncodedFile] = useState<string | null>(null);
   const [errors, setErrors] = useState<string[]>([]);
-  const [createPost, loading] = useCreatePost();
+  const { createPost, loading } = useCreatePost();
 
   const onChangeFile = useCallback((e: ChangeEvent) => {
     e.preventDefault();
