@@ -14,7 +14,7 @@
       "userId": "bar",
       "upvote": false,
       "report": false,
-      "bookmarked": false
+      "bookmarked": true
     }
   ]
 }

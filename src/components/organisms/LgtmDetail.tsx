@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { color, fontSize } from '../../constants/cssVariables';
 import styled from 'styled-components';
 import Input from '../atoms/Input';
@@ -7,6 +7,9 @@ import Textarea from '../atoms/Textarea';
 import FormGroup from '../atoms/FormGroup';
 import { IoIosStar } from 'react-icons/io';
 import { Post } from '../../reducers/posts';
+import useBookmark from '../../hooks/useBookmark';
+import { AppState } from '../../reducers/store';
+import { useSelector } from 'react-redux';
 
 const LgtmDetailLayout = styled.div`
   display: flex;
@@ -40,17 +43,35 @@ const Label = styled.label`
   cursor: pointer;
 `;
 
-const ButtonText = styled.span`
+const ButtonText = styled.span<{ color: string }>`
+  color: ${({ color }) => color};
   font-size: 1.2rem;
   margin-left: 0.5rem;
   margin-bottom: 0.1rem;
 `;
 
+const currentUserSelector = (state: AppState) => state.auth.currentUser;
+
 const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
+  const { createBookmark, deleteBookmark, loading } = useBookmark();
+  const currentUser = useSelector(currentUserSelector);
+
   const markdownVal = useMemo(() => {
     if (!post) return '';
     return `[![LGTM](${post.src})](${window.location.origin}/posts/${post.id})`;
   }, [post]);
+
+  const onClickBookmark = useCallback(async () => {
+    if (currentUser) {
+      if (post.bookmarked) {
+        await deleteBookmark(post.id, currentUser.sub);
+      } else {
+        await createBookmark(post.id, currentUser.sub);
+      }
+    } else {
+      // please login
+    }
+  }, [createBookmark, post, currentUser]);
 
   return (
     <LgtmDetailLayout>
@@ -82,9 +103,21 @@ const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
           <Label htmlFor="markdown">Markdown</Label>
           <Textarea defaultValue={markdownVal} id="markdown" name="markdown" />
         </FormGroup>
-        <Button>
-          <IoIosStar size={fontSize.icon.base} />
-          <ButtonText>My List</ButtonText>
+        <Button
+          onClick={onClickBookmark}
+          disabled={loading}
+          bgColor={post.bookmarked ? color.button.bookmarkedBg : ''}
+          borderColor={post.bookmarked ? color.button.bookmarkedBorder : ''}
+        >
+          <IoIosStar
+            size={fontSize.icon.base}
+            color={post.bookmarked ? color.text.white : color.text.black}
+          />
+          <ButtonText
+            color={post.bookmarked ? color.text.white : color.text.black}
+          >
+            My List
+          </ButtonText>
         </Button>
       </RightSection>
     </LgtmDetailLayout>

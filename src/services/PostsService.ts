@@ -16,5 +16,17 @@ export default {
       file,
       userId
     });
+  },
+  createBookmark(postId: number, userId: string) {
+    return axios.post<void>(`posts/${postId}/bookmark`, {
+      userId
+    });
+  },
+  deleteBookmark(postId: number, userId: string) {
+    return axios.delete<void>(`posts/${postId}/bookmark`, {
+      data: {
+        userId
+      }
+    });
   }
 };

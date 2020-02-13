@@ -1,4 +1,5 @@
 import { PostsActionEnum, PostsActions } from '../actions/posts';
+import produce from 'immer';
 
 export type Post = {
   id: number;
@@ -39,6 +40,48 @@ export default (
         ...state,
         ...{ list: action.payload }
       };
+    case PostsActionEnum.CREATE_BOOKMARK: {
+      const postId = action.payload;
+      const targetIndex = state.list.findIndex((post) => post.id === postId);
+
+      return produce(state, (draftState) => {
+        if (targetIndex !== -1) {
+          const newPost = {
+            ...draftState.list[targetIndex],
+            ...{ bookmarked: true }
+          };
+          draftState.list[targetIndex] = newPost;
+        }
+
+        if (draftState.selected?.id === postId) {
+          draftState.selected = {
+            ...draftState.selected,
+            ...{ bookmarked: true }
+          };
+        }
+      });
+    }
+    case PostsActionEnum.DELETE_BOOKMARK: {
+      const postId = action.payload;
+      const targetIndex = state.list.findIndex((post) => post.id === postId);
+
+      return produce(state, (draftState) => {
+        if (targetIndex !== -1) {
+          const newPost = {
+            ...draftState.list[targetIndex],
+            ...{ bookmarked: false }
+          };
+          draftState.list[targetIndex] = newPost;
+        }
+
+        if (draftState.selected?.id === postId) {
+          draftState.selected = {
+            ...draftState.selected,
+            ...{ bookmarked: false }
+          };
+        }
+      });
+    }
     default:
       return state;
   }
