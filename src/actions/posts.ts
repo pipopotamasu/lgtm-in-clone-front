@@ -3,7 +3,9 @@ import { Post } from '../reducers/posts';
 export enum PostsActionEnum {
   FETCH_POSTS = 'posts/FETCH_POSTS',
   FETCH_POST = 'posts/FETCH_POST',
-  SELECT_POST = 'posts/SELECT_POST'
+  SELECT_POST = 'posts/SELECT_POST',
+  CREATE_BOOKMARK = 'posts/CREATE_BOOKMARK',
+  DELETE_BOOKMARK = 'posts/DELETE_BOOKMARK'
 }
 
 export const fetchPosts = (posts: Post[]) => {
@@ -41,7 +43,31 @@ interface SelectPostAction extends ReturnType<typeof selectPost> {
   type: PostsActionEnum.SELECT_POST;
 }
 
+export const createBookmark = (postId: number) => {
+  return {
+    type: PostsActionEnum.CREATE_BOOKMARK,
+    payload: postId
+  };
+};
+
+interface CreateBookmarkAction extends ReturnType<typeof createBookmark> {
+  type: PostsActionEnum.CREATE_BOOKMARK;
+}
+
+export const deleteBookmark = (postId: number) => {
+  return {
+    type: PostsActionEnum.DELETE_BOOKMARK,
+    payload: postId
+  };
+};
+
+interface DeleteBookmarkAction extends ReturnType<typeof deleteBookmark> {
+  type: PostsActionEnum.DELETE_BOOKMARK;
+}
+
 export type PostsActions =
   | FetchPostsAction
   | FetchPostAction
-  | SelectPostAction;
+  | SelectPostAction
+  | CreateBookmarkAction
+  | DeleteBookmarkAction;

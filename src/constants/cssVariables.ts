@@ -39,5 +39,9 @@ export const color = {
     errorBg: '#f8d7da',
     errorText: '#721c24',
     errorBorder: '#f5c6cb'
+  },
+  button: {
+    bookmarkedBg: '#5bc0de',
+    bookmarkedBorder: '#46b8da'
   }
 };

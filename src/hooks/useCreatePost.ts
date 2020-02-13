@@ -23,7 +23,7 @@ export default function useCreatePost() {
         setLoading(false);
       }
     },
-    [dispatch]
+    [dispatch, history] // Should history object pass throw from args? This might cause reassign func.
   );
   return { createPost, loading };
 }

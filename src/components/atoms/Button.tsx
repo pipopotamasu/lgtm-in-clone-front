@@ -6,9 +6,11 @@ const ButtonStyle = styled.button<{
   width: string;
   height: string;
   bgColor: string;
+  disabled: boolean;
+  borderColor: string;
 }>`
   padding: 0.3rem;
-  border: 1px solid ${color.border.darkGray};
+  border: 1px solid ${({borderColor}) => borderColor};
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -16,9 +18,10 @@ const ButtonStyle = styled.button<{
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   background-color: ${({ bgColor }) => bgColor};
+  cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
 
   &:hover {
-    box-shadow: 0 0 8px ${color.shadow.gray};
+    ${({ disabled }) =>  disabled ? '' : 'box-shadow: 0 0 8px ' + color.shadow.gray};
   }
 `;
 
@@ -28,6 +31,9 @@ type ButtonProps = {
   height?: string;
   bgColor?: string;
   form?: string;
+  onClick?: () => void,
+  disabled?: boolean,
+  borderColor?: string
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -36,7 +42,10 @@ const Button: React.FC<ButtonProps> = ({
   width = '10rem',
   height = '3rem',
   form = '',
-  bgColor = color.bg.white
+  bgColor = color.bg.white,
+  onClick = () => {},
+  disabled = false,
+  borderColor = ''
 }) => {
   return (
     <ButtonStyle
@@ -45,6 +54,9 @@ const Button: React.FC<ButtonProps> = ({
       height={height}
       bgColor={bgColor}
       form={form}
+      onClick={() => onClick()}
+      disabled={disabled}
+      borderColor={borderColor}
     >
       {children}
     </ButtonStyle>
