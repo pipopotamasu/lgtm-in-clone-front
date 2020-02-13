@@ -7,7 +7,7 @@ import Textarea from '../atoms/Textarea';
 import FormGroup from '../atoms/FormGroup';
 import { IoIosStar } from 'react-icons/io';
 import { Post } from '../../reducers/posts';
-import useBookmark from '../../hooks/useBookmark'
+import useBookmark from '../../hooks/useBookmark';
 import { AppState } from '../../reducers/store';
 import { useSelector } from 'react-redux';
 
@@ -64,9 +64,9 @@ const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
   const onClickBookmark = useCallback(async () => {
     if (currentUser) {
       if (post.bookmarked) {
-        await deleteBookmark(post.id, currentUser.sub)
+        await deleteBookmark(post.id, currentUser.sub);
       } else {
-        await createBookmark(post.id, currentUser.sub)
+        await createBookmark(post.id, currentUser.sub);
       }
     } else {
       // please login
@@ -106,15 +106,15 @@ const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
         <Button
           onClick={onClickBookmark}
           disabled={loading}
-          bgColor={ post.bookmarked ? color.button.bookmarkedBg : '' }
-          borderColor={ post.bookmarked ? color.button.bookmarkedBorder : '' }
+          bgColor={post.bookmarked ? color.button.bookmarkedBg : ''}
+          borderColor={post.bookmarked ? color.button.bookmarkedBorder : ''}
         >
           <IoIosStar
             size={fontSize.icon.base}
-            color={ post.bookmarked ? color.text.white : color.text.black }
+            color={post.bookmarked ? color.text.white : color.text.black}
           />
           <ButtonText
-            color={ post.bookmarked ? color.text.white : color.text.black }
+            color={post.bookmarked ? color.text.white : color.text.black}
           >
             My List
           </ButtonText>

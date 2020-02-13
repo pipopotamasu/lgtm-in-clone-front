@@ -10,7 +10,7 @@ const ButtonStyle = styled.button<{
   borderColor: string;
 }>`
   padding: 0.3rem;
-  border: 1px solid ${({borderColor}) => borderColor};
+  border: 1px solid ${({ borderColor }) => borderColor};
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -18,10 +18,11 @@ const ButtonStyle = styled.button<{
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   background-color: ${({ bgColor }) => bgColor};
-  cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 
   &:hover {
-    ${({ disabled }) =>  disabled ? '' : 'box-shadow: 0 0 8px ' + color.shadow.gray};
+    ${({ disabled }) =>
+      disabled ? '' : 'box-shadow: 0 0 8px ' + color.shadow.gray};
   }
 `;
 
@@ -31,9 +32,9 @@ type ButtonProps = {
   height?: string;
   bgColor?: string;
   form?: string;
-  onClick?: () => void,
-  disabled?: boolean,
-  borderColor?: string
+  onClick?: () => void;
+  disabled?: boolean;
+  borderColor?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
