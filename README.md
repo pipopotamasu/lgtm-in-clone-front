@@ -15,3 +15,4 @@ $ yarn start      // start without server
 - styled-components
 - eslint / prettier
 - auth0
+- github actions
