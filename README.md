@@ -1,4 +1,4 @@
-(lgtm.in)[https://lgtm.in/] clone application created by react.
+[lgtm.in](https://lgtm.in/) clone application created by react.
 
 ## Get started
 ```
