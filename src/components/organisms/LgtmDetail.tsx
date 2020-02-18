@@ -105,7 +105,7 @@ const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
         </FormGroup>
         <Button
           onClick={onClickBookmark}
-          disabled={loading}
+          disabled={loading || !currentUser }
           bgColor={post.bookmarked ? color.button.bookmarkedBg : ''}
           borderColor={post.bookmarked ? color.button.bookmarkedBorder : ''}
         >
