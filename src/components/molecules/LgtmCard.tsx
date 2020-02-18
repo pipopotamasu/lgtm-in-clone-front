@@ -17,18 +17,24 @@ const Img = styled.img`
   max-height: 100%;
 `;
 
-const LgtmCard: React.FC<{ post: Post; onClick: (post: Post) => void }> = ({
-  post,
-  onClick
-}) => {
+const LgtmCard: React.FC<{
+  post: Post;
+  onClickImg: (post: Post) => void;
+  loggedIn: boolean;
+  onClickBookmark: (post: Post) => void;
+}> = ({ post, onClickImg, loggedIn, onClickBookmark }) => {
   return (
     <Card>
       <Link to={`/posts/${post.id}`}>
         <ImgWrapper>
-          <Img src={post.src} onClick={() => onClick(post)} />
+          <Img src={post.src} onClick={() => onClickImg(post)} />
         </ImgWrapper>
       </Link>
-      <ActionList />
+      <ActionList
+        post={post}
+        onClickBookmark={onClickBookmark}
+        loggedIn={loggedIn}
+      />
     </Card>
   );
 };
