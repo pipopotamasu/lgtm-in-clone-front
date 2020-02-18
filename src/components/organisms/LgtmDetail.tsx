@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo } from 'react';
 import { color, fontSize } from '../../constants/cssVariables';
 import styled from 'styled-components';
 import Input from '../atoms/Input';
@@ -53,25 +53,13 @@ const ButtonText = styled.span<{ color: string }>`
 const currentUserSelector = (state: AppState) => state.auth.currentUser;
 
 const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
-  const { createBookmark, deleteBookmark, loading } = useBookmark();
+  const { onClickBookmark, loading } = useBookmark();
   const currentUser = useSelector(currentUserSelector);
 
   const markdownVal = useMemo(() => {
     if (!post) return '';
     return `[![LGTM](${post.src})](${window.location.origin}/posts/${post.id})`;
   }, [post]);
-
-  const onClickBookmark = useCallback(async () => {
-    if (currentUser) {
-      if (post.bookmarked) {
-        await deleteBookmark(post.id, currentUser.sub);
-      } else {
-        await createBookmark(post.id, currentUser.sub);
-      }
-    } else {
-      // please login
-    }
-  }, [createBookmark, post, currentUser]);
 
   return (
     <LgtmDetailLayout>
@@ -104,8 +92,8 @@ const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
           <Textarea defaultValue={markdownVal} id="markdown" name="markdown" />
         </FormGroup>
         <Button
-          onClick={onClickBookmark}
-          disabled={loading || !currentUser }
+          onClick={() => onClickBookmark(post)}
+          disabled={loading || !currentUser}
           bgColor={post.bookmarked ? color.button.bookmarkedBg : ''}
           borderColor={post.bookmarked ? color.button.bookmarkedBorder : ''}
         >

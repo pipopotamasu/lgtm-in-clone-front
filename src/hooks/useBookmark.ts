@@ -6,10 +6,16 @@ import {
   deleteBookmark as deleteBookmarkCreator
 } from '../actions/posts';
 import postsService from '../services/PostsService';
+import { Post } from '../reducers/posts';
+import { AppState } from '../reducers/store';
+import { useSelector } from 'react-redux';
+
+const currentUserSelector = (state: AppState) => state.auth.currentUser;
 
 export default function useFetchPosts() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const currentUser = useSelector(currentUserSelector);
 
   const createBookmark = useCallback(
     async (postId: number, userId: string) => {
@@ -41,5 +47,21 @@ export default function useFetchPosts() {
     [dispatch]
   );
 
-  return { createBookmark, deleteBookmark, loading };
+  const onClickBookmark = useCallback(
+    async (post: Post) => {
+      if (loading) return;
+      if (currentUser) {
+        if (post.bookmarked) {
+          await deleteBookmark(post.id, currentUser.sub);
+        } else {
+          await createBookmark(post.id, currentUser.sub);
+        }
+      } else {
+        // please login
+      }
+    },
+    [createBookmark, deleteBookmark, currentUser, loading]
+  );
+
+  return { createBookmark, deleteBookmark, onClickBookmark, loading };
 }

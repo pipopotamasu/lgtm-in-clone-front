@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { color } from '../../constants/cssVariables';
 import ActionList from './ActionList';
 import Card from '../atoms/BaseCard';
+import { Post } from '../../reducers/posts';
 
 const ImgDummyWrapper = styled.div`
   height: 80%;
@@ -36,7 +37,11 @@ const LgtmCard: React.FC = () => {
         <ImgDummyWrapper>
           <ImgDummy />
         </ImgDummyWrapper>
-        <ActionList />
+        <ActionList
+          post={{} as Post}
+          onClickBookmark={() => {}}
+          loggedIn={false}
+        />
       </Card>
     </>
   );

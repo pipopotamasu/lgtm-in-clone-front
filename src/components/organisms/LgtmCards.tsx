@@ -7,8 +7,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectPost as selectPostCreator } from '../../actions/posts';
 import usePlaceholderCards from '../../hooks/usePlaceholderCards';
 import useFetchPosts from '../../hooks/useFetchPosts';
+import useBookmark from '../../hooks/useBookmark';
 
 const postsListSelector = (state: AppState) => state.posts.list;
+const currentUserSelector = (state: AppState) => state.auth.currentUser;
 
 const Container = styled.div`
   display: flex;
@@ -17,8 +19,10 @@ const Container = styled.div`
 
 const LgtmCards: React.FC = () => {
   const postList = useSelector(postsListSelector);
+  const currentUser = useSelector(currentUserSelector);
   const dispatch = useDispatch();
   const { fetchPosts, loading } = useFetchPosts();
+  const { onClickBookmark } = useBookmark();
 
   useEffect(() => {
     fetchPosts();
@@ -33,9 +37,17 @@ const LgtmCards: React.FC = () => {
 
   const Cards = useMemo(() => {
     return postList.map((post: Post, i: number) => {
-      return <LgtmCard post={post} onClick={onSelectPost} key={i} />;
+      return (
+        <LgtmCard
+          post={post}
+          onClickImg={onSelectPost}
+          key={i}
+          loggedIn={!!currentUser}
+          onClickBookmark={onClickBookmark}
+        />
+      );
     });
-  }, [postList, onSelectPost]);
+  }, [postList, onSelectPost, currentUser, onClickBookmark]);
 
   const PlaceholderCards = usePlaceholderCards(10);
 
