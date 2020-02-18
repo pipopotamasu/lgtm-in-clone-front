@@ -5,10 +5,7 @@ import PreviewImage from '../atoms/PreviewImage';
 import ErrorList from '../molecules/ErrorList';
 import styled from 'styled-components';
 import useCreatePost from '../../hooks/useCreatePost';
-import { AppState } from '../../reducers/store';
-import { useSelector } from 'react-redux';
-
-const currentUserSelector = (state: AppState) => state.auth.currentUser;
+import useAuth from '../../hooks/useAuth';
 
 const Form = styled.form`
   display: flex;
@@ -29,7 +26,7 @@ const FileSelectContainer = styled.div`
 `;
 
 const LgtmForm: React.FC = () => {
-  const currentUser = useSelector(currentUserSelector);
+  const { currentUser } = useAuth();
 
   const [encodedFile, setEncodedFile] = useState<string | null>(null);
   const [errors, setErrors] = useState<string[]>([]);

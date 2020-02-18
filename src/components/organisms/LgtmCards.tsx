@@ -8,9 +8,9 @@ import { selectPost as selectPostCreator } from '../../actions/posts';
 import usePlaceholderCards from '../../hooks/usePlaceholderCards';
 import useFetchPosts from '../../hooks/useFetchPosts';
 import useBookmark from '../../hooks/useBookmark';
+import useAuth from '../../hooks/useAuth';
 
 const postsListSelector = (state: AppState) => state.posts.list;
-const currentUserSelector = (state: AppState) => state.auth.currentUser;
 
 const Container = styled.div`
   display: flex;
@@ -19,8 +19,8 @@ const Container = styled.div`
 
 const LgtmCards: React.FC = () => {
   const postList = useSelector(postsListSelector);
-  const currentUser = useSelector(currentUserSelector);
   const dispatch = useDispatch();
+  const { currentUser } = useAuth();
   const { fetchPosts, loading } = useFetchPosts();
   const { onClickBookmark } = useBookmark();
 

@@ -8,8 +8,7 @@ import FormGroup from '../atoms/FormGroup';
 import { IoIosStar } from 'react-icons/io';
 import { Post } from '../../reducers/posts';
 import useBookmark from '../../hooks/useBookmark';
-import { AppState } from '../../reducers/store';
-import { useSelector } from 'react-redux';
+import useAuth from '../../hooks/useAuth';
 
 const LgtmDetailLayout = styled.div`
   display: flex;
@@ -50,11 +49,9 @@ const ButtonText = styled.span<{ color: string }>`
   margin-bottom: 0.1rem;
 `;
 
-const currentUserSelector = (state: AppState) => state.auth.currentUser;
-
 const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
   const { onClickBookmark, loading } = useBookmark();
-  const currentUser = useSelector(currentUserSelector);
+  const { currentUser } = useAuth();
 
   const markdownVal = useMemo(() => {
     if (!post) return '';
