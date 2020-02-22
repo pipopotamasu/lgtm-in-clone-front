@@ -3,32 +3,47 @@ import styled from 'styled-components';
 import { color, width } from '../../constants/cssVariables';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import HamburgerMenu from '../molecules/HamburgerMenu';
 
 const Header = styled.header`
   width: 100%;
   background-color: ${color.bg.gray};
   border-bottom: 1px solid ${color.border.gray};
+  height: 50px;
 `;
 
 const Nav = styled.nav`
   width: ${width.base};
   margin: 0 auto;
+  height: inherit;
 `;
 
 const List = styled.ul`
   display: flex;
   list-style: none;
+  height: inherit;
+  align-items: center;
 `;
 
-const Item = styled.li<{ right?: boolean }>`
+const ItemLeft = styled.li`
   color: ${color.text.gray};
-  padding: 0.8rem 1rem;
+  padding: 0 1rem;
   cursor: pointer;
-  ${({ right }) => (right ? 'margin-left: auto;' : '')}
+  display: flex;
+  align-items: center;
 
   &:hover {
     color: ${color.text.black};
   }
+`;
+
+const ItemRight = styled.li`
+  color: ${color.text.gray};
+  padding: 0 1rem;
+  cursor: pointer;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 `;
 
 const GlobalHeader: React.FC = () => {
@@ -41,16 +56,19 @@ const GlobalHeader: React.FC = () => {
   const AuthItem = useMemo(() => {
     if (currentUser) {
       return (
-        <Item onClick={() => logout({})} right>
-          Logout
-        </Item>
+        <ItemRight>
+          <HamburgerMenu onClickLogout={logout} />
+        </ItemRight>
+        // <Item onClick={() => logout({})} right>
+        //   Logout
+        // </Item>
       );
     }
 
     return (
-      <Item onClick={() => login({})} right>
+      <ItemRight onClick={() => login({})}>
         Login
-      </Item>
+      </ItemRight>
     );
   }, [login, logout, currentUser]);
 
@@ -59,16 +77,16 @@ const GlobalHeader: React.FC = () => {
       <Nav>
         <List>
           <Link to="/">
-            <Item>Home</Item>
+            <ItemLeft>Home</ItemLeft>
           </Link>
           <Link to="/random">
-            <Item>Random</Item>
+            <ItemLeft>Random</ItemLeft>
           </Link>
           <Link to="/submit">
-            <Item>Submit</Item>
+            <ItemLeft>Submit</ItemLeft>
           </Link>
           <Link to="/browse">
-            <Item>Browse</Item>
+            <ItemLeft>Browse</ItemLeft>
           </Link>
           {AuthItem}
         </List>
