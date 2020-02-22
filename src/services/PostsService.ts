@@ -1,9 +1,15 @@
 import axios from './BaseService';
 import { Post } from '../reducers/posts';
 
+export type PostSearchQuery = {
+  bookmarked?: boolean
+}
+
 export default {
-  getPosts() {
-    return axios.get<Post[]>('posts');
+  getPosts(query: PostSearchQuery = {}) {
+    return axios.get<Post[]>('posts', {
+      params: query
+    });
   },
   getPost(id: number) {
     return axios.get<Post>(`posts/${id}`);

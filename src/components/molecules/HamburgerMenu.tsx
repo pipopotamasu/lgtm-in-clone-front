@@ -2,6 +2,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 import Hamburger from '../atoms/Hamburger';
 import { color } from '../../constants/cssVariables';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   position: relative;
@@ -74,7 +75,7 @@ const HamburgerMenu: React.FC<{
         <MenuBg />
         <Wrapper>
           <MenuList>
-            <MenuItem>My List</MenuItem>
+            <Link to="bookmarks"><MenuItem>My List</MenuItem></Link>
             <MenuItem
               onClick={() => {
                 onClickLogout({});

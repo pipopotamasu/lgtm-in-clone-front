@@ -1,5 +1,4 @@
 module.exports = function (req, res, next) {
-  console.log(req.method)
   switch(req.method) {
     case 'POST':
       if (req.path === '/posts'){
