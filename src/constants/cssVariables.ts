@@ -4,7 +4,7 @@ export const width = {
 
 export const fontSize = {
   icon: {
-    base: '1.6rem'
+    base: '1.4rem'
   }
 };
 
