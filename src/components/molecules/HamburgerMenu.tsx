@@ -5,7 +5,7 @@ import { color } from '../../constants/cssVariables';
 
 const Wrapper = styled.div`
   position: relative;
-`
+`;
 
 const MenuList = styled.ul`
   position: absolute;
@@ -19,7 +19,7 @@ const MenuList = styled.ul`
   z-index: 4;
 
   &:before {
-    content: "";
+    content: '';
     border-color: transparent transparent #fff;
     border-style: solid;
     border-width: 15px 20px;
@@ -29,7 +29,7 @@ const MenuList = styled.ul`
     z-index: 5;
     position: absolute;
   }
-`
+`;
 
 const MenuItem = styled.li`
   margin-bottom: 0.5rem;
@@ -43,7 +43,7 @@ const MenuItem = styled.li`
     color: ${color.text.black};
     background-color: ${color.bg.gray};
   }
-`
+`;
 
 const MenuBg = styled.div`
   position: absolute;
@@ -53,32 +53,47 @@ const MenuBg = styled.div`
   bottom: 0;
   opacity: 0;
   z-index: 1;
-`
+`;
 
-const HamburgerMenu: React.FC<{ onClickLogout: (params: Object) => void }> = ({ onClickLogout }) => {
+const HamburgerMenu: React.FC<{
+  onClickLogout: (params: Record<string, any>) => void;
+}> = ({ onClickLogout }) => {
   const [open, setOpen] = useState(false);
   const toggleHamburger = useCallback(() => {
-    setOpen(!open)
+    setOpen(!open);
   }, [open]);
 
   const Menu = useMemo(() => {
-    return <div onClick={toggleHamburger}>
-            <MenuBg />
-            <Wrapper>
-              <MenuList>
-                <MenuItem>My List</MenuItem>
-                <MenuItem onClick={() => { onClickLogout({}) }}>Logout</MenuItem>
-              </MenuList>
-            </Wrapper>
-           </div>
-  }, [toggleHamburger, onClickLogout])
+    return (
+      <div
+        onClick={toggleHamburger}
+        onKeyDown={toggleHamburger}
+        role="button"
+        tabIndex={0}
+      >
+        <MenuBg />
+        <Wrapper>
+          <MenuList>
+            <MenuItem>My List</MenuItem>
+            <MenuItem
+              onClick={() => {
+                onClickLogout({});
+              }}
+            >
+              Logout
+            </MenuItem>
+          </MenuList>
+        </Wrapper>
+      </div>
+    );
+  }, [toggleHamburger, onClickLogout]);
 
   return (
     <>
       <Hamburger onClick={toggleHamburger} />
-      { open && Menu }
+      {open && Menu}
     </>
-  )
-}
+  );
+};
 
 export default HamburgerMenu;

@@ -65,11 +65,7 @@ const GlobalHeader: React.FC = () => {
       );
     }
 
-    return (
-      <ItemRight onClick={() => login({})}>
-        Login
-      </ItemRight>
-    );
+    return <ItemRight onClick={() => login({})}>Login</ItemRight>;
   }, [login, logout, currentUser]);
 
   return (

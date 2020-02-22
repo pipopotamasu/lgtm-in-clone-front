@@ -35,6 +35,7 @@
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-unused-expressions": 0,
     "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/no-explicit-any": 0,
     "jest/consistent-test-it": [
       "error",
       {
