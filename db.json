@@ -6,7 +6,7 @@
       "userId": "foo",
       "upvote": false,
       "report": false,
-      "bookmarked": false
+      "bookmarked": true
     },
     {
       "id": 2,

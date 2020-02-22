@@ -8,6 +8,7 @@ import Detail from './pages/Detail';
 import Random from './pages/Random';
 import Browse from './pages/Browse';
 import Submit from './pages/Submit';
+import Bookmarks from './pages/Bookmarks';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './reducers/store';
@@ -41,6 +42,9 @@ const App: React.FC = () => {
               </Route>
               <Route path="/posts/:id">
                 <Detail />
+              </Route>
+              <Route path="/bookmarks">
+                <Bookmarks />
               </Route>
             </Switch>
           </Container>

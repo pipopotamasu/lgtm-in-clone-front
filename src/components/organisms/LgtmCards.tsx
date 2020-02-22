@@ -9,6 +9,7 @@ import usePlaceholderCards from '../../hooks/usePlaceholderCards';
 import useFetchPosts from '../../hooks/useFetchPosts';
 import useBookmark from '../../hooks/useBookmark';
 import useAuth from '../../hooks/useAuth';
+import { PostSearchQuery } from '../../services/PostsService';
 
 const postsListSelector = (state: AppState) => state.posts.list;
 
@@ -17,7 +18,7 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-const LgtmCards: React.FC = () => {
+const LgtmCards: React.FC<{ query?: PostSearchQuery }> = ({ query }) => {
   const postList = useSelector(postsListSelector);
   const dispatch = useDispatch();
   const { currentUser } = useAuth();
@@ -25,8 +26,8 @@ const LgtmCards: React.FC = () => {
   const { onClickBookmark } = useBookmark();
 
   useEffect(() => {
-    fetchPosts();
-  }, [fetchPosts]);
+    fetchPosts(query);
+  }, [fetchPosts, query]);
 
   const onSelectPost = useCallback(
     (post: Post): void => {

@@ -8,7 +8,7 @@ const Card = styled.div`
   padding: 0.2rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
-  max-height: 240px;
+  min-height: 200px;
 
   &:nth-child(5n) {
     margin-right: 0;
