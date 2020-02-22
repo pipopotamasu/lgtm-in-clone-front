@@ -2,8 +2,8 @@ import axios from './BaseService';
 import { Post } from '../reducers/posts';
 
 export type PostSearchQuery = {
-  bookmarked?: boolean
-}
+  bookmarked?: boolean;
+};
 
 export default {
   getPosts(query: PostSearchQuery = {}) {

@@ -8,16 +8,19 @@ export default function useFetchPosts() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  const fetchPosts = useCallback(async (query?: PostSearchQuery) => {
-    setLoading(true);
-    try {
-      const res = await postsService.getPosts(query);
-      setLoading(false);
-      dispatch(fetchPostsCreator(res.data));
-    } catch (e) {
-      setLoading(false);
-      dispatch(handleErrorMessageCreator(e.message));
-    }
-  }, [dispatch]);
+  const fetchPosts = useCallback(
+    async (query?: PostSearchQuery) => {
+      setLoading(true);
+      try {
+        const res = await postsService.getPosts(query);
+        setLoading(false);
+        dispatch(fetchPostsCreator(res.data));
+      } catch (e) {
+        setLoading(false);
+        dispatch(handleErrorMessageCreator(e.message));
+      }
+    },
+    [dispatch]
+  );
   return { fetchPosts, loading };
 }

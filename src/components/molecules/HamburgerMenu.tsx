@@ -75,7 +75,9 @@ const HamburgerMenu: React.FC<{
         <MenuBg />
         <Wrapper>
           <MenuList>
-            <Link to="bookmarks"><MenuItem>My List</MenuItem></Link>
+            <Link to="bookmarks">
+              <MenuItem>My List</MenuItem>
+            </Link>
             <MenuItem
               onClick={() => {
                 onClickLogout({});
