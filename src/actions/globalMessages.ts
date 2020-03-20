@@ -4,13 +4,9 @@ export enum GlobalMessagesActionEnum {
 
 export const handleErrorMessage = (message: string) => {
   return {
-    type: GlobalMessagesActionEnum.ERROR_MESSAGE,
+    type: GlobalMessagesActionEnum.ERROR_MESSAGE as const,
     payload: message
   };
 };
 
-interface ErrorMessageAction extends ReturnType<typeof handleErrorMessage> {
-  type: GlobalMessagesActionEnum.ERROR_MESSAGE;
-}
-
-export type GlobalMessagesActions = ErrorMessageAction;
+export type GlobalMessagesActions = ReturnType<typeof handleErrorMessage>;

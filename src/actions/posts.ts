@@ -10,64 +10,42 @@ export enum PostsActionEnum {
 
 export const fetchPosts = (posts: Post[]) => {
   return {
-    type: PostsActionEnum.FETCH_POSTS,
+    type: PostsActionEnum.FETCH_POSTS as const,
     payload: posts
   };
 };
 
-// for Discriminated Unions
-interface FetchPostsAction extends ReturnType<typeof fetchPosts> {
-  type: PostsActionEnum.FETCH_POSTS;
-}
-
 export const fetchPost = (post: Post) => {
   return {
-    type: PostsActionEnum.FETCH_POST,
+    type: PostsActionEnum.FETCH_POST as const,
     payload: post
   };
 };
-
-// for Discriminated Unions
-interface FetchPostAction extends ReturnType<typeof fetchPost> {
-  type: PostsActionEnum.FETCH_POST;
-}
 
 export const selectPost = (post: Post) => {
   return {
-    type: PostsActionEnum.SELECT_POST,
+    type: PostsActionEnum.SELECT_POST as const,
     payload: post
   };
 };
 
-interface SelectPostAction extends ReturnType<typeof selectPost> {
-  type: PostsActionEnum.SELECT_POST;
-}
-
 export const createBookmark = (postId: number) => {
   return {
-    type: PostsActionEnum.CREATE_BOOKMARK,
+    type: PostsActionEnum.CREATE_BOOKMARK as const,
     payload: postId
   };
 };
-
-interface CreateBookmarkAction extends ReturnType<typeof createBookmark> {
-  type: PostsActionEnum.CREATE_BOOKMARK;
-}
 
 export const deleteBookmark = (postId: number) => {
   return {
-    type: PostsActionEnum.DELETE_BOOKMARK,
+    type: PostsActionEnum.DELETE_BOOKMARK as const,
     payload: postId
   };
 };
 
-interface DeleteBookmarkAction extends ReturnType<typeof deleteBookmark> {
-  type: PostsActionEnum.DELETE_BOOKMARK;
-}
-
 export type PostsActions =
-  | FetchPostsAction
-  | FetchPostAction
-  | SelectPostAction
-  | CreateBookmarkAction
-  | DeleteBookmarkAction;
+  | ReturnType<typeof fetchPosts>
+  | ReturnType<typeof fetchPost>
+  | ReturnType<typeof selectPost>
+  | ReturnType<typeof createBookmark>
+  | ReturnType<typeof deleteBookmark>;
