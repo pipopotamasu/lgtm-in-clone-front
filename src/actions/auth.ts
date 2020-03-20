@@ -8,24 +8,18 @@ export enum AuthActionEnum {
 
 export const createAuth0Client = (auth0Client: Auth0Client) => {
   return {
-    type: AuthActionEnum.CREATE_CLIENT,
+    type: AuthActionEnum.CREATE_CLIENT as const,
     payload: auth0Client
   };
 };
 
-interface CreateAuth0ClientAction extends ReturnType<typeof createAuth0Client> {
-  type: AuthActionEnum.CREATE_CLIENT;
-}
-
 export const fetchCurrentUser = (user: CurrentUser | null) => {
   return {
-    type: AuthActionEnum.FETCH_CURRENT_USER,
+    type: AuthActionEnum.FETCH_CURRENT_USER as const,
     payload: user
   };
 };
 
-interface FetchCurrentUserAction extends ReturnType<typeof fetchCurrentUser> {
-  type: AuthActionEnum.FETCH_CURRENT_USER;
-}
-
-export type AuthActions = CreateAuth0ClientAction | FetchCurrentUserAction;
+export type AuthActions =
+  | ReturnType<typeof createAuth0Client>
+  | ReturnType<typeof fetchCurrentUser>;
