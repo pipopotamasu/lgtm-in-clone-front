@@ -46,7 +46,7 @@ const Button: React.FC<ButtonProps> = ({
   bgColor = color.bg.white,
   onClick = () => {},
   disabled = false,
-  borderColor = ''
+  borderColor = '',
 }) => {
   return (
     <ButtonStyle

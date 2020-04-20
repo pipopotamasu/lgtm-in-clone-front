@@ -12,7 +12,7 @@ const Wrapper = styled.span`
 
 const Hamburger: React.FC<{ onClick: () => void }> = ({
   children,
-  onClick
+  onClick,
 }) => {
   return (
     <Wrapper>

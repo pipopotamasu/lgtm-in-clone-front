@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   createAuth0Client as createAuth0ClientAction,
-  fetchCurrentUser as fetchCurrentUserAction
+  fetchCurrentUser as fetchCurrentUserAction,
 } from '../actions/auth';
 import { useSelector } from 'react-redux';
 import { AppState } from '../reducers/store';

@@ -36,7 +36,7 @@ const ModalBody = styled.div`
 
 const ErrorModal: React.FC<{ message: string; onClick: () => void }> = ({
   message,
-  onClick
+  onClick,
 }) => {
   return (
     <ModalContainer
