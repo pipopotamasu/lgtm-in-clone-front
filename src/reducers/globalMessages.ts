@@ -1,10 +1,10 @@
 import {
   GlobalMessagesActionEnum,
-  GlobalMessagesActions
+  GlobalMessagesActions,
 } from '../actions/globalMessages';
 
 const initialState = {
-  errorMessage: ''
+  errorMessage: '',
 };
 
 export default (state = initialState, action: GlobalMessagesActions) => {
@@ -12,7 +12,7 @@ export default (state = initialState, action: GlobalMessagesActions) => {
     case GlobalMessagesActionEnum.ERROR_MESSAGE:
       return {
         ...state,
-        ...{ errorMessage: action.payload }
+        ...{ errorMessage: action.payload },
       };
     default:
       return state;

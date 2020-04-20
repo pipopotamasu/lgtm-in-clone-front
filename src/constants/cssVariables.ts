@@ -1,47 +1,47 @@
 export const width = {
-  base: '1200px'
+  base: '1200px',
 };
 
 export const fontSize = {
   icon: {
-    base: '1.4rem'
-  }
+    base: '1.4rem',
+  },
 };
 
 export const color = {
   bg: {
     gray: '#F5F5F5',
     error: '#ea352d',
-    white: 'white'
+    white: 'white',
   },
   border: {
     gray: '#e7e7e7',
-    darkGray: '#ccc'
+    darkGray: '#ccc',
   },
   shadow: {
-    gray: 'rgba(0, 0, 0, 0.33)'
+    gray: 'rgba(0, 0, 0, 0.33)',
   },
   text: {
     gray: '#777',
     black: 'black',
-    white: 'white'
+    white: 'white',
   },
   input: {
-    gray: '#555'
+    gray: '#555',
   },
   icon: {
-    blue: '#428BCA'
+    blue: '#428BCA',
   },
   placeholder: {
-    img: 'gray'
+    img: 'gray',
   },
   list: {
     errorBg: '#f8d7da',
     errorText: '#721c24',
-    errorBorder: '#f5c6cb'
+    errorBorder: '#f5c6cb',
   },
   button: {
     bookmarkedBg: '#5bc0de',
-    bookmarkedBorder: '#46b8da'
-  }
+    bookmarkedBorder: '#46b8da',
+  },
 };

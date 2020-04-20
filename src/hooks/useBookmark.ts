@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { handleErrorMessage as handleErrorMessageCreator } from '../actions/globalMessages';
 import {
   createBookmark as createBookmarkCreator,
-  deleteBookmark as deleteBookmarkCreator
+  deleteBookmark as deleteBookmarkCreator,
 } from '../actions/posts';
 import postsService from '../services/PostsService';
 import { Post } from '../reducers/posts';

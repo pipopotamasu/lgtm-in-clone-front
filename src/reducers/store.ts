@@ -13,7 +13,7 @@ export type AppState = {
 const reducers = combineReducers({
   posts: postsReducer,
   globalMessages: globalMessagesReducer,
-  auth: authReducer
+  auth: authReducer,
 });
 
 export default createStore(reducers);

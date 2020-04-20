@@ -17,7 +17,7 @@ type PostState = {
 
 const initialState: PostState = {
   list: [],
-  selected: null
+  selected: null,
 };
 
 export default (
@@ -28,17 +28,17 @@ export default (
     case PostsActionEnum.SELECT_POST:
       return {
         ...state,
-        ...{ selected: action.payload }
+        ...{ selected: action.payload },
       };
     case PostsActionEnum.FETCH_POST:
       return {
         ...state,
-        ...{ selected: action.payload }
+        ...{ selected: action.payload },
       };
     case PostsActionEnum.FETCH_POSTS:
       return {
         ...state,
-        ...{ list: action.payload }
+        ...{ list: action.payload },
       };
     case PostsActionEnum.CREATE_BOOKMARK: {
       const postId = action.payload;
@@ -48,7 +48,7 @@ export default (
         if (targetIndex !== -1) {
           const newPost = {
             ...draftState.list[targetIndex],
-            ...{ bookmarked: true }
+            ...{ bookmarked: true },
           };
           draftState.list[targetIndex] = newPost;
         }
@@ -56,7 +56,7 @@ export default (
         if (draftState.selected?.id === postId) {
           draftState.selected = {
             ...draftState.selected,
-            ...{ bookmarked: true }
+            ...{ bookmarked: true },
           };
         }
       });
@@ -69,7 +69,7 @@ export default (
         if (targetIndex !== -1) {
           const newPost = {
             ...draftState.list[targetIndex],
-            ...{ bookmarked: false }
+            ...{ bookmarked: false },
           };
           draftState.list[targetIndex] = newPost;
         }
@@ -77,7 +77,7 @@ export default (
         if (draftState.selected?.id === postId) {
           draftState.selected = {
             ...draftState.selected,
-            ...{ bookmarked: false }
+            ...{ bookmarked: false },
           };
         }
       });
