@@ -10,7 +10,7 @@ const InputStyle = styled.input`
 `;
 
 type InputProps = {
-  type: Dom.InputType;
+  type: Dom.InputType | 'password';
   defaultValue: string;
   id: string;
   name: string;

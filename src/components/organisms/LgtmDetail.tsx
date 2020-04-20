@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { color, fontSize } from '../../constants/cssVariables';
 import styled from 'styled-components';
 import Input from '../atoms/Input';
+import InputLabel from '../atoms/InputLabel';
 import Button from '../atoms/Button';
 import Textarea from '../atoms/Textarea';
 import FormGroup from '../atoms/FormGroup';
@@ -37,11 +38,6 @@ const Img = styled.img`
   max-height: 100%;
 `;
 
-const Label = styled.label`
-  margin-bottom: 0.2rem;
-  cursor: pointer;
-`;
-
 const ButtonText = styled.span<{ color: string }>`
   color: ${({ color }) => color};
   font-size: 1.2rem;
@@ -67,7 +63,7 @@ const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
       </LeftSection>
       <RightSection>
         <FormGroup>
-          <Label htmlFor="image-url">Image Url</Label>
+          <InputLabel htmlFor="image-url">Image Url</InputLabel>
           <Input
             type="text"
             defaultValue={post.src}
@@ -76,7 +72,7 @@ const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
           />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="data-url">Data Url</Label>
+          <InputLabel htmlFor="data-url">Data Url</InputLabel>
           <Input
             type="text"
             defaultValue={`${window.location.origin}/posts/${post.id}`}
@@ -85,7 +81,7 @@ const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
           />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="markdown">Markdown</Label>
+          <InputLabel htmlFor="markdown">Markdown</InputLabel>
           <Textarea defaultValue={markdownVal} id="markdown" name="markdown" />
         </FormGroup>
         <Button
