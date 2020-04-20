@@ -12,7 +12,7 @@ export type CurrentUser = {
 
 const initialState = {
   auth0Client: null,
-  currentUser: null
+  currentUser: null,
 };
 
 export default (state = initialState, action: AuthActions) => {
@@ -20,12 +20,12 @@ export default (state = initialState, action: AuthActions) => {
     case AuthActionEnum.CREATE_CLIENT:
       return {
         ...state,
-        ...{ auth0Client: action.payload }
+        ...{ auth0Client: action.payload },
       };
     case AuthActionEnum.FETCH_CURRENT_USER:
       return {
         ...state,
-        ...{ currentUser: action.payload }
+        ...{ currentUser: action.payload },
       };
     default:
       return state;

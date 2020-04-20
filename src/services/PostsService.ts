@@ -8,7 +8,7 @@ export type PostSearchQuery = {
 export default {
   getPosts(query: PostSearchQuery = {}) {
     return axios.get<Post[]>('posts', {
-      params: query
+      params: query,
     });
   },
   getPost(id: number) {
@@ -20,19 +20,19 @@ export default {
   createPost(file: string, userId: string) {
     return axios.post<Post>('posts', {
       file,
-      userId
+      userId,
     });
   },
   createBookmark(postId: number, userId: string) {
     return axios.post<void>(`posts/${postId}/bookmark`, {
-      userId
+      userId,
     });
   },
   deleteBookmark(postId: number, userId: string) {
     return axios.delete<void>(`posts/${postId}/bookmark`, {
       data: {
-        userId
-      }
+        userId,
+      },
     });
-  }
+  },
 };

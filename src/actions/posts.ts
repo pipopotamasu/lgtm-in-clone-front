@@ -5,41 +5,41 @@ export enum PostsActionEnum {
   FETCH_POST = 'posts/FETCH_POST',
   SELECT_POST = 'posts/SELECT_POST',
   CREATE_BOOKMARK = 'posts/CREATE_BOOKMARK',
-  DELETE_BOOKMARK = 'posts/DELETE_BOOKMARK'
+  DELETE_BOOKMARK = 'posts/DELETE_BOOKMARK',
 }
 
 export const fetchPosts = (posts: Post[]) => {
   return {
     type: PostsActionEnum.FETCH_POSTS as const,
-    payload: posts
+    payload: posts,
   };
 };
 
 export const fetchPost = (post: Post) => {
   return {
     type: PostsActionEnum.FETCH_POST as const,
-    payload: post
+    payload: post,
   };
 };
 
 export const selectPost = (post: Post) => {
   return {
     type: PostsActionEnum.SELECT_POST as const,
-    payload: post
+    payload: post,
   };
 };
 
 export const createBookmark = (postId: number) => {
   return {
     type: PostsActionEnum.CREATE_BOOKMARK as const,
-    payload: postId
+    payload: postId,
   };
 };
 
 export const deleteBookmark = (postId: number) => {
   return {
     type: PostsActionEnum.DELETE_BOOKMARK as const,
-    payload: postId
+    payload: postId,
   };
 };
 

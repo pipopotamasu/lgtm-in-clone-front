@@ -61,7 +61,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick = () => {},
   disabled = false,
   borderColor = '',
-  position = 'left'
+  position = 'left',
 }) => {
   return (
     <ButtonStyle

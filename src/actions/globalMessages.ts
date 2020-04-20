@@ -1,11 +1,11 @@
 export enum GlobalMessagesActionEnum {
-  ERROR_MESSAGE = 'globalMessages/ERROR_MESSAGE'
+  ERROR_MESSAGE = 'globalMessages/ERROR_MESSAGE',
 }
 
 export const handleErrorMessage = (message: string) => {
   return {
     type: GlobalMessagesActionEnum.ERROR_MESSAGE as const,
-    payload: message
+    payload: message,
   };
 };
 
