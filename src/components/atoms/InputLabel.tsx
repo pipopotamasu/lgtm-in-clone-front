@@ -30,7 +30,7 @@ type LabelProps = {
 const SignupForm: React.FC<LabelProps> = ({
   children,
   required = false,
-  htmlFor = ''
+  htmlFor = '',
 }) => {
   return (
     <Label required={required} htmlFor={htmlFor}>
