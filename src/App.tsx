@@ -9,6 +9,7 @@ import Random from './pages/Random';
 import Browse from './pages/Browse';
 import Submit from './pages/Submit';
 import Bookmarks from './pages/Bookmarks';
+import Signup from './pages/Signup';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './reducers/store';
@@ -45,6 +46,9 @@ const App: React.FC = () => {
               </Route>
               <Route path="/bookmarks">
                 <Bookmarks />
+              </Route>
+              <Route path="/signup">
+                <Signup />
               </Route>
             </Switch>
           </Container>
