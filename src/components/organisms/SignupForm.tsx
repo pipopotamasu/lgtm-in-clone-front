@@ -30,11 +30,14 @@ const SignupForm: React.FC = () => {
           name="email"
           id="email"
           validation={register({
-            pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-            required: true,
+            pattern: {
+              value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+              message: 'Invalid email form',
+            },
+            required: 'This field is required',
           })}
+          error={errors.email}
         />
-        {errors.email && <span>This field is required</span>}
       </FormGroup>
       <FormGroup>
         <InputLabel required={true} htmlFor="password">
@@ -45,9 +48,15 @@ const SignupForm: React.FC = () => {
           defaultValue=""
           name="password"
           id="password"
-          validation={register({ required: true })}
+          validation={register({
+            required: 'This field is required',
+            minLength: {
+              value: 4,
+              message: 'Password must be more than 3 characters',
+            },
+          })}
+          error={errors.password}
         />
-        {errors.password && <span>This field is required</span>}
       </FormGroup>
       <FormGroup>
         <InputLabel required={true} htmlFor="passwordConfirmation">
@@ -58,9 +67,15 @@ const SignupForm: React.FC = () => {
           defaultValue=""
           name="passwordConfirmation"
           id="passwordConfirmation"
-          validation={register({ required: true })}
+          validation={register({
+            required: 'This field is required',
+            minLength: {
+              value: 4,
+              message: 'Password must be more than 3 characters',
+            },
+          })}
+          error={errors.passwordConfirmation}
         />
-        {errors.passwordConfirmation && <span>This field is required</span>}
       </FormGroup>
       <Button position="center" type="submit" form="signup-form">
         Create account
