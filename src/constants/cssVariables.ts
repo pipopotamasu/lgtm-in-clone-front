@@ -17,6 +17,7 @@ export const color = {
   border: {
     gray: '#e7e7e7',
     darkGray: '#ccc',
+    error: 'red',
   },
   shadow: {
     gray: 'rgba(0, 0, 0, 0.33)',
@@ -25,6 +26,7 @@ export const color = {
     gray: '#777',
     black: 'black',
     white: 'white',
+    error: 'red',
   },
   input: {
     gray: '#555',
