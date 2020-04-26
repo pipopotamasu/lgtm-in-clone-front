@@ -14,11 +14,18 @@ type InputProps = {
   defaultValue: string;
   id: string;
   name: string;
+  validation?: any;
 };
 
-const Input: React.FC<InputProps> = ({ type, defaultValue, id, name }) => {
+const Input: React.FC<InputProps> = ({ type, defaultValue, id, name, validation }) => {
   return (
-    <InputStyle type={type} defaultValue={defaultValue} id={id} name={name} />
+    <InputStyle
+      type={type}
+      defaultValue={defaultValue}
+      id={id}
+      name={name}
+      ref={validation}
+    />
   );
 };
 

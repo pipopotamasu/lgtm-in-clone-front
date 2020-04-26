@@ -27,7 +27,7 @@ type LabelProps = {
   htmlFor?: string;
 };
 
-const SignupForm: React.FC<LabelProps> = ({
+const InputLabel: React.FC<LabelProps> = ({
   children,
   required = false,
   htmlFor = '',
@@ -39,4 +39,4 @@ const SignupForm: React.FC<LabelProps> = ({
   );
 };
 
-export default SignupForm;
+export default InputLabel;
