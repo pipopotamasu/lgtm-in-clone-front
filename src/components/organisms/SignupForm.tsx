@@ -14,7 +14,9 @@ const SignupFormBlock = styled.form`
 
 const SignupForm: React.FC = () => {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data: any) => { console.log(data) }
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
 
   return (
     <SignupFormBlock id="signup-form" onSubmit={handleSubmit(onSubmit)}>
@@ -27,7 +29,10 @@ const SignupForm: React.FC = () => {
           defaultValue=""
           name="email"
           id="email"
-          validation={register({ pattern: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, required: true })}
+          validation={register({
+            pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+            required: true,
+          })}
         />
         {errors.email && <span>This field is required</span>}
       </FormGroup>
@@ -57,7 +62,9 @@ const SignupForm: React.FC = () => {
         />
         {errors.passwordConfirmation && <span>This field is required</span>}
       </FormGroup>
-      <Button position="center" type="submit" form="signup-form">Create account</Button>
+      <Button position="center" type="submit" form="signup-form">
+        Create account
+      </Button>
     </SignupFormBlock>
   );
 };

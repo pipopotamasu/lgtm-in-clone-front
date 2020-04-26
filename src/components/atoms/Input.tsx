@@ -17,7 +17,13 @@ type InputProps = {
   validation?: any;
 };
 
-const Input: React.FC<InputProps> = ({ type, defaultValue, id, name, validation }) => {
+const Input: React.FC<InputProps> = ({
+  type,
+  defaultValue,
+  id,
+  name,
+  validation,
+}) => {
   return (
     <InputStyle
       type={type}
