@@ -14,19 +14,19 @@ const SignupFormBlock = styled.form`
 `;
 
 type FormParams = {
-  email: string,
-  password: string,
-  passwordConfirmation: string
-}
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
 
 const SignupForm: React.FC = () => {
   const { register, handleSubmit, errors } = useForm<FormParams>();
 
   const onSubmit = useCallback(async (data: FormParams) => {
-    const { email, password, passwordConfirmation } = data;
-    const res = await AuthService.signup(email, password, passwordConfirmation)
-    console.log(res)
-  }, [])
+    const { email, password, confirmPassword } = data;
+    const res = await AuthService.signup(email, password, confirmPassword);
+    console.log(res);
+  }, []);
 
   return (
     <SignupFormBlock id="signup-form" onSubmit={handleSubmit(onSubmit)}>
@@ -75,8 +75,8 @@ const SignupForm: React.FC = () => {
         <Input
           type="password"
           defaultValue=""
-          name="passwordConfirmation"
-          id="passwordConfirmation"
+          name="confirmPassword"
+          id="confirmPassword"
           validation={register({
             required: 'This field is required',
             minLength: {
@@ -84,7 +84,7 @@ const SignupForm: React.FC = () => {
               message: 'Password must be more than 3 characters',
             },
           })}
-          error={errors.passwordConfirmation}
+          error={errors.confirmPassword}
         />
       </FormGroup>
       <Button position="center" type="submit" form="signup-form">

@@ -18,6 +18,11 @@ module.exports = function (req, res, next) {
         // proxy request
         req.method = 'PUT'
         req.url = `/posts/${id}`
+      } else if (req.path === '/signup') {
+        req.body = {
+          id: 'ew224f',
+          email: 'foo@bar.com'
+        }
       }
     case 'DELETE':
       if (req.path.includes('bookmark')) {
