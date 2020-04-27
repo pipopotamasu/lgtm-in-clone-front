@@ -22,6 +22,11 @@ export default (state = initialState, action: AuthActions) => {
         ...state,
         ...{ auth0Client: action.payload },
       };
+    case AuthActionEnum.SIGNUP:
+      return {
+        ...state,
+        ...{ currentUser: action.payload },
+      };
     case AuthActionEnum.FETCH_CURRENT_USER:
       return {
         ...state,
