@@ -52,9 +52,9 @@ export default function useFetchPosts() {
       if (loading) return;
       if (currentUser) {
         if (post.bookmarked) {
-          await deleteBookmark(post.id, currentUser.sub);
+          await deleteBookmark(post.id, currentUser.id);
         } else {
-          await createBookmark(post.id, currentUser.sub);
+          await createBookmark(post.id, currentUser.id);
         }
       } else {
         // please login

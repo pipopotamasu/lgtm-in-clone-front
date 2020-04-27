@@ -68,7 +68,7 @@ const LgtmForm: React.FC = () => {
         return;
       }
 
-      await createPost(encodedFile, currentUser.sub);
+      await createPost(encodedFile, currentUser.id);
     },
     [encodedFile, currentUser, loading, createPost]
   );

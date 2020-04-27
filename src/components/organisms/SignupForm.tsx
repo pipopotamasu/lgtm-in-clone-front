@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Input from '../atoms/Input';
 import InputLabel from '../atoms/InputLabel';
@@ -6,6 +7,7 @@ import Button from '../atoms/Button';
 import FormGroup from '../atoms/FormGroup';
 import { useForm } from 'react-hook-form';
 import AuthService from '../../services/AuthService';
+import { signup as signupActionCreator } from '../../actions/auth';
 
 const SignupFormBlock = styled.form`
   width: 50%;
@@ -21,12 +23,16 @@ type FormParams = {
 
 const SignupForm: React.FC = () => {
   const { register, handleSubmit, errors } = useForm<FormParams>();
+  const dispatch = useDispatch();
 
-  const onSubmit = useCallback(async (data: FormParams) => {
-    const { email, password, confirmPassword } = data;
-    const res = await AuthService.signup(email, password, confirmPassword);
-    console.log(res);
-  }, []);
+  const onSubmit = useCallback(
+    async (data: FormParams) => {
+      const { email, password, confirmPassword } = data;
+      const res = await AuthService.signup(email, password, confirmPassword);
+      dispatch(signupActionCreator(res.data));
+    },
+    [dispatch]
+  );
 
   return (
     <SignupFormBlock id="signup-form" onSubmit={handleSubmit(onSubmit)}>

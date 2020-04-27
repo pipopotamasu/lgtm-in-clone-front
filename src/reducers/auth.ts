@@ -1,13 +1,8 @@
 import { AuthActionEnum, AuthActions } from '../actions/auth';
 
 export type CurrentUser = {
-  nickname: string;
-  name: string;
-  picture: string;
-  updated_at: string;
+  id: string;
   email: string;
-  email_verified: boolean;
-  sub: string;
 };
 
 const initialState = {
