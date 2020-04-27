@@ -5,6 +5,7 @@ import InputLabel from '../atoms/InputLabel';
 import Button from '../atoms/Button';
 import FormGroup from '../atoms/FormGroup';
 import { useForm } from 'react-hook-form';
+import AuthService from '../../services/AuthService';
 
 const SignupFormBlock = styled.form`
   width: 50%;
@@ -21,8 +22,10 @@ type FormParams = {
 const SignupForm: React.FC = () => {
   const { register, handleSubmit, errors } = useForm<FormParams>();
 
-  const onSubmit = useCallback((data: FormParams) => {
-    console.log(data);
+  const onSubmit = useCallback(async (data: FormParams) => {
+    const { email, password, passwordConfirmation } = data;
+    const res = await AuthService.signup(email, password, passwordConfirmation)
+    console.log(res)
   }, [])
 
   return (
