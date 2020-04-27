@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import Input from '../atoms/Input';
 import InputLabel from '../atoms/InputLabel';
@@ -12,11 +12,18 @@ const SignupFormBlock = styled.form`
   padding-bottom: 4rem;
 `;
 
+type FormParams = {
+  email: string,
+  password: string,
+  passwordConfirmation: string
+}
+
 const SignupForm: React.FC = () => {
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data: any) => {
+  const { register, handleSubmit, errors } = useForm<FormParams>();
+
+  const onSubmit = useCallback((data: FormParams) => {
     console.log(data);
-  };
+  }, [])
 
   return (
     <SignupFormBlock id="signup-form" onSubmit={handleSubmit(onSubmit)}>
