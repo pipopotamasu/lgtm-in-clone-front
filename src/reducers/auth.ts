@@ -1,13 +1,8 @@
 import { AuthActionEnum, AuthActions } from '../actions/auth';
 
 export type CurrentUser = {
-  nickname: string;
-  name: string;
-  picture: string;
-  updated_at: string;
+  id: string;
   email: string;
-  email_verified: boolean;
-  sub: string;
 };
 
 const initialState = {
@@ -21,6 +16,11 @@ export default (state = initialState, action: AuthActions) => {
       return {
         ...state,
         ...{ auth0Client: action.payload },
+      };
+    case AuthActionEnum.SIGNUP:
+      return {
+        ...state,
+        ...{ currentUser: action.payload },
       };
     case AuthActionEnum.FETCH_CURRENT_USER:
       return {

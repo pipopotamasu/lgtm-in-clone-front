@@ -16,5 +16,11 @@
       "report": false,
       "bookmarked": false
     }
+  ],
+  "signup": [
+    {
+      "id": "foobar",
+      "email": "foo@bar.com"
+    }
   ]
 }

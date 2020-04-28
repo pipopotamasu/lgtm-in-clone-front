@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Input from '../atoms/Input';
 import InputLabel from '../atoms/InputLabel';
 import Button from '../atoms/Button';
 import FormGroup from '../atoms/FormGroup';
 import { useForm } from 'react-hook-form';
+import AuthService from '../../services/AuthService';
+import { signup as signupActionCreator } from '../../actions/auth';
 
 const SignupFormBlock = styled.form`
   width: 50%;
@@ -12,11 +15,24 @@ const SignupFormBlock = styled.form`
   padding-bottom: 4rem;
 `;
 
+type FormParams = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
 const SignupForm: React.FC = () => {
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
+  const { register, handleSubmit, errors } = useForm<FormParams>();
+  const dispatch = useDispatch();
+
+  const onSubmit = useCallback(
+    async (data: FormParams) => {
+      const { email, password, confirmPassword } = data;
+      const res = await AuthService.signup(email, password, confirmPassword);
+      dispatch(signupActionCreator(res.data));
+    },
+    [dispatch]
+  );
 
   return (
     <SignupFormBlock id="signup-form" onSubmit={handleSubmit(onSubmit)}>
@@ -65,8 +81,8 @@ const SignupForm: React.FC = () => {
         <Input
           type="password"
           defaultValue=""
-          name="passwordConfirmation"
-          id="passwordConfirmation"
+          name="confirmPassword"
+          id="confirmPassword"
           validation={register({
             required: 'This field is required',
             minLength: {
@@ -74,7 +90,7 @@ const SignupForm: React.FC = () => {
               message: 'Password must be more than 3 characters',
             },
           })}
-          error={errors.passwordConfirmation}
+          error={errors.confirmPassword}
         />
       </FormGroup>
       <Button position="center" type="submit" form="signup-form">
