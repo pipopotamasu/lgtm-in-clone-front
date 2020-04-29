@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import LgtmCardPlaceholder from '../components/molecules/LgtmCardPlaceholder';
+import LgtmCardPlaceholder from 'src/components/molecules/LgtmCardPlaceholder';
 
 export default function usePlaceholderCards(numbers: number) {
   return useMemo(() => {

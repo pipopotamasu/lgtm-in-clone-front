@@ -1,4 +1,4 @@
-import { PostsActionEnum, PostsActions } from '../actions/posts';
+import { PostsActionEnum, PostsActions } from 'src/actions/posts';
 import produce from 'immer';
 
 export type Post = {

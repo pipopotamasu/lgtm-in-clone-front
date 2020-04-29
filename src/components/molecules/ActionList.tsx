@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FiThumbsUp, FiThumbsDown, FiHeart } from 'react-icons/fi';
-import { color, fontSize } from '../../constants/cssVariables';
-import { Post } from '../../reducers/posts';
+import { color, fontSize } from 'src/constants/cssVariables';
+import { Post } from 'src/reducers/posts';
 
 const ActionUl = styled.ul`
   display: flex;

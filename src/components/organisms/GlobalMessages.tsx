@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppState } from '../../reducers/store';
-import ErrorModal from '../molecules/ErrorModal';
-import { handleErrorMessage as handleErrorMessageCreator } from '../../actions/globalMessages';
+import { AppState } from 'src/reducers/store';
+import ErrorModal from 'src/components/molecules/ErrorModal';
+import { handleErrorMessage as handleErrorMessageCreator } from 'src/actions/globalMessages';
 
 const globalMessagesSelector = (state: AppState) => state.globalMessages;
 

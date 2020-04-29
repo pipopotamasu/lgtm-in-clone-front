@@ -1,8 +1,8 @@
 import { GiHamburgerMenu } from 'react-icons/gi';
 import React from 'react';
-import { fontSize } from '../../constants/cssVariables';
+import { fontSize } from 'src/constants/cssVariables';
 import styled from 'styled-components';
-import { color } from '../../constants/cssVariables';
+import { color } from 'src/constants/cssVariables';
 
 const Wrapper = styled.span`
   &:hover {

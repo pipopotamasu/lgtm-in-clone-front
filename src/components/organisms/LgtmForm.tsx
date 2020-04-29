@@ -1,11 +1,11 @@
 import React, { useState, useCallback, ChangeEvent, FormEvent } from 'react';
-import Button from '../atoms/Button';
-import FileInput from '../atoms/FileInput';
-import PreviewImage from '../atoms/PreviewImage';
-import ErrorList from '../molecules/ErrorList';
+import Button from 'src/components/atoms/Button';
+import FileInput from 'src/components/atoms/FileInput';
+import PreviewImage from 'src/components/atoms/PreviewImage';
+import ErrorList from 'src/components/molecules/ErrorList';
 import styled from 'styled-components';
-import useCreatePost from '../../hooks/useCreatePost';
-import useAuth from '../../hooks/useAuth';
+import useCreatePost from 'src/hooks/useCreatePost';
+import useAuth from 'src/hooks/useAuth';
 
 const Form = styled.form`
   display: flex;

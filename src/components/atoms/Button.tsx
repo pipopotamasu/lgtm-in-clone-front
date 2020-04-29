@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { color } from '../../constants/cssVariables';
+import { color } from 'src/constants/cssVariables';
 
 type ButtonPosition = 'left' | 'right' | 'center';
 

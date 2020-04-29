@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color } from '../../constants/cssVariables';
+import { color } from 'src/constants/cssVariables';
 
 const Card = styled.div`
   width: 16.6667%;

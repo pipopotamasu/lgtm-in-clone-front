@@ -1,5 +1,5 @@
 import axios from './BaseService';
-import { CurrentUser } from '../reducers/auth';
+import { CurrentUser } from 'src/reducers/auth';
 
 export default {
   signup(email: string, password: string, confirmPassword: string) {

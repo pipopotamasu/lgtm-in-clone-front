@@ -1,4 +1,4 @@
-import { AuthActionEnum, AuthActions } from '../actions/auth';
+import { AuthActionEnum, AuthActions } from 'src/actions/auth';
 
 export type CurrentUser = {
   id: string;
