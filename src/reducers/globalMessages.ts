@@ -1,7 +1,7 @@
 import {
   GlobalMessagesActionEnum,
   GlobalMessagesActions,
-} from '../actions/globalMessages';
+} from 'src/actions/globalMessages';
 
 const initialState = {
   errorMessage: '',

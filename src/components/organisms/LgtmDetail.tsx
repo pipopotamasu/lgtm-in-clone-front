@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react';
 import { color, fontSize } from '../../constants/cssVariables';
 import styled from 'styled-components';
-import Input from '../atoms/Input';
-import InputLabel from '../atoms/InputLabel';
-import Button from '../atoms/Button';
-import Textarea from '../atoms/Textarea';
-import FormGroup from '../atoms/FormGroup';
+import Input from 'src/components/atoms/Input';
+import InputLabel from 'src/components/atoms/InputLabel';
+import Button from 'src/components/atoms/Button';
+import Textarea from 'src/components/atoms/Textarea';
+import FormGroup from 'src/components/atoms/FormGroup';
 import { IoIosStar } from 'react-icons/io';
-import { Post } from '../../reducers/posts';
-import useBookmark from '../../hooks/useBookmark';
-import useAuth from '../../hooks/useAuth';
+import { Post } from 'src/reducers/posts';
+import useBookmark from 'src/hooks/useBookmark';
+import useAuth from 'src/hooks/useAuth';
 
 const LgtmDetailLayout = styled.div`
   display: flex;

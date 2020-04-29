@@ -1,5 +1,5 @@
 import React from 'react';
-import LgtmCards from '../components/organisms/LgtmCards';
+import LgtmCards from 'src/components/organisms/LgtmCards';
 
 const Home: React.FC = () => {
   return (

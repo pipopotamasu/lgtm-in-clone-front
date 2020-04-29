@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import { color } from '../../constants/cssVariables';
+import { color } from 'src/constants/cssVariables';
 
 const Ul = styled.ul`
   background-color: ${color.list.errorBg};

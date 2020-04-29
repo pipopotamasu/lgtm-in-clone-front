@@ -1,13 +1,13 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { handleErrorMessage as handleErrorMessageCreator } from '../actions/globalMessages';
+import { handleErrorMessage as handleErrorMessageCreator } from 'src/actions/globalMessages';
 import {
   createBookmark as createBookmarkCreator,
   deleteBookmark as deleteBookmarkCreator,
-} from '../actions/posts';
-import postsService from '../services/PostsService';
-import { Post } from '../reducers/posts';
-import { AppState } from '../reducers/store';
+} from 'src/actions/posts';
+import postsService from 'src/services/PostsService';
+import { Post } from 'src/reducers/posts';
+import { AppState } from 'src/reducers/store';
 import { useSelector } from 'react-redux';
 
 const currentUserSelector = (state: AppState) => state.auth.currentUser;

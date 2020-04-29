@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux';
 import {
   createAuth0Client as createAuth0ClientAction,
   fetchCurrentUser as fetchCurrentUserAction,
-} from '../actions/auth';
+} from 'src/actions/auth';
 import { useSelector } from 'react-redux';
-import { AppState } from '../reducers/store';
+import { AppState } from 'src/reducers/store';
 import authOptions from '../auth_config.json';
 import createAuth0Client from '@auth0/auth0-spa-js';
-import { handleErrorMessage as handleErrorMessageCreator } from '../actions/globalMessages';
+import { handleErrorMessage as handleErrorMessageCreator } from 'src/actions/globalMessages';
 
 export default function useAuth() {
   const dispatch = useDispatch();

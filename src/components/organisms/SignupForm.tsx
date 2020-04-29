@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import Input from '../atoms/Input';
-import InputLabel from '../atoms/InputLabel';
-import Button from '../atoms/Button';
-import FormGroup from '../atoms/FormGroup';
+import Input from 'src/components/atoms/Input';
+import InputLabel from 'src/components/atoms/InputLabel';
+import Button from 'src/components/atoms/Button';
+import FormGroup from 'src/components/atoms/FormGroup';
 import { useForm } from 'react-hook-form';
-import AuthService from '../../services/AuthService';
-import { signup as signupActionCreator } from '../../actions/auth';
+import AuthService from 'src/services/AuthService';
+import { signup as signupActionCreator } from 'src/actions/auth';
 
 const SignupFormBlock = styled.form`
   width: 50%;

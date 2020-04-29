@@ -1,5 +1,5 @@
 import React from 'react';
-import SignupForm from '../components/organisms/SignupForm';
+import SignupForm from 'src/components/organisms/SignupForm';
 
 const Signup: React.FC = () => {
   return (

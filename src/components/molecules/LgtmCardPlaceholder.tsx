@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color } from '../../constants/cssVariables';
-import ActionList from './ActionList';
-import Card from '../atoms/BaseCard';
-import { Post } from '../../reducers/posts';
+import { color } from 'src/constants/cssVariables';
+import ActionList from 'src/components/molecules/ActionList';
+import Card from 'src/components/atoms/BaseCard';
+import { Post } from 'src/reducers/posts';
 
 const ImgDummyWrapper = styled.div`
   height: 80%;

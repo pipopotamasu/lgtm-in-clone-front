@@ -1,5 +1,5 @@
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
-import { CurrentUser } from '../reducers/auth';
+import { CurrentUser } from 'src/reducers/auth';
 
 export enum AuthActionEnum {
   CREATE_CLIENT = 'auth/CREATE_CLIENT',

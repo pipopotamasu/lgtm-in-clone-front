@@ -1,4 +1,4 @@
-import { Post } from '../reducers/posts';
+import { Post } from 'src/reducers/posts';
 
 export enum PostsActionEnum {
   FETCH_POSTS = 'posts/FETCH_POSTS',

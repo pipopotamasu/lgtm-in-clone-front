@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color } from '../../constants/cssVariables';
+import { color } from 'src/constants/cssVariables';
 
 const ModalContainer = styled.div<{ display: CSS.Display }>`
   display: ${(props) => props.display};

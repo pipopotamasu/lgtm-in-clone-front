@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color } from '../../constants/cssVariables';
-import { Post } from '../../reducers/posts';
-import Card from '../atoms/BaseCard';
-import ActionList from './ActionList';
+import { color } from 'src/constants/cssVariables';
+import { Post } from 'src/reducers/posts';
+import Card from 'src/components/atoms/BaseCard';
+import ActionList from 'src/components/molecules/ActionList';
 import { Link } from 'react-router-dom';
 
 const ImgWrapper = styled.div`

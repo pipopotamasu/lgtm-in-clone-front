@@ -1,5 +1,5 @@
 import axios from './BaseService';
-import { Post } from '../reducers/posts';
+import { Post } from 'src/reducers/posts';
 
 export type PostSearchQuery = {
   bookmarked?: boolean;

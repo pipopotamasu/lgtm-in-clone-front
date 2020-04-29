@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color } from '../../constants/cssVariables';
+import { color } from 'src/constants/cssVariables';
 
 const Textarea = styled.textarea`
   padding: 0.5rem;

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import styled from 'styled-components';
-import Hamburger from '../atoms/Hamburger';
-import { color } from '../../constants/cssVariables';
+import Hamburger from 'src/components/atoms/Hamburger';
+import { color } from 'src/constants/cssVariables';
 import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
