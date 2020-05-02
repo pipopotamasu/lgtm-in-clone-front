@@ -1,13 +1,11 @@
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
 import Input from 'src/components/atoms/Input';
 import InputLabel from 'src/components/atoms/InputLabel';
 import Button from 'src/components/atoms/Button';
 import FormGroup from 'src/components/atoms/FormGroup';
 import { useForm } from 'react-hook-form';
-import AuthService from 'src/services/AuthService';
-import { signup as signupActionCreator } from 'src/actions/auth';
+import { useSignup, FormParams } from 'src/hooks/useSignup';
 
 const SignupFormBlock = styled.form`
   width: 50%;
@@ -15,27 +13,12 @@ const SignupFormBlock = styled.form`
   padding-bottom: 4rem;
 `;
 
-type FormParams = {
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
-
 const SignupForm: React.FC = () => {
   const { register, handleSubmit, errors } = useForm<FormParams>();
-  const dispatch = useDispatch();
-
-  const onSubmit = useCallback(
-    async (data: FormParams) => {
-      const { email, password, confirmPassword } = data;
-      const res = await AuthService.signup(email, password, confirmPassword);
-      dispatch(signupActionCreator(res.data));
-    },
-    [dispatch]
-  );
+  const { signup, loading } = useSignup();
 
   return (
-    <SignupFormBlock id="signup-form" onSubmit={handleSubmit(onSubmit)}>
+    <SignupFormBlock id="signup-form" onSubmit={handleSubmit(signup)}>
       <FormGroup>
         <InputLabel required={true} htmlFor="email">
           Email
@@ -93,7 +76,12 @@ const SignupForm: React.FC = () => {
           error={errors.confirmPassword}
         />
       </FormGroup>
-      <Button position="center" type="submit" form="signup-form">
+      <Button
+        disabled={loading}
+        position="center"
+        type="submit"
+        form="signup-form"
+      >
         Create account
       </Button>
     </SignupFormBlock>
