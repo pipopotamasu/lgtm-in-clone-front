@@ -13,6 +13,7 @@ import Signup from './pages/Signup';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './reducers/store';
+import { ToastContainer } from 'react-toastify';
 
 const Container = styled.div`
   width: ${width.base};
@@ -26,6 +27,7 @@ const App: React.FC = () => {
       <Provider store={store}>
         <Router>
           <GlobalMessages />
+          <ToastContainer />
           <GlobalHeader />
           <Container>
             <Switch>

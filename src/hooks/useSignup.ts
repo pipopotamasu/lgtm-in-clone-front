@@ -2,8 +2,8 @@ import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import AuthService from 'src/services/AuthService';
 import { useHistory } from 'react-router-dom';
-import { handleErrorMessage as handleErrorMessageActionCreator } from 'src/actions/globalMessages';
 import { signup as signupActionCreator } from 'src/actions/auth';
+import { toast } from 'react-toastify';
 
 export type FormParams = {
   email: string;
@@ -25,8 +25,17 @@ export function useSignup() {
         setLoading(false);
         dispatch(signupActionCreator(res.data));
         history.push(`/`);
+        toast('Your account was created!', {
+          position: "top-center",
+          autoClose: 3000,
+          type: "success"
+        })
       } catch (e) {
-        dispatch(handleErrorMessageActionCreator(e.message));
+        toast(e.message, {
+          position: "top-center",
+          autoClose: 10000,
+          type: "error"
+        })
         setLoading(false);
       }
     },
