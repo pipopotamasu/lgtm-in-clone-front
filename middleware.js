@@ -20,7 +20,7 @@ module.exports = function (req, res, next) {
         req.url = `/posts/${id}`
       } else if (req.path === '/signup') {
         req.body = {
-          id: 'ew224f',
+          id: Math.random().toString(),
           email: 'foo@bar.com'
         }
       }
