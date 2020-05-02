@@ -24,7 +24,7 @@ export function useSignup() {
         const res = await AuthService.signup(email, password, confirmPassword);
         setLoading(false);
         dispatch(signupActionCreator(res.data));
-        history.push(`/`);
+        history.push('/');
         success('Your account was created!');
       } catch (e) {
         error(e.message);
