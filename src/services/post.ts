@@ -1,4 +1,4 @@
-import axios from './BaseService';
+import axios from './base';
 import { Post } from 'src/reducers/posts';
 
 export type PostSearchQuery = {

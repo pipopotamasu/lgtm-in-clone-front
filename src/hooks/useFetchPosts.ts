@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { handleErrorMessage as handleErrorMessageCreator } from 'src/actions/globalMessages';
 import { fetchPosts as fetchPostsCreator } from 'src/actions/posts';
-import postsService, { PostSearchQuery } from 'src/services/PostsService';
+import postsService, { PostSearchQuery } from 'src/services/post';
 
 export default function useFetchPosts() {
   const [loading, setLoading] = useState(false);
