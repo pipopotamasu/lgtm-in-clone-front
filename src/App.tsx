@@ -14,6 +14,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './reducers/store';
 import { ToastContainer } from 'react-toastify';
+import { context, RootContext } from './contexts/root';
 
 const Container = styled.div`
   width: ${width.base};
@@ -25,36 +26,38 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Provider store={store}>
-        <Router>
-          <GlobalMessages />
-          <ToastContainer />
-          <GlobalHeader />
-          <Container>
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="/random">
-                <Random />
-              </Route>
-              <Route path="/submit">
-                <Submit />
-              </Route>
-              <Route path="/browse">
-                <Browse />
-              </Route>
-              <Route path="/posts/:id">
-                <Detail />
-              </Route>
-              <Route path="/bookmarks">
-                <Bookmarks />
-              </Route>
-              <Route path="/signup">
-                <Signup />
-              </Route>
-            </Switch>
-          </Container>
-        </Router>
+        <RootContext.Provider value={context}>
+          <Router>
+            <GlobalMessages />
+            <ToastContainer />
+            <GlobalHeader />
+            <Container>
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route path="/random">
+                  <Random />
+                </Route>
+                <Route path="/submit">
+                  <Submit />
+                </Route>
+                <Route path="/browse">
+                  <Browse />
+                </Route>
+                <Route path="/posts/:id">
+                  <Detail />
+                </Route>
+                <Route path="/bookmarks">
+                  <Bookmarks />
+                </Route>
+                <Route path="/signup">
+                  <Signup />
+                </Route>
+              </Switch>
+            </Container>
+          </Router>
+        </RootContext.Provider>
       </Provider>
     </div>
   );

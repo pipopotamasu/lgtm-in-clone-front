@@ -5,7 +5,7 @@ import {
   createBookmark as createBookmarkCreator,
   deleteBookmark as deleteBookmarkCreator,
 } from 'src/actions/posts';
-import postsService from 'src/services/PostsService';
+import postsService from 'src/services/post';
 import { Post } from 'src/reducers/posts';
 import { AppState } from 'src/reducers/store';
 import { useSelector } from 'react-redux';

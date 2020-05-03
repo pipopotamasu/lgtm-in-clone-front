@@ -1,4 +1,4 @@
-import axios from './BaseService';
+import axios from './base';
 import { CurrentUser } from 'src/reducers/auth';
 
 export default {

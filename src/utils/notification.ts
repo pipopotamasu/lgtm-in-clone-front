@@ -15,3 +15,8 @@ export function error(message: string) {
     type: 'error',
   });
 }
+
+export const $notification = {
+  success,
+  error,
+} as Readonly<{ success: typeof success; error: typeof error }>;
