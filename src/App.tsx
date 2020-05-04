@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { width } from './constants/cssVariables';
 import GlobalHeader from './components/organisms/GlobalHeader';
-import GlobalMessages from './components/organisms/GlobalMessages';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Random from './pages/Random';
@@ -28,7 +27,6 @@ const App: React.FC = () => {
       <Provider store={store}>
         <RootContext.Provider value={context}>
           <Router>
-            <GlobalMessages />
             <ToastContainer />
             <GlobalHeader />
             <Container>
