@@ -1,26 +1,27 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { handleErrorMessage as handleErrorMessageCreator } from 'src/actions/globalMessages';
-import { fetchPosts as fetchPostsCreator } from 'src/actions/posts';
-import postsService, { PostSearchQuery } from 'src/services/post';
+import { fetchPosts as fetchPostsActionCreator } from 'src/actions/posts';
+import { PostSearchQuery } from 'src/services/post';
+import { RootContext } from 'src/contexts/root';
 
 export default function useFetchPosts() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const { $api, $notification } = useContext(RootContext);
 
   const fetchPosts = useCallback(
     async (query?: PostSearchQuery) => {
       setLoading(true);
       try {
-        const res = await postsService.getPosts(query);
+        const res = await $api.post.getPosts(query);
         setLoading(false);
-        dispatch(fetchPostsCreator(res.data));
+        dispatch(fetchPostsActionCreator(res.data));
       } catch (e) {
         setLoading(false);
-        dispatch(handleErrorMessageCreator(e.message));
+        $notification.error(e.message);
       }
     },
-    [dispatch]
+    [dispatch, $api, $notification]
   );
   return { fetchPosts, loading };
 }

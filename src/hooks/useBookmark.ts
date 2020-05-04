@@ -1,14 +1,13 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { handleErrorMessage as handleErrorMessageCreator } from 'src/actions/globalMessages';
 import {
-  createBookmark as createBookmarkCreator,
-  deleteBookmark as deleteBookmarkCreator,
+  createBookmark as createBookmarkActionCreator,
+  deleteBookmark as deleteBookmarkActionCreator,
 } from 'src/actions/posts';
-import postsService from 'src/services/post';
 import { Post } from 'src/reducers/posts';
 import { AppState } from 'src/reducers/store';
 import { useSelector } from 'react-redux';
+import { RootContext } from 'src/contexts/root';
 
 const currentUserSelector = (state: AppState) => state.auth.currentUser;
 
@@ -16,35 +15,37 @@ export default function useFetchPosts() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const currentUser = useSelector(currentUserSelector);
+  const { $api, $notification } = useContext(RootContext);
 
   const createBookmark = useCallback(
     async (postId: number, userId: string) => {
       setLoading(true);
       try {
-        await postsService.createBookmark(postId, userId);
+        await $api.post.createBookmark(postId, userId);
         setLoading(false);
-        dispatch(createBookmarkCreator(postId));
+        dispatch(createBookmarkActionCreator(postId));
+        $notification.success('Bookmarked!');
       } catch (e) {
         setLoading(false);
-        dispatch(handleErrorMessageCreator(e.message));
+        $notification.error(e.message);
       }
     },
-    [dispatch]
+    [dispatch, $api, $notification]
   );
 
   const deleteBookmark = useCallback(
     async (postId: number, userId: string) => {
       setLoading(true);
       try {
-        await postsService.deleteBookmark(postId, userId);
+        await $api.post.deleteBookmark(postId, userId);
         setLoading(false);
-        dispatch(deleteBookmarkCreator(postId));
+        dispatch(deleteBookmarkActionCreator(postId));
       } catch (e) {
         setLoading(false);
-        dispatch(handleErrorMessageCreator(e.message));
+        $notification.error(e.message);
       }
     },
-    [dispatch]
+    [dispatch, $api, $notification]
   );
 
   const onClickBookmark = useCallback(
@@ -57,10 +58,10 @@ export default function useFetchPosts() {
           await createBookmark(post.id, currentUser.id);
         }
       } else {
-        // please login
+        $notification.info('Please login');
       }
     },
-    [createBookmark, deleteBookmark, currentUser, loading]
+    [createBookmark, deleteBookmark, currentUser, loading, $notification]
   );
 
   return { createBookmark, deleteBookmark, onClickBookmark, loading };

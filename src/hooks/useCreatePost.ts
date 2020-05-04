@@ -1,29 +1,30 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { handleErrorMessage as handleErrorMessageCreator } from 'src/actions/globalMessages';
-import { fetchPost as fetchPostCreator } from 'src/actions/posts';
-import postsService from 'src/services/post';
+import { fetchPost as fetchPostActionCreator } from 'src/actions/posts';
 import { useHistory } from 'react-router-dom';
+import { RootContext } from 'src/contexts/root';
 
 export default function useCreatePost() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
+  const { $api, $notification } = useContext(RootContext);
 
   const createPost = useCallback(
     async (file: string, userId: string) => {
       setLoading(true);
       try {
-        const res = await postsService.createPost(file, userId);
-        dispatch(fetchPostCreator(res.data));
+        const res = await $api.post.createPost(file, userId);
+        dispatch(fetchPostActionCreator(res.data));
         setLoading(false);
         history.push(`/posts/${res.data.id}`);
+        $notification.success('Your upload was successful!');
       } catch (e) {
-        dispatch(handleErrorMessageCreator(e.message));
+        $notification.error(e.message);
         setLoading(false);
       }
     },
-    [dispatch, history] // Should history object pass throw from args? This might cause reassign func.
+    [dispatch, history, $api, $notification] // Should history object pass throw from args? This might cause reassign func.
   );
   return { createPost, loading };
 }
