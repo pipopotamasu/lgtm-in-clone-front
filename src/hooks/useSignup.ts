@@ -10,7 +10,7 @@ export type FormParams = {
   confirmPassword: string;
 };
 
-export function useSignup() {
+export const useSignup = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -35,4 +35,4 @@ export function useSignup() {
   );
 
   return { signup, loading };
-}
+};

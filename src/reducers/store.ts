@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
-import postsReducer from './posts';
-import authReducer from './auth';
+import { posts } from './posts';
+import { auth } from './auth';
 import { createStore } from 'redux';
 
 export type AppState = {
-  posts: ReturnType<typeof postsReducer>;
-  auth: ReturnType<typeof authReducer>;
+  posts: ReturnType<typeof posts>;
+  auth: ReturnType<typeof auth>;
 };
 
 const reducers = combineReducers({
-  posts: postsReducer,
-  auth: authReducer,
+  posts: posts,
+  auth: auth,
 });
 
-export default createStore(reducers);
+export const store = createStore(reducers);

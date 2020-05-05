@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import { color, width } from 'src/constants/cssVariables';
 import { Link } from 'react-router-dom';
-import useAuth from 'src/hooks/useAuth';
+import { useAuth } from 'src/hooks/useAuth';
 import HamburgerMenu from 'src/components/molecules/HamburgerMenu';
 
 const Header = styled.header`

@@ -1,6 +1,6 @@
 import React from 'react';
 import LgtmCards from 'src/components/organisms/LgtmCards';
-import useAuth from 'src/hooks/useAuth';
+import { useAuth } from 'src/hooks/useAuth';
 
 const Bookmarks: React.FC = () => {
   const { currentUser } = useAuth();

@@ -10,7 +10,7 @@ const initialState = {
   currentUser: null,
 };
 
-export default (state = initialState, action: AuthActions) => {
+export const auth = (state = initialState, action: AuthActions) => {
   switch (action.type) {
     case AuthActionEnum.CREATE_CLIENT:
       return {

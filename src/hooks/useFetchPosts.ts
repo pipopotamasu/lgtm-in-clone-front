@@ -4,7 +4,7 @@ import { fetchPosts as fetchPostsActionCreator } from 'src/actions/posts';
 import { PostSearchQuery } from 'src/services/post';
 import { RootContext } from 'src/contexts/root';
 
-export default function useFetchPosts() {
+export const useFetchPosts = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const { $api, $notification } = useContext(RootContext);
@@ -24,4 +24,4 @@ export default function useFetchPosts() {
     [dispatch, $api, $notification]
   );
   return { fetchPosts, loading };
-}
+};

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { fetchPost as fetchPostActionCreator } from 'src/actions/posts';
 import { RootContext } from 'src/contexts/root';
 
-export default function useFetchPost() {
+export const useFetchPost = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const { $api, $notification } = useContext(RootContext);
@@ -23,4 +23,4 @@ export default function useFetchPost() {
     [dispatch, $api, $notification]
   );
   return { fetchPost, loading };
-}
+};
