@@ -8,8 +8,8 @@ import Textarea from 'src/components/atoms/Textarea';
 import FormGroup from 'src/components/atoms/FormGroup';
 import { IoIosStar } from 'react-icons/io';
 import { Post } from 'src/reducers/posts';
-import useBookmark from 'src/hooks/useBookmark';
-import useAuth from 'src/hooks/useAuth';
+import { useBookmark } from 'src/hooks/useBookmark';
+import { useAuth } from 'src/hooks/useAuth';
 
 const LgtmDetailLayout = styled.div`
   display: flex;

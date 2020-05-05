@@ -20,7 +20,7 @@ const initialState: PostState = {
   selected: null,
 };
 
-export default (
+export const posts = (
   state: PostState = initialState,
   action: PostsActions
 ): PostState => {

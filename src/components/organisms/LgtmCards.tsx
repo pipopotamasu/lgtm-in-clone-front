@@ -5,10 +5,10 @@ import { AppState } from 'src/reducers/store';
 import { Post } from 'src/reducers/posts';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectPost as selectPostCreator } from 'src/actions/posts';
-import usePlaceholderCards from 'src/hooks/usePlaceholderCards';
-import useFetchPosts from 'src/hooks/useFetchPosts';
-import useBookmark from 'src/hooks/useBookmark';
-import useAuth from 'src/hooks/useAuth';
+import { usePlaceholderCards } from 'src/hooks/usePlaceholderCards';
+import { useFetchPosts } from 'src/hooks/useFetchPosts';
+import { useBookmark } from 'src/hooks/useBookmark';
+import { useAuth } from 'src/hooks/useAuth';
 import { PostSearchQuery } from 'src/services/post';
 
 const postsListSelector = (state: AppState) => state.posts.list;

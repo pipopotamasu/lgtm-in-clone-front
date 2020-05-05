@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import LgtmDetail from 'src/components/organisms/LgtmDetail';
-import useFetchPostRandom from 'src/hooks/useFetchPostRandom';
+import { useFetchPostRandom } from 'src/hooks/useFetchPostRandom';
 import { AppState } from 'src/reducers/store';
 
 const postSelectedSelector = (state: AppState) => state.posts.selected;

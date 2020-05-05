@@ -11,7 +11,7 @@ import { RootContext } from 'src/contexts/root';
 
 const currentUserSelector = (state: AppState) => state.auth.currentUser;
 
-export default function useFetchPosts() {
+export const useBookmark = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const currentUser = useSelector(currentUserSelector);
@@ -65,4 +65,4 @@ export default function useFetchPosts() {
   );
 
   return { createBookmark, deleteBookmark, onClickBookmark, loading };
-}
+};

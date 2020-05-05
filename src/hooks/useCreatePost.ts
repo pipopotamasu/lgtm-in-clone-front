@@ -4,7 +4,7 @@ import { fetchPost as fetchPostActionCreator } from 'src/actions/posts';
 import { useHistory } from 'react-router-dom';
 import { RootContext } from 'src/contexts/root';
 
-export default function useCreatePost() {
+export const useCreatePost = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -27,4 +27,4 @@ export default function useCreatePost() {
     [dispatch, history, $api, $notification] // Should history object pass throw from args? This might cause reassign func.
   );
   return { createPost, loading };
-}
+};

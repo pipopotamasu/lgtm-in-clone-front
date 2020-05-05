@@ -1,19 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { width } from './constants/cssVariables';
-import GlobalHeader from './components/organisms/GlobalHeader';
-import Home from './pages/Home';
-import Detail from './pages/Detail';
-import Random from './pages/Random';
-import Browse from './pages/Browse';
-import Submit from './pages/Submit';
-import Bookmarks from './pages/Bookmarks';
-import Signup from './pages/Signup';
+import { width } from 'src/constants/cssVariables';
+import GlobalHeader from 'src/components/organisms/GlobalHeader';
+import Home from 'src/pages/Home';
+import Detail from 'src/pages/Detail';
+import Random from 'src/pages/Random';
+import Browse from 'src/pages/Browse';
+import Submit from 'src/pages/Submit';
+import Bookmarks from 'src/pages/Bookmarks';
+import Signup from 'src/pages/Signup';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './reducers/store';
+import { store } from 'src/reducers/store';
 import { ToastContainer } from 'react-toastify';
-import { context, RootContext } from './contexts/root';
+import { context, RootContext } from 'src/contexts/root';
 
 const Container = styled.div`
   width: ${width.base};

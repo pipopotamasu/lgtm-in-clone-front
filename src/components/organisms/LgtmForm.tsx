@@ -4,8 +4,8 @@ import FileInput from 'src/components/atoms/FileInput';
 import PreviewImage from 'src/components/atoms/PreviewImage';
 import ErrorList from 'src/components/molecules/ErrorList';
 import styled from 'styled-components';
-import useCreatePost from 'src/hooks/useCreatePost';
-import useAuth from 'src/hooks/useAuth';
+import { useCreatePost } from 'src/hooks/useCreatePost';
+import { useAuth } from 'src/hooks/useAuth';
 
 const Form = styled.form`
   display: flex;

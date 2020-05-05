@@ -10,7 +10,7 @@ import authOptions from '../auth_config.json';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import { RootContext } from 'src/contexts/root';
 
-export default function useAuth() {
+export const useAuth = () => {
   const dispatch = useDispatch();
   const auth0Client = useSelector((state: AppState) => state.auth.auth0Client);
   const currentUser = useSelector((state: AppState) => state.auth.currentUser);
@@ -65,4 +65,4 @@ export default function useAuth() {
     [auth0Client, $notification]
   );
   return { initAuth0, login, logout, currentUser };
-}
+};

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import LgtmDetail from 'src/components/organisms/LgtmDetail';
-import useFetchPost from 'src/hooks/useFetchPost';
+import { useFetchPost } from 'src/hooks/useFetchPost';
 import { useSelector } from 'react-redux';
 import { AppState } from 'src/reducers/store';
 
