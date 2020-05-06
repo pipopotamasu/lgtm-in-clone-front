@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { color, width } from 'src/constants/cssVariables';
 import { Link } from 'react-router-dom';
 import { useAuth } from 'src/hooks/useAuth';
@@ -47,7 +47,7 @@ const ItemRight = styled.li`
 `;
 
 const GlobalHeader: React.FC = () => {
-  const { initAuth0, login, logout, currentUser } = useAuth();
+  const { initAuth0, logout, currentUser } = useAuth();
 
   useEffect(() => {
     initAuth0();
@@ -67,13 +67,15 @@ const GlobalHeader: React.FC = () => {
 
     return (
       <>
-        <ItemRight onClick={() => login({})}>Login</ItemRight>
+        <Link css="margin-left: auto;" to="/login">
+          <ItemRight>Login</ItemRight>
+        </Link>
         <Link to="/signup">
           <ItemRight>Signup</ItemRight>
         </Link>
       </>
     );
-  }, [login, logout, currentUser]);
+  }, [logout, currentUser]);
 
   return (
     <Header>
