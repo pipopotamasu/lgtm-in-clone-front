@@ -8,18 +8,18 @@ import { useForm } from 'react-hook-form';
 import { useSignup, FormParams } from 'src/hooks/useSignup';
 import { emailValidator, passwordValidator } from 'src/validators';
 
-const SignupFormBlock = styled.form`
+const LoginFormBlock = styled.form`
   width: 50%;
   margin: 0 auto;
   padding-bottom: 4rem;
 `;
 
-const SignupForm: React.FC = () => {
+const LoginForm: React.FC = () => {
   const { register, handleSubmit, errors } = useForm<FormParams>();
   const { signup, loading } = useSignup();
 
   return (
-    <SignupFormBlock id="signup-form" onSubmit={handleSubmit(signup)}>
+    <LoginFormBlock id="login-form" onSubmit={handleSubmit(signup)}>
       <FormGroup>
         <InputLabel required={true} htmlFor="email">
           Email
@@ -46,29 +46,16 @@ const SignupForm: React.FC = () => {
           error={errors.password}
         />
       </FormGroup>
-      <FormGroup>
-        <InputLabel required={true} htmlFor="passwordConfirmation">
-          PasswordConfirmation
-        </InputLabel>
-        <Input
-          type="password"
-          defaultValue=""
-          name="confirmPassword"
-          id="confirmPassword"
-          validation={passwordValidator(register)}
-          error={errors.confirmPassword}
-        />
-      </FormGroup>
       <Button
         disabled={loading}
         position="center"
         type="submit"
-        form="signup-form"
+        form="login-form"
       >
-        Create account
+        Login
       </Button>
-    </SignupFormBlock>
+    </LoginFormBlock>
   );
 };
 
-export default SignupForm;
+export default LoginForm;

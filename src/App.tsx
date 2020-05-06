@@ -9,6 +9,7 @@ import Browse from 'src/pages/Browse';
 import Submit from 'src/pages/Submit';
 import Bookmarks from 'src/pages/Bookmarks';
 import Signup from 'src/pages/Signup';
+import Login from 'src/pages/Login';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from 'src/reducers/store';
@@ -51,6 +52,9 @@ const App: React.FC = () => {
                 </Route>
                 <Route path="/signup">
                   <Signup />
+                </Route>
+                <Route path="/login">
+                  <Login />
                 </Route>
               </Switch>
             </Container>
