@@ -4,6 +4,7 @@ import { CurrentUser } from 'src/reducers/auth';
 export enum AuthActionEnum {
   CREATE_CLIENT = 'auth/CREATE_CLIENT',
   SIGNUP = 'auth/SIGNUP',
+  LOGIN = 'auth/LOGIN',
   FETCH_CURRENT_USER = 'auth/FETCH_CURRENT_USER',
 }
 
@@ -21,6 +22,13 @@ export const signup = (user: CurrentUser) => {
   };
 };
 
+export const login = (user: CurrentUser) => {
+  return {
+    type: AuthActionEnum.LOGIN as const,
+    payload: user,
+  };
+};
+
 export const fetchCurrentUser = (user: CurrentUser | null) => {
   return {
     type: AuthActionEnum.FETCH_CURRENT_USER as const,
@@ -31,4 +39,5 @@ export const fetchCurrentUser = (user: CurrentUser | null) => {
 export type AuthActions =
   | ReturnType<typeof createAuth0Client>
   | ReturnType<typeof signup>
+  | ReturnType<typeof login>
   | ReturnType<typeof fetchCurrentUser>;

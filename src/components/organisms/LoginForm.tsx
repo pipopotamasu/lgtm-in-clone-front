@@ -5,7 +5,7 @@ import InputLabel from 'src/components/atoms/InputLabel';
 import Button from 'src/components/atoms/Button';
 import FormGroup from 'src/components/atoms/FormGroup';
 import { useForm } from 'react-hook-form';
-import { useSignup, FormParams } from 'src/hooks/useSignup';
+import { useLogin, FormParams } from 'src/hooks/useLogin';
 import { emailValidator, passwordValidator } from 'src/validators';
 
 const LoginFormBlock = styled.form`
@@ -16,10 +16,10 @@ const LoginFormBlock = styled.form`
 
 const LoginForm: React.FC = () => {
   const { register, handleSubmit, errors } = useForm<FormParams>();
-  const { signup, loading } = useSignup();
+  const { login, loading } = useLogin();
 
   return (
-    <LoginFormBlock id="login-form" onSubmit={handleSubmit(signup)}>
+    <LoginFormBlock id="login-form" onSubmit={handleSubmit(login)}>
       <FormGroup>
         <InputLabel required={true} htmlFor="email">
           Email

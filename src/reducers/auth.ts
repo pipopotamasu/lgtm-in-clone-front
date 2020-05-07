@@ -22,6 +22,11 @@ export const auth = (state = initialState, action: AuthActions) => {
         ...state,
         ...{ currentUser: action.payload },
       };
+    case AuthActionEnum.LOGIN:
+      return {
+        ...state,
+        ...{ currentUser: action.payload },
+      };
     case AuthActionEnum.FETCH_CURRENT_USER:
       return {
         ...state,
