@@ -14,10 +14,16 @@
       "userId": "bar",
       "upvote": false,
       "report": false,
-      "bookmarked": false
+      "bookmarked": true
     }
   ],
   "signup": [
+    {
+      "id": "foobar",
+      "email": "foo@bar.com"
+    }
+  ],
+  "login": [
     {
       "id": "foobar",
       "email": "foo@bar.com"

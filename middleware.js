@@ -21,7 +21,12 @@ module.exports = function (req, res, next) {
       } else if (req.path === '/signup') {
         req.body = {
           id: Math.random().toString(),
-          email: 'foo@bar.com'
+          email: req.body.email
+        }
+      } else if (req.path === '/login') {
+        req.body = {
+          id: Math.random().toString(),
+          email: req.body.email
         }
       }
     case 'DELETE':

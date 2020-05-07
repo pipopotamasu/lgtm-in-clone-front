@@ -9,4 +9,10 @@ export default {
       confirmPassword,
     });
   },
+  login(email: string, password: string) {
+    return axios.post<CurrentUser>('/login', {
+      email,
+      password,
+    });
+  },
 };
