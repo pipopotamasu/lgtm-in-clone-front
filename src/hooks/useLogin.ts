@@ -22,7 +22,6 @@ export const useLogin = () => {
       try {
         const res = await $api.auth.login(email, password);
         setLoading(false);
-        console.log(res.data);
         dispatch(loginActionCreator(res.data));
         history.push('/');
         $notification.success('Logged in!');
