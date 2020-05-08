@@ -1,7 +1,10 @@
 import { useState, useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { login as loginActionCreator } from 'src/actions/auth';
+import {
+  login as loginActionCreator,
+  logout as logoutActionCreator,
+} from 'src/actions/auth';
 import { RootContext } from 'src/contexts/root';
 
 export type FormParams = {
@@ -33,5 +36,19 @@ export const useLogin = () => {
     [dispatch, history, $api, $notification]
   );
 
-  return { login, loading };
+  const logout = useCallback(async () => {
+    setLoading(true);
+    try {
+      await $api.auth.logout();
+      setLoading(false);
+      dispatch(logoutActionCreator());
+      history.push('/');
+      $notification.success('Logout completed!');
+    } catch (e) {
+      $notification.error(e.message);
+      setLoading(false);
+    }
+  }, [dispatch, history, $api, $notification]);
+
+  return { login, logout, loading };
 };

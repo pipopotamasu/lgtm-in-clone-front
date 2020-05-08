@@ -9,7 +9,7 @@ import FormGroup from 'src/components/atoms/FormGroup';
 import { IoIosStar } from 'react-icons/io';
 import { Post } from 'src/reducers/posts';
 import { useBookmark } from 'src/hooks/useBookmark';
-import { useAuth } from 'src/hooks/useAuth';
+import { useCurrentUser } from 'src/hooks/useCurrentUser';
 
 const LgtmDetailLayout = styled.div`
   display: flex;
@@ -47,7 +47,7 @@ const ButtonText = styled.span<{ color: string }>`
 
 const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
   const { onClickBookmark, loading } = useBookmark();
-  const { currentUser } = useAuth();
+  const { currentUser } = useCurrentUser();
 
   const markdownVal = useMemo(() => {
     if (!post) return '';

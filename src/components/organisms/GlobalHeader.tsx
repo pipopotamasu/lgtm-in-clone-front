@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components/macro';
 import { color, width } from 'src/constants/cssVariables';
 import { Link } from 'react-router-dom';
-import { useAuth } from 'src/hooks/useAuth';
+import { useLogin } from 'src/hooks/useLogin';
+import { useCurrentUser } from 'src/hooks/useCurrentUser';
 import HamburgerMenu from 'src/components/molecules/HamburgerMenu';
 
 const Header = styled.header`
@@ -47,11 +48,8 @@ const ItemRight = styled.li`
 `;
 
 const GlobalHeader: React.FC = () => {
-  const { initAuth0, logout, currentUser } = useAuth();
-
-  useEffect(() => {
-    initAuth0();
-  }, [initAuth0]);
+  const { logout } = useLogin();
+  const { currentUser } = useCurrentUser();
 
   const AuthItem = useMemo(() => {
     if (currentUser) {
@@ -59,9 +57,6 @@ const GlobalHeader: React.FC = () => {
         <ItemRight>
           <HamburgerMenu onClickLogout={logout} />
         </ItemRight>
-        // <Item onClick={() => logout({})} right>
-        //   Logout
-        // </Item>
       );
     }
 

@@ -15,4 +15,7 @@ export default {
       password,
     });
   },
+  logout() {
+    return axios.post<undefined>('/logout');
+  },
 };

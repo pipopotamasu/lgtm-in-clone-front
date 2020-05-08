@@ -8,7 +8,7 @@ import { selectPost as selectPostCreator } from 'src/actions/posts';
 import { usePlaceholderCards } from 'src/hooks/usePlaceholderCards';
 import { useFetchPosts } from 'src/hooks/useFetchPosts';
 import { useBookmark } from 'src/hooks/useBookmark';
-import { useAuth } from 'src/hooks/useAuth';
+import { useCurrentUser } from 'src/hooks/useCurrentUser';
 import { PostSearchQuery } from 'src/services/post';
 
 const postsListSelector = (state: AppState) => state.posts.list;
@@ -21,7 +21,7 @@ const Container = styled.div`
 const LgtmCards: React.FC<{ query?: PostSearchQuery }> = ({ query }) => {
   const postList = useSelector(postsListSelector);
   const dispatch = useDispatch();
-  const { currentUser } = useAuth();
+  const { currentUser } = useCurrentUser();
   const { fetchPosts, loading } = useFetchPosts();
   const { onClickBookmark } = useBookmark();
 
