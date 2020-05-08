@@ -5,7 +5,7 @@ import PreviewImage from 'src/components/atoms/PreviewImage';
 import ErrorList from 'src/components/molecules/ErrorList';
 import styled from 'styled-components';
 import { useCreatePost } from 'src/hooks/useCreatePost';
-import { useAuth } from 'src/hooks/useAuth';
+import { useCurrentUser } from 'src/hooks/useCurrentUser';
 
 const Form = styled.form`
   display: flex;
@@ -26,7 +26,7 @@ const FileSelectContainer = styled.div`
 `;
 
 const LgtmForm: React.FC = () => {
-  const { currentUser } = useAuth();
+  const { currentUser } = useCurrentUser();
 
   const [encodedFile, setEncodedFile] = useState<string | null>(null);
   const [errors, setErrors] = useState<string[]>([]);

@@ -1,9 +1,9 @@
 import React from 'react';
 import LgtmCards from 'src/components/organisms/LgtmCards';
-import { useAuth } from 'src/hooks/useAuth';
+import { useCurrentUser } from 'src/hooks/useCurrentUser';
 
 const Bookmarks: React.FC = () => {
-  const { currentUser } = useAuth();
+  const { currentUser } = useCurrentUser();
 
   if (!currentUser) {
     return <p>Login before access this page.</p>;

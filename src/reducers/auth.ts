@@ -6,17 +6,11 @@ export type CurrentUser = {
 };
 
 const initialState = {
-  auth0Client: null,
   currentUser: null,
 };
 
 export const auth = (state = initialState, action: AuthActions) => {
   switch (action.type) {
-    case AuthActionEnum.CREATE_CLIENT:
-      return {
-        ...state,
-        ...{ auth0Client: action.payload },
-      };
     case AuthActionEnum.SIGNUP:
       return {
         ...state,
@@ -26,6 +20,11 @@ export const auth = (state = initialState, action: AuthActions) => {
       return {
         ...state,
         ...{ currentUser: action.payload },
+      };
+    case AuthActionEnum.LOGOUT:
+      return {
+        ...state,
+        ...{ currentUser: null },
       };
     case AuthActionEnum.FETCH_CURRENT_USER:
       return {
