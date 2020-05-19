@@ -11,10 +11,10 @@ export const useCreatePost = () => {
   const { $api, $notification } = useContext(RootContext);
 
   const createPost = useCallback(
-    async (file: string, userId: string) => {
+    async (form: FormData) => {
       setLoading(true);
       try {
-        const res = await $api.post.createPost(file, userId);
+        const res = await $api.post.createPost(form);
         dispatch(fetchPostActionCreator(res.data));
         setLoading(false);
         history.push(`/posts/${res.data.id}`);

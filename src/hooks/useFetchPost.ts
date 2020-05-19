@@ -9,7 +9,7 @@ export const useFetchPost = () => {
   const { $api, $notification } = useContext(RootContext);
 
   const fetchPost = useCallback(
-    async (id: number) => {
+    async (id: string) => {
       setLoading(true);
       try {
         const res = await $api.post.getPost(id);

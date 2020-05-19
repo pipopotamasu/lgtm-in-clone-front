@@ -11,16 +11,17 @@ export default {
       params: query,
     });
   },
-  getPost(id: number) {
+  getPost(id: string) {
     return axios.get<Post>(`posts/${id}`);
   },
   getPostRandom() {
     return axios.get<Post>('posts/1'); // FIXME
   },
-  createPost(file: string, userId: string) {
-    return axios.post<Post>('posts', {
-      file,
-      userId,
+  createPost(form: FormData) {
+    return axios.post<Post>('posts', form, {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
     });
   },
   createBookmark(postId: number, userId: string) {

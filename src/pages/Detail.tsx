@@ -17,7 +17,7 @@ const PostDetail: React.FC = () => {
   const { fetchPost, loading } = useFetchPost();
 
   useEffect(() => {
-    fetchPost(parseInt(id));
+    fetchPost(id);
   }, [fetchPost, id]);
 
   if (loading || !postSelected) {

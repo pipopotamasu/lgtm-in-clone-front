@@ -29,6 +29,7 @@ const LgtmForm: React.FC = () => {
   const { currentUser } = useCurrentUser();
 
   const [encodedFile, setEncodedFile] = useState<string | null>(null);
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
   const [errors, setErrors] = useState<string[]>([]);
   const { createPost, loading } = useCreatePost();
 
@@ -42,6 +43,7 @@ const LgtmForm: React.FC = () => {
       setErrors(['Upload image file.']);
       return;
     }
+    setUploadFile(file);
     setErrors([]);
 
     const reader = new FileReader();
@@ -58,7 +60,7 @@ const LgtmForm: React.FC = () => {
       if (loading) return;
       setErrors([]);
 
-      if (!encodedFile) {
+      if (!uploadFile) {
         setErrors(['Upload image file.']);
         return;
       }
@@ -67,10 +69,11 @@ const LgtmForm: React.FC = () => {
         setErrors(['Login before uploading image.']);
         return;
       }
-
-      await createPost(encodedFile, currentUser.id);
+      const form = new FormData();
+      form.append('file', uploadFile);
+      await createPost(form);
     },
-    [encodedFile, currentUser, loading, createPost]
+    [currentUser, loading, createPost, uploadFile]
   );
 
   return (
