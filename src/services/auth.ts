@@ -16,6 +16,9 @@ export default {
     });
   },
   logout() {
-    return axios.post<undefined>('/logout');
+    return axios.get<undefined>('/logout');
+  },
+  currentUser() {
+    return axios.get<CurrentUser>('/current_user');
   },
 };
