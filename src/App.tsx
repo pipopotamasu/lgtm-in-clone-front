@@ -10,6 +10,7 @@ import Submit from 'src/pages/Submit';
 import Bookmarks from 'src/pages/Bookmarks';
 import Signup from 'src/pages/Signup';
 import Login from 'src/pages/Login';
+import Auth from 'src/components/organisms/Auth';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from 'src/reducers/store';
@@ -27,38 +28,40 @@ const App: React.FC = () => {
     <div className="App">
       <Provider store={store}>
         <RootContext.Provider value={context}>
-          <Router>
-            <ToastContainer />
-            <GlobalHeader />
-            <Container>
-              <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-                <Route path="/random">
-                  <Random />
-                </Route>
-                <Route path="/submit">
-                  <Submit />
-                </Route>
-                <Route path="/browse">
-                  <Browse />
-                </Route>
-                <Route path="/posts/:id">
-                  <Detail />
-                </Route>
-                <Route path="/bookmarks">
-                  <Bookmarks />
-                </Route>
-                <Route path="/signup">
-                  <Signup />
-                </Route>
-                <Route path="/login">
-                  <Login />
-                </Route>
-              </Switch>
-            </Container>
-          </Router>
+          <Auth>
+            <Router>
+              <ToastContainer />
+              <GlobalHeader />
+              <Container>
+                <Switch>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <Route path="/random">
+                    <Random />
+                  </Route>
+                  <Route path="/submit">
+                    <Submit />
+                  </Route>
+                  <Route path="/browse">
+                    <Browse />
+                  </Route>
+                  <Route path="/posts/:id">
+                    <Detail />
+                  </Route>
+                  <Route path="/bookmarks">
+                    <Bookmarks />
+                  </Route>
+                  <Route path="/signup">
+                    <Signup />
+                  </Route>
+                  <Route path="/login">
+                    <Login />
+                  </Route>
+                </Switch>
+              </Container>
+            </Router>
+          </Auth>
         </RootContext.Provider>
       </Provider>
     </div>
