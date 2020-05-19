@@ -29,5 +29,9 @@
       "email": "foo@bar.com"
     }
   ],
-  "logout": []
+  "logout": [],
+  "current_user": {
+    "id": "foobar",
+    "email": "foo@bar.com"
+  }
 }
