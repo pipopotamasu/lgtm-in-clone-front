@@ -51,7 +51,7 @@ const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
 
   const markdownVal = useMemo(() => {
     if (!post) return '';
-    return `[![LGTM](${post.src})](${window.location.origin}/posts/${post.id})`;
+    return `![LGTM](${post.src})`;
   }, [post]);
 
   return (
@@ -69,15 +69,6 @@ const LgtmDetail: React.FC<{ post: Post }> = ({ post }) => {
             defaultValue={post.src}
             id="image-url"
             name="image-url"
-          />
-        </FormGroup>
-        <FormGroup>
-          <InputLabel htmlFor="data-url">Data Url</InputLabel>
-          <Input
-            type="text"
-            defaultValue={`${window.location.origin}/posts/${post.id}`}
-            id="data-url"
-            name="data-url"
           />
         </FormGroup>
         <FormGroup>
