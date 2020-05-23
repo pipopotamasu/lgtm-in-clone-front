@@ -15,7 +15,7 @@ export default {
     return axios.get<Post>(`posts/${id}`);
   },
   getPostRandom() {
-    return axios.get<Post>('posts/1'); // FIXME
+    return axios.get<Post>('posts/random');
   },
   createPost(form: FormData) {
     return axios.post<Post>('posts', form, {
