@@ -25,7 +25,7 @@
     "eject": "react-scripts eject",
     "eslint": "eslint src --ext ts,tsx",
     "eslint:fix": "yarn eslint --fix",
-    "mock-server": "json-server --watch db.json -p 4000 -m middleware.js"
+    "mock-server": "json-server --watch db.json -p 4000 -m middleware.js --routes routes.json"
   },
   "eslintConfig": {
     "extends": "react-app"
