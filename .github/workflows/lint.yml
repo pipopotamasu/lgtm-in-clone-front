@@ -10,5 +10,7 @@ jobs:
         node-version: '12.x'
     - name: install dependencies
       run: yarn
-    - name: Build and setup
+    - name: eslint
       run: yarn eslint
+    - name: test
+      run: yarn test
