@@ -16,7 +16,11 @@ export const useFetchPostRandom = () => {
       dispatch(fetchPostActionCreator(res.data));
     } catch (e) {
       setLoading(false);
-      $notification.error(e.message);
+      if (e.response.status === 404) {
+        $notification.warning('Post does not exists.');
+      } else {
+        $notification.error(e.message);
+      }
     }
   }, [dispatch, $api, $notification]);
   return { fetchPostRandom, loading };
