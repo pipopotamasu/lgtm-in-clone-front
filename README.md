@@ -1,9 +1,18 @@
-[lgtm.in](https://lgtm.in/) clone application created by react.
+[lgtm.in](https://lgtm.in/) clone application frontend created by react.
 
-## Get started
+## How to setup
+If you want to setup with backend api server, see https://github.com/pipopotamasu/lgtm-in-clone/blob/master/README.md.
+
+This is setup process to work as standalone by mocking backend api.
+
 ```
-$ yarn start:mock // start with mock-server
-$ yarn start      // start without server
+$ git clone https://github.com/pipopotamasu/lgtm-in-clone-front.git
+$ cd lgtm-in-clone-front
+$ yarn mock-server
+# open another terminal tab
+$ cd path/to/lgtm-in-clone-front
+$ yarn start:mock
+# you can visit http://localhost:3000
 ```
 
 ## ecosystem
@@ -14,5 +23,5 @@ $ yarn start      // start without server
 - immer
 - styled-components
 - eslint / prettier
-- auth0
+- jest / react testing library
 - github actions
