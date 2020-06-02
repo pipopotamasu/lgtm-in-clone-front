@@ -29,12 +29,12 @@ const App: React.FC = () => {
     <div className="App">
       <Provider store={store}>
         <RootContext.Provider value={context}>
-          <Auth>
-            <Router>
-              <ToastContainer />
-              <GlobalHeader />
-              <Container>
-                <Suspense fallback={<p>Loading...</p>}>
+          <Router>
+            <Auth>
+              <Suspense fallback={<></>}>
+                <ToastContainer />
+                <GlobalHeader />
+                <Container>
                   <Switch>
                     <Route exact path="/">
                       <Home />
@@ -61,10 +61,10 @@ const App: React.FC = () => {
                       <Login />
                     </Route>
                   </Switch>
-                </Suspense>
-              </Container>
-            </Router>
-          </Auth>
+                </Container>
+              </Suspense>
+            </Auth>
+          </Router>
         </RootContext.Provider>
       </Provider>
     </div>

@@ -5,7 +5,6 @@ import { AppState } from 'src/reducers/store';
 import { Post } from 'src/reducers/posts';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectPost as selectPostCreator } from 'src/actions/posts';
-import { usePlaceholderCards } from 'src/hooks/usePlaceholderCards';
 import { useFetchPosts } from 'src/hooks/useFetchPosts';
 import { useBookmark } from 'src/hooks/useBookmark';
 import { useCurrentUser } from 'src/hooks/useCurrentUser';
@@ -22,7 +21,7 @@ const LgtmCards: React.FC<{ query?: PostSearchQuery }> = ({ query }) => {
   const postList = useSelector(postsListSelector);
   const dispatch = useDispatch();
   const { currentUser } = useCurrentUser();
-  const { fetchPosts, loading } = useFetchPosts();
+  const { fetchPosts } = useFetchPosts();
   const { onClickBookmark } = useBookmark();
 
   useEffect(() => {
@@ -49,12 +48,6 @@ const LgtmCards: React.FC<{ query?: PostSearchQuery }> = ({ query }) => {
       );
     });
   }, [postList, onSelectPost, currentUser, onClickBookmark]);
-
-  const PlaceholderCards = usePlaceholderCards(10);
-
-  if (loading) {
-    return <Container>{PlaceholderCards}</Container>;
-  }
 
   return <Container>{Cards}</Container>;
 };
