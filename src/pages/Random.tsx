@@ -14,8 +14,12 @@ const PostDetail: React.FC = () => {
     fetchPostRandom();
   }, [fetchPostRandom]);
 
-  if (loading || !postSelected) {
+  if (loading) {
     return <p>Loading...</p>;
+  }
+
+  if (!postSelected) {
+    return <p>No post.</p>;
   }
 
   return (

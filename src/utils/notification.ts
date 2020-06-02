@@ -36,6 +36,7 @@ export const $notification = {
   success,
   error,
   info,
+  warning,
 } as Readonly<{
   success: typeof success;
   error: typeof error;
