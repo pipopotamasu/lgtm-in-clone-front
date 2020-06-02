@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import styled from 'styled-components';
 import { width } from 'src/constants/cssVariables';
 import GlobalHeader from 'src/components/organisms/GlobalHeader';
-import Home from 'src/pages/Home';
-import Detail from 'src/pages/Detail';
-import Random from 'src/pages/Random';
-import Browse from 'src/pages/Browse';
-import Submit from 'src/pages/Submit';
-import Bookmarks from 'src/pages/Bookmarks';
-import Signup from 'src/pages/Signup';
-import Login from 'src/pages/Login';
 import Auth from 'src/components/organisms/Auth';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from 'src/reducers/store';
 import { ToastContainer } from 'react-toastify';
 import { context, RootContext } from 'src/contexts/root';
+
+const Home = lazy(() => import('src/pages/Home'));
+const Detail = lazy(() => import('src/pages/Detail'));
+const Random = lazy(() => import('src/pages/Random'));
+const Browse = lazy(() => import('src/pages/Browse'));
+const Submit = lazy(() => import('src/pages/Submit'));
+const Bookmarks = lazy(() => import('src/pages/Bookmarks'));
+const Signup = lazy(() => import('src/pages/Signup'));
+const Login = lazy(() => import('src/pages/Login'));
 
 const Container = styled.div`
   width: ${width.base};
@@ -33,32 +34,34 @@ const App: React.FC = () => {
               <ToastContainer />
               <GlobalHeader />
               <Container>
-                <Switch>
-                  <Route exact path="/">
-                    <Home />
-                  </Route>
-                  <Route path="/random">
-                    <Random />
-                  </Route>
-                  <Route path="/submit">
-                    <Submit />
-                  </Route>
-                  <Route path="/browse">
-                    <Browse />
-                  </Route>
-                  <Route path="/posts/:id">
-                    <Detail />
-                  </Route>
-                  <Route path="/bookmarks">
-                    <Bookmarks />
-                  </Route>
-                  <Route path="/signup">
-                    <Signup />
-                  </Route>
-                  <Route path="/login">
-                    <Login />
-                  </Route>
-                </Switch>
+                <Suspense fallback={<p>Loading...</p>}>
+                  <Switch>
+                    <Route exact path="/">
+                      <Home />
+                    </Route>
+                    <Route path="/random">
+                      <Random />
+                    </Route>
+                    <Route path="/submit">
+                      <Submit />
+                    </Route>
+                    <Route path="/browse">
+                      <Browse />
+                    </Route>
+                    <Route path="/posts/:id">
+                      <Detail />
+                    </Route>
+                    <Route path="/bookmarks">
+                      <Bookmarks />
+                    </Route>
+                    <Route path="/signup">
+                      <Signup />
+                    </Route>
+                    <Route path="/login">
+                      <Login />
+                    </Route>
+                  </Switch>
+                </Suspense>
               </Container>
             </Router>
           </Auth>
