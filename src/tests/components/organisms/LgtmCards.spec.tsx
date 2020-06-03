@@ -12,44 +12,44 @@ jest.mock('src/hooks/useFetchPosts');
 const mockStoreCreater = configureStore();
 
 describe('components/organisms/LgtmCards', () => {
-  describe('when loading', () => {
-    it('renders placeholders', () => {
-      const fetchPosts = jest.fn();
-      (useFetchPosts as any).mockReturnValue({
-        fetchPosts,
-        loading: true,
-      });
+  it('renders LgtmCards', async () => {
+    (useFetchPosts as any).mockReturnValue({
+      fetchPosts: jest.fn(),
+      loading: false,
+    });
 
-      const store = mockStoreCreater({
-        posts: {
-          list: [],
-        },
-        auth: {
-          currentUser: null,
-        },
-      });
+    const store = mockStoreCreater({
+      posts: {
+        list: [createPost()],
+      },
+      auth: {
+        currentUser: null,
+      },
+    });
 
-      const { container } = render(
+    const { container } = render(
+      <Router>
         <Provider store={store}>
           <LgtmCards />
         </Provider>
-      );
-      expect(fetchPosts).toBeCalled();
-      // p => placeholder element
-      expect(container.querySelectorAll('p').length).toBe(10);
-    });
+      </Router>
+    );
+
+    expect(container.querySelectorAll('img').length).toBe(1);
   });
 
-  describe('when not loading', () => {
-    it('renders LgtmCards', async () => {
+  describe('when clicking LgtmCard', () => {
+    it('dispatches select action', () => {
       (useFetchPosts as any).mockReturnValue({
         fetchPosts: jest.fn(),
         loading: false,
       });
 
+      const post = createPost({ src: 'test' });
+
       const store = mockStoreCreater({
         posts: {
-          list: [createPost()],
+          list: [post],
         },
         auth: {
           currentUser: null,
@@ -63,46 +63,14 @@ describe('components/organisms/LgtmCards', () => {
           </Provider>
         </Router>
       );
-      // no placeholder
-      expect(container.querySelectorAll('p').length).toBe(0);
-
-      expect(container.querySelectorAll('img').length).toBe(1);
-    });
-
-    describe('when clicking LgtmCard', () => {
-      it('dispatches select action', () => {
-        (useFetchPosts as any).mockReturnValue({
-          fetchPosts: jest.fn(),
-          loading: false,
-        });
-
-        const post = createPost({ src: 'test' });
-
-        const store = mockStoreCreater({
-          posts: {
-            list: [post],
-          },
-          auth: {
-            currentUser: null,
-          },
-        });
-
-        const { container } = render(
-          <Router>
-            <Provider store={store}>
-              <LgtmCards />
-            </Provider>
-          </Router>
-        );
-        fireEvent.click(container.querySelector('img')!);
-        const actions = store.getActions();
-        expect(actions).toEqual([
-          {
-            payload: post,
-            type: PostsActionEnum.SELECT_POST,
-          },
-        ]);
-      });
+      fireEvent.click(container.querySelector('img')!);
+      const actions = store.getActions();
+      expect(actions).toEqual([
+        {
+          payload: post,
+          type: PostsActionEnum.SELECT_POST,
+        },
+      ]);
     });
   });
 });
