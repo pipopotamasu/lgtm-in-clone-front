@@ -1,26 +1,24 @@
-import { useState, useCallback, useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchPost as fetchPostActionCreator } from 'src/actions/posts';
 import { RootContext } from 'src/contexts/root';
 
 export const useFetchPost = () => {
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const { $api, $notification } = useContext(RootContext);
 
   const fetchPost = useCallback(
-    async (id: string) => {
-      setLoading(true);
+    async (id?: string) => {
       try {
-        const res = await $api.post.getPost(id);
-        setLoading(false);
+        const res = id
+          ? await $api.post.getPost(id)
+          : await $api.post.getPostRandom();
         dispatch(fetchPostActionCreator(res.data));
       } catch (e) {
-        setLoading(false);
         $notification.error(e.message);
       }
     },
     [dispatch, $api, $notification]
   );
-  return { fetchPost, loading };
+  return { fetchPost };
 };

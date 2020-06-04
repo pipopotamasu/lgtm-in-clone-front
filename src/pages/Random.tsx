@@ -1,32 +1,16 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import LgtmDetail from 'src/components/organisms/LgtmDetail';
-import { useFetchPostRandom } from 'src/hooks/useFetchPostRandom';
-import { AppState } from 'src/reducers/store';
+import React, { lazy, Suspense } from 'react';
+import LgtmDetailPlaceholder from 'src/components/atoms/loaders/LgtmDetailPlaceholder';
 
-const postSelectedSelector = (state: AppState) => state.posts.selected;
+const LgtmDetail = lazy(() => import('src/components/organisms/LgtmDetail'));
 
-const PostDetail: React.FC = () => {
-  const postSelected = useSelector(postSelectedSelector);
-  const { fetchPostRandom, loading } = useFetchPostRandom();
-
-  useEffect(() => {
-    fetchPostRandom();
-  }, [fetchPostRandom]);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (!postSelected) {
-    return <p>No post.</p>;
-  }
-
+const Random: React.FC = () => {
   return (
     <div>
-      <LgtmDetail post={postSelected} />
+      <Suspense fallback={<LgtmDetailPlaceholder />}>
+        <LgtmDetail />
+      </Suspense>
     </div>
   );
 };
 
-export default PostDetail;
+export default Random;
