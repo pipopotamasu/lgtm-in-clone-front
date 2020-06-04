@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
-import LgtmDetail from 'src/components/organisms/LgtmDetail';
-import { useFetchPost } from 'src/hooks/useFetchPost';
-import { useSelector } from 'react-redux';
-import { AppState } from 'src/reducers/store';
+import LgtmCardsPlaceholder from 'src/components/atoms/loaders/LgtmCardsPlaceholder';
 
-const postSelectedSelector = (state: AppState) => state.posts.selected;
+const LgtmDetail = lazy(() => import('src/components/organisms/LgtmDetail'));
 
 const PostDetail: React.FC = () => {
   const { id } = useParams();
@@ -13,20 +10,11 @@ const PostDetail: React.FC = () => {
     throw new Error('Passed invalid id.');
   }
 
-  const postSelected = useSelector(postSelectedSelector);
-  const { fetchPost, loading } = useFetchPost();
-
-  useEffect(() => {
-    fetchPost(id);
-  }, [fetchPost, id]);
-
-  if (loading || !postSelected) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <div>
-      <LgtmDetail post={postSelected} />
+      <Suspense fallback={<LgtmCardsPlaceholder />}>
+        <LgtmDetail id={id} />
+      </Suspense>
     </div>
   );
 };

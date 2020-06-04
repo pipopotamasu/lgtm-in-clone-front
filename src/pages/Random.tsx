@@ -24,7 +24,7 @@ const PostDetail: React.FC = () => {
 
   return (
     <div>
-      <LgtmDetail post={postSelected} />
+      <LgtmDetail />
     </div>
   );
 };
