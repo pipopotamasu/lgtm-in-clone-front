@@ -4,8 +4,6 @@ import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
 const LgtmCardsPlaceholder = (props: IContentLoaderProps) => (
   <ContentLoader
     speed={2}
-    width="auto"
-    height="auto"
     viewBox="0 0 800 575"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"

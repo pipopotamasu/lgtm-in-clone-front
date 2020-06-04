@@ -4,7 +4,7 @@ import LgtmCardsPlaceholder from 'src/components/atoms/loaders/LgtmCardsPlacehol
 
 const LgtmDetail = lazy(() => import('src/components/organisms/LgtmDetail'));
 
-const PostDetail: React.FC = () => {
+const Detail: React.FC = () => {
   const { id } = useParams();
   if (!id) {
     throw new Error('Passed invalid id.');
@@ -19,4 +19,4 @@ const PostDetail: React.FC = () => {
   );
 };
 
-export default PostDetail;
+export default Detail;
