@@ -39,7 +39,8 @@ describe('useFetchPosts', () => {
         result.current.fetchPosts({ bookmarked: false });
       });
 
-      // not working...
+      // not working due to nothing to rerender
+      // https://react-hooks-testing-library.com/reference/api#waitfornextupdate
       // await waitForNextUpdate()
       await new Promise((r) => setTimeout(r, 0));
 
