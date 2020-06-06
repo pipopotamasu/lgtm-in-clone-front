@@ -17,3 +17,18 @@ export const passwordValidator = (register: Function) => {
     },
   });
 };
+
+export const passwordConfirmationValidator = (
+  register: Function,
+  watch: Function
+) => {
+  return register({
+    required: 'This field is required',
+    minLength: {
+      value: 4,
+      message: 'Password must be more than 3 characters',
+    },
+    validate: (value: string) =>
+      value === watch('password') || 'Passwords don\'t match.',
+  });
+};

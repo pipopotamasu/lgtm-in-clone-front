@@ -6,7 +6,11 @@ import Button from 'src/components/atoms/Button';
 import FormGroup from 'src/components/atoms/FormGroup';
 import { useForm } from 'react-hook-form';
 import { useSignup, FormParams } from 'src/hooks/useSignup';
-import { emailValidator, passwordValidator } from 'src/validators';
+import {
+  emailValidator,
+  passwordValidator,
+  passwordConfirmationValidator,
+} from 'src/validators';
 
 const SignupFormBlock = styled.form`
   width: 50%;
@@ -15,7 +19,7 @@ const SignupFormBlock = styled.form`
 `;
 
 const SignupForm: React.FC = () => {
-  const { register, handleSubmit, errors } = useForm<FormParams>();
+  const { register, watch, handleSubmit, errors } = useForm<FormParams>();
   const { signup, loading } = useSignup();
 
   return (
@@ -55,7 +59,7 @@ const SignupForm: React.FC = () => {
           defaultValue=""
           name="confirmPassword"
           id="confirmPassword"
-          validation={passwordValidator(register)}
+          validation={passwordConfirmationValidator(register, watch)}
           error={errors.confirmPassword}
         />
       </FormGroup>
