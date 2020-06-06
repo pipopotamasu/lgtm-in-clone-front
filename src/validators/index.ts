@@ -29,6 +29,6 @@ export const passwordConfirmationValidator = (
       message: 'Password must be more than 3 characters',
     },
     validate: (value: string) =>
-      value === watch('password') || 'Passwords don\'t match.',
+      value === watch('password') || 'Passwords do not match.',
   });
 };
