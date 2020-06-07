@@ -12,7 +12,10 @@ export default class ErrorBoundary extends React.Component<
 
   static getDerivedStateFromError(error: AxiosError) {
     // Update state so the next render will show the fallback UI.
-    switch (error.response!.status) {
+    if (!error.response) return { message: 'Something is wrong...' };
+    switch (error.response.status) {
+      case 302:
+        return { message: 'Your session is expired. Please login again.' };
       case 404:
         return { message: '404 Not Found.' };
       default:
