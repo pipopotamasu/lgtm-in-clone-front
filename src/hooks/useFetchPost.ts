@@ -1,11 +1,12 @@
-import { useCallback, useContext } from 'react';
+import { useState, useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchPost as fetchPostActionCreator } from 'src/actions/posts';
 import { RootContext } from 'src/contexts/root';
 
 export const useFetchPost = () => {
   const dispatch = useDispatch();
-  const { $api, $notification } = useContext(RootContext);
+  const [, /* state */ setState] = useState();
+  const { $api } = useContext(RootContext);
 
   const fetchPost = useCallback(
     async (id?: string) => {
@@ -15,10 +16,13 @@ export const useFetchPost = () => {
           : await $api.post.getPostRandom();
         dispatch(fetchPostActionCreator(res.data));
       } catch (e) {
-        $notification.error(e.message);
+        setState(() => {
+          // Due to throwing to Error Boundary Component
+          throw e;
+        });
       }
     },
-    [dispatch, $api, $notification]
+    [dispatch, $api]
   );
   return { fetchPost };
 };

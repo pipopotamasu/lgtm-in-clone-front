@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { width } from 'src/constants/cssVariables';
 import GlobalHeader from 'src/components/organisms/GlobalHeader';
 import Auth from 'src/components/organisms/Auth';
+import ErrorBoundary from 'src/components/atoms/ErrorBoundary';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from 'src/reducers/store';
@@ -35,32 +36,34 @@ const App: React.FC = () => {
                 <ToastContainer />
                 <GlobalHeader />
                 <Container>
-                  <Switch>
-                    <Route exact path="/">
-                      <Home />
-                    </Route>
-                    <Route path="/random">
-                      <Random />
-                    </Route>
-                    <Route path="/submit">
-                      <Submit />
-                    </Route>
-                    <Route path="/browse">
-                      <Browse />
-                    </Route>
-                    <Route path="/posts/:id">
-                      <Detail />
-                    </Route>
-                    <Route path="/bookmarks">
-                      <Bookmarks />
-                    </Route>
-                    <Route path="/signup">
-                      <Signup />
-                    </Route>
-                    <Route path="/login">
-                      <Login />
-                    </Route>
-                  </Switch>
+                  <ErrorBoundary>
+                    <Switch>
+                      <Route exact path="/">
+                        <Home />
+                      </Route>
+                      <Route path="/random">
+                        <Random />
+                      </Route>
+                      <Route path="/submit">
+                        <Submit />
+                      </Route>
+                      <Route path="/browse">
+                        <Browse />
+                      </Route>
+                      <Route path="/posts/:id">
+                        <Detail />
+                      </Route>
+                      <Route path="/bookmarks">
+                        <Bookmarks />
+                      </Route>
+                      <Route path="/signup">
+                        <Signup />
+                      </Route>
+                      <Route path="/login">
+                        <Login />
+                      </Route>
+                    </Switch>
+                  </ErrorBoundary>
                 </Container>
               </Suspense>
             </Auth>
