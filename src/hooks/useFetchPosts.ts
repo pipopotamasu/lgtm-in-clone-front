@@ -7,7 +7,7 @@ import { RootContext } from 'src/contexts/root';
 export const useFetchPosts = () => {
   const dispatch = useDispatch();
   const [, /* state */ setState] = useState();
-  const { $api, $notification } = useContext(RootContext);
+  const { $api } = useContext(RootContext);
 
   const fetchPosts = useCallback(
     async (query?: PostSearchQuery) => {
@@ -20,7 +20,7 @@ export const useFetchPosts = () => {
         });
       }
     },
-    [dispatch, $api, $notification]
+    [dispatch, $api]
   );
   return { fetchPosts };
 };
