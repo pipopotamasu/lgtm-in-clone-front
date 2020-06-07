@@ -8,6 +8,7 @@ import { RootContext } from 'src/contexts/root';
 export const useCurrentUser = () => {
   const [loading, setLoading] = useState(false);
   const [haveFetched, setHaveFetched] = useState(false);
+  const [, /* state */ setState] = useState();
   const dispatch = useDispatch();
   const { $notification, $api } = useContext(RootContext);
   const currentUser = useSelector((state: AppState) => state.auth.currentUser);
@@ -21,9 +22,9 @@ export const useCurrentUser = () => {
       dispatch(fetchCurrentUserActionCreator(res.data));
     } catch (e) {
       setLoading(false);
-      if (e.response.status !== 302) {
-        $notification.error(e.message);
-      }
+      setState(() => {
+        throw e;
+      });
     }
   }, [dispatch, $api, $notification, setHaveFetched]);
 

@@ -53,40 +53,4 @@ describe('useFetchPosts', () => {
       ]);
     });
   });
-
-  describe('error', () => {
-    it('shows error', async () => {
-      const store = mockStoreCreater({});
-
-      const context = {
-        $api: {
-          post: {
-            getPosts: jest.fn().mockImplementation(() => {
-              throw new Error('error message');
-            }),
-          },
-        },
-        $notification: {
-          error: jest.fn(),
-        },
-      } as any;
-
-      const wrapper: React.FunctionComponent = ({ children }) => (
-        <Provider store={store}>
-          <RootContext.Provider value={context}>
-            {children}
-          </RootContext.Provider>
-        </Provider>
-      );
-      const { result } = renderHook(() => useFetchPosts(), { wrapper });
-
-      act(() => {
-        result.current.fetchPosts({ bookmarked: false });
-      });
-
-      expect(context.$notification.error).toBeCalledWith('error message');
-      const actions = store.getActions();
-      expect(actions).toEqual([]);
-    });
-  });
 });
