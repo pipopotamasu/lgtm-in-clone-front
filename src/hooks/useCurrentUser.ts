@@ -10,7 +10,7 @@ export const useCurrentUser = () => {
   const [haveFetched, setHaveFetched] = useState(false);
   const [, /* state */ setState] = useState();
   const dispatch = useDispatch();
-  const { $notification, $api } = useContext(RootContext);
+  const { $api } = useContext(RootContext);
   const currentUser = useSelector((state: AppState) => state.auth.currentUser);
 
   const fetchCurrentUser = useCallback(async () => {
@@ -26,7 +26,7 @@ export const useCurrentUser = () => {
         throw e;
       });
     }
-  }, [dispatch, $api, $notification, setHaveFetched]);
+  }, [dispatch, $api, setHaveFetched]);
 
   return { currentUser, fetchCurrentUser, loading, haveFetched };
 };
