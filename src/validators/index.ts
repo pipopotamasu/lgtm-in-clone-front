@@ -1,4 +1,4 @@
-export const emailValidator = (register: Function) => {
+export const emailValidator = (register: any) => {
   return register({
     pattern: {
       value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
@@ -8,7 +8,7 @@ export const emailValidator = (register: Function) => {
   });
 };
 
-export const passwordValidator = (register: Function) => {
+export const passwordValidator = (register: any) => {
   return register({
     required: 'This field is required',
     minLength: {
@@ -18,10 +18,7 @@ export const passwordValidator = (register: Function) => {
   });
 };
 
-export const passwordConfirmationValidator = (
-  register: Function,
-  watch: Function
-) => {
+export const passwordConfirmationValidator = (register: any, watch: any) => {
   return register({
     required: 'This field is required',
     minLength: {
