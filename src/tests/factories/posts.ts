@@ -1,6 +1,6 @@
 import { Post } from 'src/reducers/posts';
 
-export function createPost(post: Post | {} = {}): Post {
+export function createPost(post: Post | Record<string, any> = {}): Post {
   return {
     ...{
       id: 1,
